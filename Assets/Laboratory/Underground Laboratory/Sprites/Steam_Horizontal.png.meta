@@ -1,7 +1,28 @@
 fileFormatVersion: 2
-guid: d525e3336c939d64793e8e94eec3d0a0
+guid: ff7c3eeafba828144a08288c07961d7c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5249802354069511635
+    second: Steam_Horizontal_0
+  - first:
+      213: -4448749578497421604
+    second: Steam_Horizontal_1
+  - first:
+      213: -1948384400852565510
+    second: Steam_Horizontal_2
+  - first:
+      213: -5957798841212354762
+    second: Steam_Horizontal_3
+  - first:
+      213: -2438885114648215983
+    second: Steam_Horizontal_4
+  - first:
+      213: -7413373346899970602
+    second: Steam_Horizontal_5
+  - first:
+      213: 3618396631464709105
+    second: Steam_Horizontal_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -33,7 +54,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +68,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -81,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,11 +110,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Manidae_Idle_0
+      name: Steam_Horizontal_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +139,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c9b2ce48c7bc0c4baf5bcef1d1984d5
-      internalID: -2018339402
+      spriteID: 3dd92572d6b0bd840800000000000000
+      internalID: 5249802354069511635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Manidae_Idle_1
+      name: Steam_Horizontal_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde0efe24ddd242c0800000000000000
+      internalID: -4448749578497421604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steam_Horizontal_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +181,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d1663ed058e3ca4b973031be8c65bce
-      internalID: -1190391506
+      spriteID: af1454dd5b2f5f4e0800000000000000
+      internalID: -1948384400852565510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Manidae_Idle_2
+      name: Steam_Horizontal_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fbd4a0585a15da0800000000000000
+      internalID: -5957798841212354762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steam_Horizontal_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +223,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1619c29b0dc945c498db8f6c51826675
-      internalID: -39815099
+      spriteID: 15eb765f8e6572ed0800000000000000
+      internalID: -2438885114648215983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Manidae_Idle_3
+      name: Steam_Horizontal_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5bdaef7386e1990800000000000000
+      internalID: -7413373346899970602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steam_Horizontal_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,29 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc7237c760da52942a8f1d48aaab2b30
-      internalID: 2093611559
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Manidae_Idle_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c8230cf9f652d74ba7835855081413b
-      internalID: 1267063667
+      spriteID: 1fb8ce2b090273230800000000000000
+      internalID: 3618396631464709105
       vertices: []
       indices: 
       edges: []
@@ -219,11 +282,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Manidae_Idle_3: 2093611559
-      Manidae_Idle_4: 1267063667
-      Manidae_Idle_2: -39815099
-      Manidae_Idle_1: -1190391506
-      Manidae_Idle_0: -2018339402
+      Steam_Horizontal_6: 3618396631464709105
+      Steam_Horizontal_3: -5957798841212354762
+      Steam_Horizontal_2: -1948384400852565510
+      Steam_Horizontal_1: -4448749578497421604
+      Steam_Horizontal_4: -2438885114648215983
+      Steam_Horizontal_0: 5249802354069511635
+      Steam_Horizontal_5: -7413373346899970602
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

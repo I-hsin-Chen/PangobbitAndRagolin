@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: d525e3336c939d64793e8e94eec3d0a0
+guid: 0affeebe51083bc4d9ba91e56cdd6b18
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2503668956862761215
+    second: Server_0
+  - first:
+      213: 7123667794004692724
+    second: Server_1
+  - first:
+      213: -2021115813527908841
+    second: Server_2
+  - first:
+      213: 510942310101321107
+    second: Server_3
+  - first:
+      213: -3454129786752952043
+    second: Server_4
+  - first:
+      213: 7246834642214773579
+    second: Server_5
+  - first:
+      213: -42306434472384815
+    second: Server_6
+  - first:
+      213: 4479507858739573591
+    second: Server_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -33,7 +57,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +71,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -81,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,11 +113,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Manidae_Idle_0
+      name: Server_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c9b2ce48c7bc0c4baf5bcef1d1984d5
-      internalID: -2018339402
+      spriteID: ff84af8b6a1deb220800000000000000
+      internalID: 2503668956862761215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Manidae_Idle_1
+      name: Server_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 16
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d1663ed058e3ca4b973031be8c65bce
-      internalID: -1190391506
+      spriteID: 4fe4a87ad1a5cd260800000000000000
+      internalID: 7123667794004692724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Manidae_Idle_2
+      name: Server_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1619c29b0dc945c498db8f6c51826675
-      internalID: -39815099
+      spriteID: 71e8ebc30ed83f3e0800000000000000
+      internalID: -2021115813527908841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Manidae_Idle_3
+      name: Server_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 48
         y: 0
-        width: 64
-        height: 64
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,29 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc7237c760da52942a8f1d48aaab2b30
-      internalID: 2093611559
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Manidae_Idle_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c8230cf9f652d74ba7835855081413b
-      internalID: 1267063667
+      spriteID: 3958e4ee25b371700800000000000000
+      internalID: 510942310101321107
       vertices: []
       indices: 
       edges: []
@@ -219,11 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Manidae_Idle_3: 2093611559
-      Manidae_Idle_4: 1267063667
-      Manidae_Idle_2: -39815099
-      Manidae_Idle_1: -1190391506
-      Manidae_Idle_0: -2018339402
+      Server_1: 7123667794004692724
+      Server_3: 510942310101321107
+      Server_0: 2503668956862761215
+      Server_2: -2021115813527908841
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
