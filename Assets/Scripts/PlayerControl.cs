@@ -29,6 +29,9 @@ public class PlayerControl : MonoBehaviour
     public bool isPangolin = false;
     public bool isObject = false;
 
+    public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
+    public virtual bool isPossessedObject => isObject && (isRabbit || isPangolin);
+
     public bool canMove = true;
     public bool isRunning { get; private set; } = false;
     public bool isShrinking { get; private set; } = false;
@@ -73,23 +76,30 @@ public class PlayerControl : MonoBehaviour
         if (isRabbit) RabbitCheck();
         else if (isPangolin) PangolinCheck();
 
-        if (!isObject){
+        if (isPlayer){
             RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(faceDirection.GetDirection(), 0), 3);
-            if (hit.collider != null){
-                possessTarget = hit.collider.gameObject;
+
+            if (hit.collider != null && hit.collider.gameObject.tag == "Object"){
+                GameObject obj = hit.collider.gameObject;
+
+                // temporarily assume that the objected cannot be possessed by two players simultaneously
+                if (hit.collider.gameObject.GetComponent<PlayerControl>().isRabbit || hit.collider.gameObject.GetComponent<PlayerControl>().isPangolin){
+                    possessTarget = null;
+                }
+                else possessTarget = hit.collider.gameObject;
             }
             else possessTarget = null;
-            // print(possessTarget);
             AnimationCheck();
+            DirectionCheck();
         }
-        DirectionCheck();
 
     }
 
     private void FixedUpdate()
     {
         // this object isn't possessed currently
-        if (!isRabbit && !isPangolin) return;
+        if (!isPlayer && !isPossessedObject) return;
+        // if (!isRabbit && !isPangolin) return;
 
         if(isRunning) rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y) ;
         else rb.velocity = new Vector2(0, rb.velocity.y);
@@ -178,6 +188,16 @@ public class PlayerControl : MonoBehaviour
         isPangolin = false;
         possessTarget.SetActive(true);
         possessTarget.transform.position = transform.position + new Vector3(faceDirection.GetDirection(), 0, 0);
+
+    }
+
+    // when to ignore collision
+    void OnCollisionEnter2D(Collision2D col){
+        if (gameObject.tag != "Player") return;
+
+        // When the other collider is a player or a player in an object, ignore the collision
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Object" && col.gameObject.GetComponent<PlayerControl>().isPossessedObject)
+        Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
     }
 
     // For object
@@ -212,4 +232,5 @@ public class PlayerControl : MonoBehaviour
         if(!IsInState(stateHash))
             PlayState(stateHash);
     }
+
 }
