@@ -17,20 +17,30 @@ public class PlayerControl : MonoBehaviour
     private float moveSpeed = 3.0f;
     public float jumpStrength = 10.0f;
 
-    [SerializeField]
-    private AnimationCurve jumpCurve;
-    public bool isRunning { get; private set; } = false;
-    
-    private float jumpDuration = 0.75f;
-    private float jumpStartTime = float.NegativeInfinity;
-    public bool isJumping => (Time.fixedTime < jumpStartTime + jumpDuration) && !collisionState.grounded;
+    // [SerializeField]
+    // private AnimationCurve jumpCurve;
+    // public bool isJumping => (Time.fixedTime < jumpStartTime + jumpDuration) && !collisionState.grounded;
+    // private float jumpDuration = 0.75f;
+    // private float jumpStartTime = float.NegativeInfinity;
     public float runningDirection { get; private set; } = 0;
-    public virtual bool canJump => collisionState.grounded;
 
+    // Player state control
     public bool isRabbit = true;
     public bool isPangolin = false;
     public bool isObject = false;
+
     public bool canMove = true;
+    public bool isRunning { get; private set; } = false;
+    public bool isShrinking { get; private set; } = false;
+    public virtual bool canJump => collisionState.grounded;
+
+    // Animation
+    private Animator animator;
+    private int moveState;
+    private int jumpState;
+    private int idleState;
+    private int shrinkState;
+    private float xScale;
 
     public enum Direction {
         Left, Right
@@ -43,12 +53,18 @@ public class PlayerControl : MonoBehaviour
         TryGetComponent<Rigidbody2D>(out rb);
         TryGetComponent<CollisionState>(out collisionState);
         TryGetComponent<FacingDirection>(out faceDirection);
+        // TryGetComponent<Animator>(out animator);
     }
 
 
     void Start()
     {
-        // Object = GameObject.Find("Object");
+        xScale = transform.localScale.x;
+        if (!isObject) animator = GetComponent<Animator>();
+        moveState = Animator.StringToHash("Base Layer.Move");
+        jumpState = Animator.StringToHash("Base Layer.Jump");
+        idleState = Animator.StringToHash("Base Layer.Idle");
+        shrinkState = Animator.StringToHash("Base Layer.Shrink");
     }
 
     // Update is called once per frame
@@ -64,7 +80,10 @@ public class PlayerControl : MonoBehaviour
             }
             else possessTarget = null;
             // print(possessTarget);
+            AnimationCheck();
         }
+        DirectionCheck();
+
     }
 
     private void FixedUpdate()
@@ -78,7 +97,7 @@ public class PlayerControl : MonoBehaviour
 
     private void RabbitCheck()
     {
-        if (!isRabbit) return;
+        if (!isRabbit || isShrinking) return;
 
         // possess
         if (Input.GetKeyDown(KeyCode.U) && possessTarget != null ) Possess(possessTarget);
@@ -94,14 +113,17 @@ public class PlayerControl : MonoBehaviour
             isRunning = true;
             faceDirection.SetDirection(1);
         }
-        else runningDirection = 0;
+        else {
+            runningDirection = 0;
+            isRunning = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.I)) Jump();
     }
 
     private void PangolinCheck()
     {
-        if (!isPangolin) return;
+        if (!isPangolin || isShrinking) return;
 
         if (Input.GetKeyDown(KeyCode.Q) && possessTarget != null ) Possess(possessTarget);
         if (!canMove) return;
@@ -116,13 +138,16 @@ public class PlayerControl : MonoBehaviour
             isRunning = true;
             faceDirection.SetDirection(1);
         }
-        else runningDirection = 0;
+        else {
+            runningDirection = 0;
+            isRunning = false;
+        }
 
     }
 
     private void Jump()
     {
-        if(!canJump) return;
+        if(!canJump || isShrinking) return;
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
     }
 
@@ -137,11 +162,13 @@ public class PlayerControl : MonoBehaviour
     {
         // Let the possessed object knows when canceling possessing, which animals it should return
         obj.GetComponent<PlayerControl>().SetPossessObj(this.gameObject);
+        isShrinking = true;
 
         // run the possess animation ?
         yield return new WaitForSeconds(0.5f);
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
+        isShrinking = false;
         this.gameObject.SetActive(false);
     }
 
@@ -156,5 +183,33 @@ public class PlayerControl : MonoBehaviour
     // For object
     public void SetPossessObj(GameObject obj){
         possessTarget = obj;
+    }
+
+    //Animation control functions
+    private void AnimationCheck()
+    {
+        if (!canJump) PlayStateIfNotInState(jumpState);
+        else if (isRunning) PlayStateIfNotInState(moveState);
+        else if (isShrinking) PlayStateIfNotInState(shrinkState);
+        else PlayStateIfNotInState(idleState);
+    }
+
+    private void DirectionCheck()
+    {
+        Vector3 scale = transform.localScale;
+        transform.localScale = new Vector3 (faceDirection.GetDirection() * xScale, scale.y, scale.z);
+    }
+
+    private bool IsInState(int stateHash){
+        return animator.GetCurrentAnimatorStateInfo(0).shortNameHash == stateHash;
+    }
+
+    private void PlayState(int stateHash){
+        animator.Play(stateHash, 0);
+    }
+
+    private void PlayStateIfNotInState(int stateHash){
+        if(!IsInState(stateHash))
+            PlayState(stateHash);
     }
 }
