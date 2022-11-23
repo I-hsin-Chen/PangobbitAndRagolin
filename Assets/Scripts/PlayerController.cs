@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 3;
+    public Vector2 jumpHeight = new Vector2(0, 10);
     public Rigidbody2D Pl;
     public Animator anim;
 
@@ -18,6 +19,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Pl.AddForce(jumpHeight, ForceMode2D.Impulse);
+            anim.SetTrigger("Jump");
+        } 
+            
     }
 
     void Move()
