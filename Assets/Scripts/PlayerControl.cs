@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+// using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // this object is not the charecter and currently not possessed
+        // this object isn't possessed currently
         if (!isRabbit && !isPangolin) return;
 
         if(isRunning) rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y) ;
@@ -128,7 +128,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Possess(GameObject obj)
     {
-        // play the possess animation ?
+        // determine whether player is possessed on a object
         if (!isObject) StartCoroutine(PossessToObject(obj));
         else PossessBackToPlayer();
     }
