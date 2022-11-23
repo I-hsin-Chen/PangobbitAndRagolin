@@ -1,0 +1,554 @@
+fileFormatVersion: 2
+guid: 0f2f1bad380e7d74c888c28b7614b651
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3947294118090434729
+    second: AssetPack2_0
+  - first:
+      213: -1225102278948172141
+    second: AssetPack2_1
+  - first:
+      213: 8279569684002694427
+    second: AssetPack2_2
+  - first:
+      213: -2570662656651730367
+    second: AssetPack2_3
+  - first:
+      213: -8371958572139079481
+    second: AssetPack2_4
+  - first:
+      213: -146594201370824420
+    second: AssetPack2_5
+  - first:
+      213: 4784276336004819254
+    second: AssetPack2_6
+  - first:
+      213: -8869292224422341644
+    second: AssetPack2_7
+  - first:
+      213: 5228823219982808649
+    second: AssetPack2_8
+  - first:
+      213: 3029064518966658723
+    second: AssetPack2_9
+  - first:
+      213: 4411199423253960830
+    second: AssetPack2_10
+  - first:
+      213: -1308140282008509420
+    second: AssetPack2_11
+  - first:
+      213: 8922887164574600847
+    second: AssetPack2_12
+  - first:
+      213: 4212130810574707287
+    second: AssetPack2_13
+  - first:
+      213: -3369367679778229692
+    second: AssetPack2_14
+  - first:
+      213: 1642026136765616994
+    second: AssetPack2_15
+  - first:
+      213: 552807552847331152
+    second: AssetPack2_16
+  - first:
+      213: 1566883110873553435
+    second: AssetPack2_17
+  - first:
+      213: 591947434566589560
+    second: AssetPack2_18
+  - first:
+      213: -7037542308977466201
+    second: AssetPack2_19
+  - first:
+      213: 3354857712252059252
+    second: AssetPack2_20
+  - first:
+      213: -7043753082613237429
+    second: AssetPack2_21
+  - first:
+      213: -6731225442313051253
+    second: AssetPack2_22
+  - first:
+      213: -4658533403443665217
+    second: AssetPack2_23
+  - first:
+      213: -6193320945307731382
+    second: AssetPack2_24
+  - first:
+      213: -3807521701677909085
+    second: AssetPack2_25
+  - first:
+      213: 4612669700716890410
+    second: AssetPack2_26
+  - first:
+      213: -3412451013088858596
+    second: AssetPack2_27
+  - first:
+      213: -8729763761830289678
+    second: AssetPack2_28
+  - first:
+      213: -1764981454809152651
+    second: AssetPack2_29
+  - first:
+      213: -4508432230850166464
+    second: AssetPack2_30
+  - first:
+      213: 8195317820281018611
+    second: AssetPack2_31
+  - first:
+      213: 5296044349322594915
+    second: AssetPack2_32
+  - first:
+      213: -7297038878926987683
+    second: AssetPack2_33
+  - first:
+      213: -4789222466560675431
+    second: AssetPack2_34
+  - first:
+      213: 895384485277278641
+    second: AssetPack2_35
+  - first:
+      213: 3133351632309547737
+    second: AssetPack2_36
+  - first:
+      213: 4751785673006443956
+    second: AssetPack2_37
+  - first:
+      213: -2453575207510188385
+    second: AssetPack2_38
+  - first:
+      213: -3834885378949387028
+    second: AssetPack2_39
+  - first:
+      213: -5564759088463026621
+    second: AssetPack2_40
+  - first:
+      213: 1932433619256606145
+    second: AssetPack2_41
+  - first:
+      213: -7755688089427762830
+    second: AssetPack2_42
+  - first:
+      213: -3188168479934531488
+    second: AssetPack2_43
+  - first:
+      213: 2405123385897115319
+    second: AssetPack2_44
+  - first:
+      213: 4764859645458680241
+    second: AssetPack2_45
+  - first:
+      213: -4966182809846144894
+    second: AssetPack2_46
+  - first:
+      213: 8517006730636586876
+    second: AssetPack2_47
+  - first:
+      213: -4387871592978169950
+    second: AssetPack2_48
+  - first:
+      213: -1966525165541592962
+    second: AssetPack2_49
+  - first:
+      213: -6519775515335069016
+    second: AssetPack2_50
+  - first:
+      213: -865919185045314130
+    second: AssetPack2_51
+  - first:
+      213: 6718863748514574420
+    second: AssetPack2_52
+  - first:
+      213: -8839752163234349936
+    second: AssetPack2_53
+  - first:
+      213: 1743062110432462994
+    second: AssetPack2_54
+  - first:
+      213: -8209324087491691409
+    second: AssetPack2_55
+  - first:
+      213: 2900528848905811261
+    second: AssetPack2_56
+  - first:
+      213: -3109992322588349208
+    second: AssetPack2_57
+  - first:
+      213: 5782461096744955754
+    second: AssetPack2_58
+  - first:
+      213: 3835323179875891429
+    second: AssetPack2_59
+  - first:
+      213: -8890113342189948511
+    second: AssetPack2_60
+  - first:
+      213: 9187990680393816750
+    second: AssetPack2_61
+  - first:
+      213: -6385849315285257506
+    second: AssetPack2_62
+  - first:
+      213: -2415315338979722704
+    second: AssetPack2_63
+  - first:
+      213: -5224682120394140055
+    second: AssetPack2_64
+  - first:
+      213: 6660321562774166434
+    second: AssetPack2_65
+  - first:
+      213: 1603947601284074350
+    second: AssetPack2_66
+  - first:
+      213: 185315436026479215
+    second: AssetPack2_67
+  - first:
+      213: 4547357870247701242
+    second: AssetPack2_68
+  - first:
+      213: -4513953841589780281
+    second: AssetPack2_69
+  - first:
+      213: -6343914498820636961
+    second: AssetPack2_70
+  - first:
+      213: 1476152644771051591
+    second: AssetPack2_71
+  - first:
+      213: -3220335903833982779
+    second: AssetPack2_72
+  - first:
+      213: 562280288942833395
+    second: AssetPack2_73
+  - first:
+      213: -8780587142600717669
+    second: AssetPack2_74
+  - first:
+      213: -1857675582440203090
+    second: AssetPack2_75
+  - first:
+      213: 3438820819961867217
+    second: AssetPack2_76
+  - first:
+      213: -1846286791356986147
+    second: AssetPack2_77
+  - first:
+      213: -4739449886365592192
+    second: AssetPack2_78
+  - first:
+      213: 6451347028669884544
+    second: AssetPack2_79
+  - first:
+      213: -5964303597128742689
+    second: AssetPack2_80
+  - first:
+      213: -9115765716349358032
+    second: AssetPack2_81
+  - first:
+      213: -7260926211753136276
+    second: AssetPack2_82
+  - first:
+      213: 4366909850858817875
+    second: AssetPack2_83
+  - first:
+      213: 579330109716734557
+    second: AssetPack2_84
+  - first:
+      213: -4813352593639471140
+    second: AssetPack2_85
+  - first:
+      213: -5171627978851257751
+    second: AssetPack2_86
+  - first:
+      213: -7016678788276957537
+    second: AssetPack2_87
+  - first:
+      213: 1743554748770410026
+    second: AssetPack2_88
+  - first:
+      213: 5006841146893179609
+    second: AssetPack2_89
+  - first:
+      213: -5785798033953418989
+    second: AssetPack2_90
+  - first:
+      213: 6493908279040870441
+    second: AssetPack2_91
+  - first:
+      213: -7727978956020142308
+    second: AssetPack2_92
+  - first:
+      213: 6182872486480886300
+    second: AssetPack2_93
+  - first:
+      213: -3403550112762839617
+    second: AssetPack2_94
+  - first:
+      213: -6471751757465427664
+    second: AssetPack2_95
+  - first:
+      213: 6074833994954547015
+    second: AssetPack2_96
+  - first:
+      213: -8078279867170057738
+    second: AssetPack2_97
+  - first:
+      213: 9146782231756986776
+    second: AssetPack2_98
+  - first:
+      213: -2959574998521779104
+    second: AssetPack2_99
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 64, y: 96, z: 64, w: 48}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AssetPack2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8e4c4361b97c630800000000000000
+      internalID: 3947294118090434729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AssetPack2_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01f15bee466ed644c984208fe8dad2f8
+      internalID: -245864234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AssetPack2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f240b4f86c38848bef7a2e02d442b9
+      internalID: 1040522227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AssetPack2_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      physicsShape:
+      - - {x: 0, y: -32}
+        - {x: 32, y: 0}
+        - {x: 0, y: 32}
+        - {x: -32, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76ca68b89efb074c81ea07634aa95fd
+      internalID: -1139199036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      AssetPack2_3: -1139199036
+      AssetPack2_0: 3947294118090434729
+      AssetPack2_2: 1040522227
+      AssetPack2_1: -245864234
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
