@@ -158,13 +158,13 @@ public class PlayerControl : MonoBehaviour
         }
 
         if(name == "Table"){
-            if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(true);  // turn clockwise
-            if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(false); // turn counter-clockwise
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(true); // turn counter-clockwise
         }
 
-        if(name == "Turret"){
-            if(Input.GetKeyDown(KeyCode.W)) objectControl.TurretRotate(true);  // turn clockwise
-            if(Input.GetKeyDown(KeyCode.S)) objectControl.TurretRotate(false); // turn counter-clockwise
+        if(name == "Tank"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
         }
 
     }
