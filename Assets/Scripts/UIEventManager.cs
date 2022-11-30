@@ -7,8 +7,6 @@ public class UIEventManager : MonoBehaviour
     private GameObject gameManager;
     // ===== add canvas here ===== 
     private GameObject pauseCanvas;
-    private GameObject instructionCanvas;
-    private GameObject settingCanvas;
     private GameObject exitCanvas;
     // ===========================
 
@@ -20,21 +18,11 @@ public class UIEventManager : MonoBehaviour
         // try to find the canvas
         // it is okay if there is no corresponding canvas, but remember to check when using it
         pauseCanvas = GameObject.Find("PauseCanvas");
-        instructionCanvas = GameObject.Find("InstructionCanvas");
-        settingCanvas = GameObject.Find("SettingCanvas");
         exitCanvas = GameObject.Find("ExitCanvas");
 
         if (pauseCanvas != null) {
             print("PauseCanvas found");
             pauseCanvas.SetActive(false);
-        }
-        if (instructionCanvas != null) {
-            print("InstructionCanvas found");
-            instructionCanvas.SetActive(false);
-        }
-        if (settingCanvas != null) {
-            print("SettingCanvas found");
-            settingCanvas.SetActive(false);
         }
         if (exitCanvas != null) {
             print("ExitCanvas found");
@@ -53,9 +41,40 @@ public class UIEventManager : MonoBehaviour
     public void GoToScene(int idx)
     {
         Debug.Log("Go To Scene " + idx);
+        // To make the game run smoothly, destroy some DontDestroyOnLoad objects
+        // ==========
+        GameObject toDestroy = GameObject.Find("PlayText.PlayTextSupport.EventCenter");
+        if (toDestroy != null)
+            Destroy(toDestroy);
+        toDestroy = GameObject.Find("PlayText.PlayTextSupport.ResMgr");
+        if (toDestroy != null)
+            Destroy(toDestroy);
+        toDestroy = GameObject.Find("PlayText.PlayTextSupport.AudioMgr");
+        if (toDestroy != null)
+            Destroy(toDestroy);
+        // ==========
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
         if (idx == 0)
             Destroy(gameManager);
+        Time.timeScale = 1;
+    }
+
+    public void ReloadScene()
+    {
+        Debug.Log("Reload Scene");
+        // To make the game run smoothly, destroy some DontDestroyOnLoad objects
+        // ==========
+        GameObject toDestroy = GameObject.Find("PlayText.PlayTextSupport.EventCenter");
+        if (toDestroy != null)
+            Destroy(toDestroy);
+        toDestroy = GameObject.Find("PlayText.PlayTextSupport.ResMgr");
+        if (toDestroy != null)
+            Destroy(toDestroy);
+        toDestroy = GameObject.Find("PlayText.PlayTextSupport.AudioMgr");
+        if (toDestroy != null)
+            Destroy(toDestroy);
+        // ==========
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
 
@@ -74,38 +93,6 @@ public class UIEventManager : MonoBehaviour
             Debug.Log("Close Pause Canvas");
             pauseCanvas.SetActive(false);
             Time.timeScale = 1;
-        }
-    }
-
-    public void ShowInstructionCanvas()
-    {
-        if (instructionCanvas != null) {
-            Debug.Log("Show Instruction Canvas");
-            instructionCanvas.SetActive(true);
-        }
-    }
-
-    public void CloseInstructionCanvas()
-    {
-        if (instructionCanvas != null) {
-            Debug.Log("Close Instruction Canvas");
-            instructionCanvas.SetActive(false);
-        }
-    }
-
-    public void ShowSettingCanvas()
-    {
-        if (settingCanvas != null) {
-            Debug.Log("Show Setting Canvas");
-            settingCanvas.SetActive(true);
-        }
-    }
-
-    public void CloseSettingCanvas()
-    {
-        if (settingCanvas != null) {
-            Debug.Log("Close Setting Canvas");
-            settingCanvas.SetActive(false);
         }
     }
 
