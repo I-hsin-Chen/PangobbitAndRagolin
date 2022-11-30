@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     private CollisionState collisionState;
     private FacingDirection faceDirection;
+    private ObjectControl objectControl;
 
     // Record the obj that the current player can possess to
     private GameObject possessTarget;
@@ -32,7 +33,7 @@ public class PlayerControl : MonoBehaviour
     public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
     public virtual bool isPossessedObject => isObject && (isRabbit || isPangolin);
 
-    public bool canMove = true;
+    // public bool canMove = true;
     public bool isRunning { get; private set; } = false;
     public bool isShrinking { get; private set; } = false;
     public virtual bool canJump => collisionState.grounded;
@@ -56,6 +57,7 @@ public class PlayerControl : MonoBehaviour
         TryGetComponent<Rigidbody2D>(out rb);
         TryGetComponent<CollisionState>(out collisionState);
         TryGetComponent<FacingDirection>(out faceDirection);
+        TryGetComponent<ObjectControl>(out objectControl);
         // TryGetComponent<Animator>(out animator);
     }
 
@@ -111,21 +113,23 @@ public class PlayerControl : MonoBehaviour
 
         // possess
         if (Input.GetKeyDown(KeyCode.U) && possessTarget != null ) Possess(possessTarget);
-        if (!canMove) return;
+        // if (!canMove) return;
 
-        if (Input.GetKey(KeyCode.J)) {
-            runningDirection = -1;
-            isRunning = true;
-            faceDirection.SetDirection(-1);
-        }
-        else if (Input.GetKey(KeyCode.L)) {
-            runningDirection = 1;
-            isRunning = true;
-            faceDirection.SetDirection(1);
-        }
-        else {
-            runningDirection = 0;
-            isRunning = false;
+        if(isPlayer || objectControl.canMove){ // some object cannot move
+            if (Input.GetKey(KeyCode.J)) {
+                runningDirection = -1;
+                isRunning = true;
+                faceDirection.SetDirection(-1);
+            }
+            else if (Input.GetKey(KeyCode.L)) {
+                runningDirection = 1;
+                isRunning = true;
+                faceDirection.SetDirection(1);
+            }
+            else {
+                runningDirection = 0;
+                isRunning = false;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.I)) Jump();
@@ -136,21 +140,33 @@ public class PlayerControl : MonoBehaviour
         if (!isPangolin || isShrinking) return;
 
         if (Input.GetKeyDown(KeyCode.Q) && possessTarget != null ) Possess(possessTarget);
-        if (!canMove) return;
+        // if (!canMove) return;
 
-        if (Input.GetKey(KeyCode.A)) {
-            runningDirection = -1;
-            isRunning = true;
-            faceDirection.SetDirection(-1);
+        if(isPlayer || objectControl.canMove){ // some object cannot move
+            if (Input.GetKey(KeyCode.A)) {
+                runningDirection = -1;
+                isRunning = true;
+                faceDirection.SetDirection(-1);
+            }
+            else if (Input.GetKey(KeyCode.D)) {
+                runningDirection = 1;
+                isRunning = true;
+                faceDirection.SetDirection(1);
+            }
+            else {
+                runningDirection = 0;
+                isRunning = false;
+            }
         }
-        else if (Input.GetKey(KeyCode.D)) {
-            runningDirection = 1;
-            isRunning = true;
-            faceDirection.SetDirection(1);
+
+        if(name == "Table"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(true);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(false); // turn counter-clockwise
         }
-        else {
-            runningDirection = 0;
-            isRunning = false;
+
+        if(name == "Turret"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.TurretRotate(true);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.TurretRotate(false); // turn counter-clockwise
         }
 
     }
@@ -197,7 +213,7 @@ public class PlayerControl : MonoBehaviour
 
         // When the other collider is a player or a player in an object, ignore the collision
         if (col.gameObject.tag == "Player" || col.gameObject.tag == "Object" && col.gameObject.GetComponent<PlayerControl>().isPossessedObject)
-        Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
+            Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
     }
 
     // For object
