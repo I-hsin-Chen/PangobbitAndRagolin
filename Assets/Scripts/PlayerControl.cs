@@ -199,11 +199,13 @@ public class PlayerControl : MonoBehaviour
 
     private void PossessBackToPlayer()
     {
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
         isRabbit = false;
         isPangolin = false;
         if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         possessTarget.SetActive(true);
-        possessTarget.transform.position = transform.position + new Vector3(faceDirection.GetDirection(), 0, 0);
+        //renderer.bounds.size.x
+        possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection(), 0, 0);
 
     }
 
@@ -212,7 +214,7 @@ public class PlayerControl : MonoBehaviour
         if (gameObject.tag != "Player") return;
 
         // When the other collider is a player or a player in an object, ignore the collision
-        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Object" && col.gameObject.GetComponent<PlayerControl>().isPossessedObject)
+        if (col.gameObject.tag == "Player" ) // || col.gameObject.tag == "Object" && col.gameObject.GetComponent<PlayerControl>().isPossessedObject)
             Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
     }
 
