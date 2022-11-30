@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8503ede56ac814381d2113fb702e1b, type: 3}
+  m_Name: New Dialogue Profile
+  m_EditorClassIdentifier: 
+  TalkingPerson:
+  - Name: Player
+    Voice: {fileID: 0}
+    Expression:
+    - None
+  - Name: StrongMan
+    Voice: {fileID: 0}
+    Expression:
+    - None
+  DefaultVoice: {fileID: 8300000, guid: 774486030b696474e8b3cf7f178123da, type: 3}
+  Language:
+  - English
+  - Chinese
+  ReplaceVariable: []

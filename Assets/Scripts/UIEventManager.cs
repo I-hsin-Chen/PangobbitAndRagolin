@@ -130,4 +130,9 @@ public class UIEventManager : MonoBehaviour
         Debug.Log("Close Game");
         Application.Quit();
     }
+
+    public void TestButton(string name)
+    {
+        Debug.Log("Test Button " + name);
+    }
 }
