@@ -111,6 +111,9 @@ public class PlayerControl : MonoBehaviour
 
         // possess
         if (Input.GetKeyDown(KeyCode.U) && possessTarget != null ) Possess(possessTarget);
+
+        // do something
+
         if (!canMove) return;
 
         if (Input.GetKey(KeyCode.J)) {
@@ -127,7 +130,6 @@ public class PlayerControl : MonoBehaviour
             runningDirection = 0;
             isRunning = false;
         }
-
         if (Input.GetKeyDown(KeyCode.I)) Jump();
     }
 
@@ -136,6 +138,9 @@ public class PlayerControl : MonoBehaviour
         if (!isPangolin || isShrinking) return;
 
         if (Input.GetKeyDown(KeyCode.Q) && possessTarget != null ) Possess(possessTarget);
+        
+        // rotate
+
         if (!canMove) return;
 
         if (Input.GetKey(KeyCode.A)) {
