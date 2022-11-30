@@ -131,7 +131,6 @@ public class PlayerControl : MonoBehaviour
                 isRunning = false;
             }
         }
-
         if (Input.GetKeyDown(KeyCode.I)) Jump();
     }
 
@@ -224,9 +223,9 @@ public class PlayerControl : MonoBehaviour
     //Animation control functions
     private void AnimationCheck()
     {
-        if (!canJump) PlayStateIfNotInState(jumpState);
+        if (isShrinking) PlayStateIfNotInState(shrinkState);
+        else if (!canJump) PlayStateIfNotInState(jumpState);
         else if (isRunning) PlayStateIfNotInState(moveState);
-        else if (isShrinking) PlayStateIfNotInState(shrinkState);
         else PlayStateIfNotInState(idleState);
     }
 
