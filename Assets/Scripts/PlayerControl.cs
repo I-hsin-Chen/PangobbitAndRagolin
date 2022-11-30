@@ -29,11 +29,11 @@ public class PlayerControl : MonoBehaviour
     public bool isRabbit = true;
     public bool isPangolin = false;
     public bool isObject = false;
+    public bool isKinematic = false;
 
     public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
     public virtual bool isPossessedObject => isObject && (isRabbit || isPangolin);
 
-    // public bool canMove = true;
     public bool isRunning { get; private set; } = false;
     public bool isShrinking { get; private set; } = false;
     public virtual bool canJump => collisionState.grounded;
@@ -113,7 +113,6 @@ public class PlayerControl : MonoBehaviour
 
         // possess
         if (Input.GetKeyDown(KeyCode.U) && possessTarget != null ) Possess(possessTarget);
-        // if (!canMove) return;
 
         if(isPlayer || objectControl.canMove){ // some object cannot move
             if (Input.GetKey(KeyCode.J)) {
@@ -138,8 +137,8 @@ public class PlayerControl : MonoBehaviour
     {
         if (!isPangolin || isShrinking) return;
 
+        // possess
         if (Input.GetKeyDown(KeyCode.Q) && possessTarget != null ) Possess(possessTarget);
-        // if (!canMove) return;
 
         if(isPlayer || objectControl.canMove){ // some object cannot move
             if (Input.GetKey(KeyCode.A)) {
@@ -193,6 +192,7 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
+        if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         isShrinking = false;
         this.gameObject.SetActive(false);
     }
@@ -201,6 +201,7 @@ public class PlayerControl : MonoBehaviour
     {
         isRabbit = false;
         isPangolin = false;
+        if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         possessTarget.SetActive(true);
         possessTarget.transform.position = transform.position + new Vector3(faceDirection.GetDirection(), 0, 0);
 

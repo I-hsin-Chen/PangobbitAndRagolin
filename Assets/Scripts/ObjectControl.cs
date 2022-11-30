@@ -21,8 +21,9 @@ public class ObjectControl : MonoBehaviour
     {
         if(clockwise) GetComponent<Rigidbody2D>().rotation += 90f;
         else GetComponent<Rigidbody2D>().rotation -= 90f;
-        transform.position -= new Vector3(0, transform.position.y/4);;
+        transform.position -= new Vector3(0, transform.position.y/3);;
     }
+    
     public void TurretRotate(bool clockwise) // only rotate barrel
     {
         if(clockwise) transform.GetChild(1).gameObject.GetComponent<Rigidbody2D>().rotation += 30f;
