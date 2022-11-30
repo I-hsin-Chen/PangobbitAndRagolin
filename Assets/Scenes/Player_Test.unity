@@ -1062,6 +1062,7 @@ GameObject:
   - component: {fileID: 1267740334}
   - component: {fileID: 1267740336}
   - component: {fileID: 1267740335}
+  - component: {fileID: 1267740337}
   m_Layer: 0
   m_Name: Table
   m_TagString: Object
@@ -1179,7 +1180,7 @@ MonoBehaviour:
   isRabbit: 0
   isPangolin: 0
   isObject: 1
-  canMove: 1
+  isKinematic: 1
 --- !u!50 &1267740334
 Rigidbody2D:
   serializedVersion: 4
@@ -1188,7 +1189,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267740329}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1226,6 +1227,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6576df350fc23b44b1efda7a2500b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1267740337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267740329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4ae99da2ec3624ea8b0b60e4bd9d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
 --- !u!1 &1522189693
 GameObject:
   m_ObjectHideFlags: 0
