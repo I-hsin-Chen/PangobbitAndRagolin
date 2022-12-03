@@ -12,6 +12,9 @@ public class UIEventManager : MonoBehaviour
     private GameObject exitCanvas;
     // ===========================
 
+    // set the index of mainMenu to help destroy objects
+    private int mainMenuSceneIndex = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +70,7 @@ public class UIEventManager : MonoBehaviour
             Destroy(toDestroy);
         // ==========
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
-        if (idx == 0) {
+        if (idx == mainMenuSceneIndex) {
             Destroy(gameManager);
             Destroy(audioManager);
         }

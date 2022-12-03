@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PaulTest.unity
     guid: d0a5185af4bdb404f99dcb4af2a4cd6f
+  - enabled: 1
+    path: Assets/Scenes/PaulTest_main.unity
+    guid: 3d2b444f9e4f5254191b934362828f07
   m_configObjects: {}
