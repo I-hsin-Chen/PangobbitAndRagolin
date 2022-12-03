@@ -10,9 +10,10 @@ public class UIEventManager : MonoBehaviour
     // ===== add canvas here ===== 
     private GameObject pauseCanvas;
     private GameObject exitCanvas;
+    private GameObject fadeCanvas;
     // ===========================
 
-    // set the index of mainMenu to help destroy objects
+    // remember to set the index of mainMenu
     private int mainMenuSceneIndex = 2;
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class UIEventManager : MonoBehaviour
         // it is okay if there is no corresponding canvas, but remember to check when using it
         pauseCanvas = GameObject.Find("PauseCanvas");
         exitCanvas = GameObject.Find("ExitCanvas");
+        fadeCanvas = GameObject.Find("FadeCanvas");
 
         if (pauseCanvas != null) {
             Debug.Log("PauseCanvas found");
@@ -37,6 +39,9 @@ public class UIEventManager : MonoBehaviour
         if (exitCanvas != null) {
             Debug.Log("ExitCanvas found");
             exitCanvas.SetActive(false);
+        }
+        if (fadeCanvas != null) {
+            Debug.Log("FadeCanvas found");
         }
     }
 
@@ -69,6 +74,16 @@ public class UIEventManager : MonoBehaviour
         if (toDestroy != null)
             Destroy(toDestroy);
         // ==========
+        ClosePauseCanvas();
+        float fadeOutTime = 1.0f;
+        if (fadeCanvas == null)
+            fadeCanvas = GameObject.Find("FadeCanvas");
+        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
+        StartCoroutine(ScheduleChangeScene(fadeOutTime, idx));
+    }
+
+    IEnumerator ScheduleChangeScene(float fadeOutTime, int idx){
+        yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
         if (idx == mainMenuSceneIndex) {
             Destroy(gameManager);
@@ -93,6 +108,16 @@ public class UIEventManager : MonoBehaviour
         if (toDestroy != null)
             Destroy(toDestroy);
         // ==========
+        ClosePauseCanvas();
+        float fadeOutTime = 1.0f;
+        if (fadeCanvas == null)
+            fadeCanvas = GameObject.Find("FadeCanvas");
+        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
+        StartCoroutine(ScheduleReloadScene(fadeOutTime));
+    }
+
+    IEnumerator ScheduleReloadScene(float fadeOutTime){
+        yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
