@@ -232,6 +232,9 @@ public class PlayerControl : MonoBehaviour
         }
         if(obj.gameObject.name=="Clock")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        
+        if(obj.gameObject.name=="Wheel")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         isShrinking = false;
         this.gameObject.SetActive(false);
