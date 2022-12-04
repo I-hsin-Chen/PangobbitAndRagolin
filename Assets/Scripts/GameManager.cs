@@ -64,4 +64,9 @@ public class GameManager : MonoBehaviour
     {
         this.playerCanMove = playerCanMove;
     }
+
+    public bool GetPlayerCanMove()
+    {
+        return playerCanMove;
+    }
 }
