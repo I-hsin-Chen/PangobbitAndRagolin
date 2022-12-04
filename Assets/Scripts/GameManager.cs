@@ -18,14 +18,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
+            StartCoroutine(ScheduleChangeScene(1.0f, 1));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+            StartCoroutine(ScheduleChangeScene(1.0f, 2));
         }
-
-        if (playerCanMove && Input.GetKeyDown(KeyCode.UpArrow)) {
-            Debug.Log("Move up");
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            StartCoroutine(ScheduleChangeScene(1.0f, 3));
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            StartCoroutine(ScheduleChangeScene(1.0f, 4));
         }
     }
 
@@ -49,12 +51,12 @@ public class GameManager : MonoBehaviour
             Destroy(toDestroy);
         // ==========
         float fadeOutTime = 1.0f;
-        GameObject fadeCanvas = GameObject.Find("FadeCanvas");
-        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         StartCoroutine(ScheduleChangeScene(fadeOutTime, nextSceneIndex));
     }
 
     IEnumerator ScheduleChangeScene(float fadeOutTime, int idx){
+        GameObject fadeCanvas = GameObject.Find("FadeCanvas");
+        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
         Time.timeScale = 1;
