@@ -78,7 +78,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerCanMove = gameManager.GetComponent<GameManager>().GetPlayerCanMove(true);
+        playerCanMove = gameManager.GetComponent<GameManager>().GetPlayerCanMove();
         
         if (playerCanMove && isRabbit) RabbitCheck();
         else if (playerCanMove && isPangolin) PangolinCheck();
