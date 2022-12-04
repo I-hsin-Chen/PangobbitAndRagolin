@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2119138395161547039}
   - component: {fileID: 5010582336946759164}
   - component: {fileID: 4236970103246451710}
-  - component: {fileID: 7026869756590520395}
+  - component: {fileID: 4986298896118961245}
+  - component: {fileID: 8061153423691684095}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1258106401
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1b7d6204891ad9f4aa7594e421a4f64b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,7 +135,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &7026869756590520395
+--- !u!114 &4986298896118961245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +144,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119138395161547036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4107f6b5c0b38d408328fd8c969e28c, type: 3}
+  m_Script: {fileID: 11500000, guid: babe5d6d3f784c844b9436d32e73ba42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8061153423691684095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119138395161547036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6576df350fc23b44b1efda7a2500b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
