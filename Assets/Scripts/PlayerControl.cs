@@ -115,7 +115,6 @@ public class PlayerControl : MonoBehaviour
             AnimationCheck();
             DirectionCheck();
         }
-
     }
 
     private void FixedUpdate()
