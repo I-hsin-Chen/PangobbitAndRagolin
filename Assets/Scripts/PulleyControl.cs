@@ -43,7 +43,7 @@ public class PulleyControl : MonoBehaviour
             wheelAnimator.enabled = false;
         }
 
-        if (left_rb.gameObject.transform.position.y > maxHeight && left_v.y > 0 || right_rb.gameObject.transform.position.y > maxHeight && right_rb.velocity.y > 0) {
+        if (canRole() == false) {
             right_rb.velocity = new Vector2 (0, 0);
             left_rb.velocity = new Vector2 (0, 0);
         }
@@ -57,5 +57,11 @@ public class PulleyControl : MonoBehaviour
 
     public void ChangeRightForce(float f){
         ropeDragForceRight = f;
+    }
+
+    public bool canRole (){
+        if (left_rb.gameObject.transform.position.y > maxHeight && left_rb.velocity.y > 0 || right_rb.gameObject.transform.position.y > maxHeight && right_rb.velocity.y > 0) 
+            return false;
+        return true;
     }
 }
