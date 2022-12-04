@@ -147,6 +147,9 @@ public class PlayerControl : MonoBehaviour
             }
         }
         if (Input.GetKeyDown(KeyCode.I)) Jump();
+        if (name == "Tank"){
+            if(Input.GetKeyDown(KeyCode.O)) objectControl.TankShoot(); // shoot
+        }
     }
 
     private void PangolinCheck()
@@ -173,14 +176,21 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        // Test
         if(name == "Table"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(true); // turn counter-clockwise
         }
 
+        // Level_1
         if(name == "Tank"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
+            if(Input.GetKeyDown(KeyCode.E)) objectControl.TankShoot(); // shoot
+        }
+        if(name == "Clock"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.ClockRotate(false);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.ClockRotate(true); // turn counter-clockwise
         }
 
         if(name == "Wheel"){
@@ -213,7 +223,16 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
-        if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic && obj.gameObject.name != "Wheel") obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        // modify Rigidbody bodyType when possess
+        if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        if(obj.gameObject.name=="Tank" && isPangolin){
+            obj.gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
+        if(obj.gameObject.name=="Clock")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         isShrinking = false;
         this.gameObject.SetActive(false);
     }
@@ -223,7 +242,11 @@ public class PlayerControl : MonoBehaviour
         SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
         isRabbit = false;
         isPangolin = false;
+        
+        // modify Rigidbody bodyType after possess
         if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        if(name=="Tank") transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         possessTarget.SetActive(true);
         //renderer.bounds.size.x
         possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection(), 0, 0);
