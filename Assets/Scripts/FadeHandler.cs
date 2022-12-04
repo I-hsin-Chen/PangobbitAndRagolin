@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class FadeHandler : MonoBehaviour
 {
+    private GameObject gameManager;
     private GameObject imageBlack;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         imageBlack = gameObject.transform.Find("ImageBlack").gameObject;
         StartFadeIn();
     }
@@ -28,6 +31,7 @@ public class FadeHandler : MonoBehaviour
             yield return null;
         }
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);
     }
 
     public void StartFadeOut(float duration = 1.0f){
@@ -36,6 +40,7 @@ public class FadeHandler : MonoBehaviour
     }
 
     public IEnumerator FadeOut(float duration){
+        gameManager.GetComponent<GameManager>().SetPlayerCanMove(false);
         float startTime = Time.time;
         float endTime = startTime + duration;
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
