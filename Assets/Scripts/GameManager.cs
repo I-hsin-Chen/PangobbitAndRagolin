@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // player cannot move when false
+    private bool playerCanMove;
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        playerCanMove = false;
     }
 
     // Update is called once per frame
@@ -18,6 +22,10 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+        }
+
+        if (playerCanMove && Input.GetKeyDown(KeyCode.UpArrow)) {
+            Debug.Log("Move up");
         }
     }
 
@@ -52,4 +60,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
     
+    public void SetPlayerCanMove(bool playerCanMove)
+    {
+        this.playerCanMove = playerCanMove;
+    }
 }
