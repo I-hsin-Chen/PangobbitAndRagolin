@@ -28,6 +28,7 @@ public class ToasterControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && bondedToast != null && playerCtrl.isRabbit) {
             bondedToast.GetComponent<BoxCollider2D>().enabled = true;
             bondedToast.GetComponent<ToastControl>().enabled = true;
+            bondedToast.GetComponent<JamToastControl>().enabled = true;
             bondedToast.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.0f, 2.0f), 12.0f);
             StartCoroutine(waitForNewToast());
         }
