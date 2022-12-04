@@ -80,7 +80,9 @@ public class PlayerControl : MonoBehaviour
 
         if (isPlayer){
             RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(faceDirection.GetDirection(), 0), 3);
+            RaycastHit2D hit_up = Physics2D.Raycast(transform.position, new Vector2(0, 1), 3.0f);
 
+            // check left and right
             if (hit.collider != null && hit.collider.gameObject.tag == "Object"){
                 GameObject obj = hit.collider.gameObject;
 
@@ -90,7 +92,21 @@ public class PlayerControl : MonoBehaviour
                 }
                 else possessTarget = hit.collider.gameObject;
             }
+
+            // check upside
+            else if (hit_up.collider != null && hit_up.collider.gameObject.tag == "Object"){
+                GameObject obj = hit_up.collider.gameObject;
+
+                // temporarily assume that the objected cannot be possessed by two players simultaneously
+                if (hit_up.collider.gameObject.GetComponent<PlayerControl>().isRabbit || hit_up.collider.gameObject.GetComponent<PlayerControl>().isPangolin){
+                    possessTarget = null;
+                }
+                else possessTarget = hit_up.collider.gameObject;
+
+                // print (hit_up.collider.gameObject.name);
+            }
             else possessTarget = null;
+
             AnimationCheck();
             DirectionCheck();
         }
@@ -167,6 +183,11 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
         }
 
+        if(name == "Wheel"){
+            if(Input.GetKey(KeyCode.W)) objectControl.PulleyWheelRotate(false);  // turn clockwise
+            if(Input.GetKey(KeyCode.S)) objectControl.PulleyWheelRotate(true); // turn counter-clockwise
+        }
+
     }
 
     private void Jump()
@@ -192,7 +213,7 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
-        if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic && obj.gameObject.name != "Wheel") obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         isShrinking = false;
         this.gameObject.SetActive(false);
     }

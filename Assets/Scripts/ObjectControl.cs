@@ -36,4 +36,11 @@ public class ObjectControl : MonoBehaviour
             obj.transform.position -= new Vector3(-0.02f, 0.08f, 0);
         }
     }
+
+    public void PulleyWheelRotate(bool clockwise) // only rotate barrel
+    {
+        Rigidbody2D plateRb = GameObject.Find("LeftPlate").GetComponent<Rigidbody2D>();
+        if (clockwise) plateRb.velocity = new Vector2 (0, 1);
+        else plateRb.velocity = new Vector2 (0, -1);
+    }
 }
