@@ -35,7 +35,6 @@ public class ButtonControl : MonoBehaviour
     {
         if (!pressed){
             int groundHits = rb.GetContacts(pressFilter, contactBuffer);
-            print(groundHits);
             if (groundHits > 0){
                 pressed = true;
                 renderer.sprite = pressedImage;

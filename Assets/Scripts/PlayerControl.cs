@@ -80,7 +80,9 @@ public class PlayerControl : MonoBehaviour
 
         if (isPlayer){
             RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(faceDirection.GetDirection(), 0), 3);
+            RaycastHit2D hit_up = Physics2D.Raycast(transform.position, new Vector2(0, 1), 3.0f);
 
+            // check left and right
             if (hit.collider != null && hit.collider.gameObject.tag == "Object"){
                 GameObject obj = hit.collider.gameObject;
 
@@ -90,7 +92,21 @@ public class PlayerControl : MonoBehaviour
                 }
                 else possessTarget = hit.collider.gameObject;
             }
+
+            // check upside
+            else if (hit_up.collider != null && hit_up.collider.gameObject.tag == "Object"){
+                GameObject obj = hit_up.collider.gameObject;
+
+                // temporarily assume that the objected cannot be possessed by two players simultaneously
+                if (hit_up.collider.gameObject.GetComponent<PlayerControl>().isRabbit || hit_up.collider.gameObject.GetComponent<PlayerControl>().isPangolin){
+                    possessTarget = null;
+                }
+                else possessTarget = hit_up.collider.gameObject;
+
+                // print (hit_up.collider.gameObject.name);
+            }
             else possessTarget = null;
+
             AnimationCheck();
             DirectionCheck();
         }
@@ -131,6 +147,9 @@ public class PlayerControl : MonoBehaviour
             }
         }
         if (Input.GetKeyDown(KeyCode.I)) Jump();
+        if (name == "Tank"){
+            if(Input.GetKeyDown(KeyCode.O)) objectControl.TankShoot(); // shoot
+        }
     }
 
     private void PangolinCheck()
@@ -157,14 +176,26 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        // Test
         if(name == "Table"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(true); // turn counter-clockwise
         }
 
+        // Level_1
         if(name == "Tank"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
+            if(Input.GetKeyDown(KeyCode.E)) objectControl.TankShoot(); // shoot
+        }
+        if(name == "Clock"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.ClockRotate(false);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.ClockRotate(true); // turn counter-clockwise
+        }
+
+        if(name == "Wheel"){
+            if(Input.GetKey(KeyCode.W)) objectControl.PulleyWheelRotate(false);  // turn clockwise
+            if(Input.GetKey(KeyCode.S)) objectControl.PulleyWheelRotate(true); // turn counter-clockwise
         }
 
     }
@@ -192,7 +223,19 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
+
+        // modify Rigidbody bodyType when possess
         if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        if(obj.gameObject.name=="Tank" && isPangolin){
+            obj.gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
+        if(obj.gameObject.name=="Clock")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        
+        if(obj.gameObject.name=="Wheel")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         isShrinking = false;
         this.gameObject.SetActive(false);
     }
@@ -202,7 +245,11 @@ public class PlayerControl : MonoBehaviour
         SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
         isRabbit = false;
         isPangolin = false;
+        
+        // modify Rigidbody bodyType after possess
         if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        if(name=="Tank") transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         possessTarget.SetActive(true);
         //renderer.bounds.size.x
         possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection(), 0, 0);
