@@ -264,7 +264,8 @@ public class PlayerControl : MonoBehaviour
 
         possessTarget.SetActive(true);
         //renderer.bounds.size.x
-        possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
+        if (name == "Tank") possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.5f, 0, 0);
+        else possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
 
     }
 
