@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4986298896118961245}
   - component: {fileID: 8061153423691684095}
   - component: {fileID: 6784236615347572598}
+  - component: {fileID: 4587346236447966985}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -180,3 +181,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4587346236447966985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119138395161547036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1655bc8f282df45a41b3bfa54a130e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
