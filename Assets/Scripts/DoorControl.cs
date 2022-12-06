@@ -26,14 +26,15 @@ public class DoorControl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.name == "Rabbit"){
-            rabbitPass = true;
             if(pangolinPass && animator.enabled == true)
                 gameManager.GetComponent<GameManager>().Win(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+            rabbitPass = true;
         }
+
         if (col.gameObject.name == "Pangolin"){
-            pangolinPass = true;
             if(rabbitPass && animator.enabled == true)
                 gameManager.GetComponent<GameManager>().Win(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
+            pangolinPass = true;
         }
     }
 

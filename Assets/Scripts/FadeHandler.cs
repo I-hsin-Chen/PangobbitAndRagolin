@@ -50,6 +50,5 @@ public class FadeHandler : MonoBehaviour
             yield return null;
         }
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 1);
-        print("FadeOut finished");
     }
 }

@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) {
             StartCoroutine(ScheduleChangeScene(1.0f, 4));
         }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            StartCoroutine(ScheduleChangeScene(1.0f, 5));
+        }
     }
 
     // call this public function when win
