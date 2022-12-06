@@ -16,8 +16,9 @@ public class BulletControl : MonoBehaviour
         
     }
     
-    void OnCollisionEnter(Collision collsionObject)
+    void OnCollisionEnter2D(Collision2D collsionObject)
     {
-        Destroy(gameObject);
+        if(collsionObject.gameObject.name == "RightPlate")
+            Destroy(gameObject);
     }
 }
