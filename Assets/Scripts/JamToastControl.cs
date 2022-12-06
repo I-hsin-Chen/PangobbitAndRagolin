@@ -21,11 +21,16 @@ public class JamToastControl : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D col){
-        print (col.gameObject.name);
-        if (col.gameObject.name == "Strawberry(Clone)"){
+        if (col.gameObject.name == "Strawberry(Clone)" && !isJammed){
             renderer.sprite = jamToastImage;
-            GameObject.Destroy(col.gameObject);
+            StartCoroutine(scheduleDestroyStrawberry(col.gameObject));
             isJammed = true;
         }
+    }
+
+    private IEnumerator scheduleDestroyStrawberry (GameObject Strawberry){
+        Strawberry.GetComponent<Animator>().enabled = true;
+        yield return new WaitForSeconds(0.3f);
+        GameObject.Destroy(Strawberry);
     }
 }
