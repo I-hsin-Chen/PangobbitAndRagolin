@@ -14,7 +14,7 @@ public class UIEventManager : MonoBehaviour
     // ===========================
 
     // remember to set the index of mainMenu
-    private int mainMenuSceneIndex = 2;
+    private int mainMenuSceneIndex = 0;
 
     // Start is called before the first frame update
     void Start()

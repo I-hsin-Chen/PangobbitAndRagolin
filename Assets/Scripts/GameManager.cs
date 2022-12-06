@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // player cannot move when false
+    private bool playerCanMove;
+
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        playerCanMove = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
+            StartCoroutine(ScheduleChangeScene(1.0f, 1));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+            StartCoroutine(ScheduleChangeScene(1.0f, 2));
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            StartCoroutine(ScheduleChangeScene(1.0f, 3));
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            StartCoroutine(ScheduleChangeScene(1.0f, 4));
         }
     }
 
@@ -41,15 +51,24 @@ public class GameManager : MonoBehaviour
             Destroy(toDestroy);
         // ==========
         float fadeOutTime = 1.0f;
-        GameObject fadeCanvas = GameObject.Find("FadeCanvas");
-        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         StartCoroutine(ScheduleChangeScene(fadeOutTime, nextSceneIndex));
     }
 
     IEnumerator ScheduleChangeScene(float fadeOutTime, int idx){
+        GameObject fadeCanvas = GameObject.Find("FadeCanvas");
+        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
         Time.timeScale = 1;
     }
     
+    public void SetPlayerCanMove(bool playerCanMove)
+    {
+        this.playerCanMove = playerCanMove;
+    }
+
+    public bool GetPlayerCanMove()
+    {
+        return playerCanMove;
+    }
 }

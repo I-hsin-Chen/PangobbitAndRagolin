@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    private GameObject gameManager;
     private Rigidbody2D rb;
     private CollisionState collisionState;
     private FacingDirection faceDirection;
@@ -30,6 +31,8 @@ public class PlayerControl : MonoBehaviour
     public bool isPangolin = false;
     public bool isObject = false;
     public bool isKinematic = false;
+
+    private bool playerCanMove = true;
 
     public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
     public virtual bool isPossessedObject => isObject && (isRabbit || isPangolin);
@@ -59,8 +62,8 @@ public class PlayerControl : MonoBehaviour
         TryGetComponent<FacingDirection>(out faceDirection);
         TryGetComponent<ObjectControl>(out objectControl);
         // TryGetComponent<Animator>(out animator);
+        gameManager = GameObject.Find("GameManager");
     }
-
 
     void Start()
     {
@@ -75,8 +78,10 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isRabbit) RabbitCheck();
-        else if (isPangolin) PangolinCheck();
+        playerCanMove = gameManager.GetComponent<GameManager>().GetPlayerCanMove();
+        
+        if (playerCanMove && isRabbit) RabbitCheck();
+        else if (playerCanMove && isPangolin) PangolinCheck();
 
         if (isPlayer){
             RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(faceDirection.GetDirection(), 0), 3);
@@ -110,7 +115,6 @@ public class PlayerControl : MonoBehaviour
             AnimationCheck();
             DirectionCheck();
         }
-
     }
 
     private void FixedUpdate()
