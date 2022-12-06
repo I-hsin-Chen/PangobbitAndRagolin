@@ -30,7 +30,7 @@ public class JamToastControl : MonoBehaviour
 
     private IEnumerator scheduleDestroyStrawberry (GameObject Strawberry){
         Strawberry.GetComponent<Animator>().enabled = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.15f);
         GameObject.Destroy(Strawberry);
     }
 }
