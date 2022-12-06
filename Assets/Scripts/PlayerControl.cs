@@ -260,6 +260,7 @@ public class PlayerControl : MonoBehaviour
         // modify Rigidbody bodyType after possess
         if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         if(name=="Tank") transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);
         //renderer.bounds.size.x
