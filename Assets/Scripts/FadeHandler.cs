@@ -32,6 +32,7 @@ public class FadeHandler : MonoBehaviour
         }
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
         gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);
+        imageBlack.SetActive(false);
     }
 
     public void StartFadeOut(float duration = 1.0f){
@@ -40,6 +41,7 @@ public class FadeHandler : MonoBehaviour
     }
 
     public IEnumerator FadeOut(float duration){
+        imageBlack.SetActive(true);
         gameManager.GetComponent<GameManager>().SetPlayerCanMove(false);
         float startTime = Time.time;
         float endTime = startTime + duration;
