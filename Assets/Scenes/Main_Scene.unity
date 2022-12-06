@@ -972,6 +972,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text Box
       objectReference: {fileID: 0}
+    - target: {fileID: 572282222638071732, guid: d9e1be9d204fd00478f3d2e74510325b, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4072489996306052108, guid: d9e1be9d204fd00478f3d2e74510325b, type: 3}
       propertyPath: m_Text
       value: 'Pangobbit
@@ -1752,6 +1756,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6039096233249330866, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1786,6 +1794,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
@@ -1838,7 +1858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814555, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814559, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
       propertyPath: m_Name
