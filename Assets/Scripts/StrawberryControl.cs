@@ -5,6 +5,7 @@ using UnityEngine;
 public class StrawberryControl : MonoBehaviour
 {
     private bool destroyCoolDown;
+    private bool isDestroy;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class StrawberryControl : MonoBehaviour
     void Update()
     {
         destroyCoolDown = true;
+        isDestroy = false;
         StartCoroutine(coolDownCntDown());
     }
 
@@ -23,11 +25,12 @@ public class StrawberryControl : MonoBehaviour
         destroyCoolDown = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D col){
-        if (!destroyCoolDown) StartCoroutine(scheduleDestroyStrawberry());
+    private void OnCollisionStay2D(Collision2D col){
+        if (!destroyCoolDown && !isDestroy) StartCoroutine(scheduleDestroyStrawberry());
     }
 
     public IEnumerator scheduleDestroyStrawberry (){
+        isDestroy = true;
         GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(0.15f);
         GameObject.Destroy(gameObject);
