@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -3335,7 +3335,7 @@ TextureImporter:
       factory tile HD_9: -2023762505
       factory tile HD_122: -41303205
       factory tile HD_15: 1288329365
-      factory tile HD_7: 28775887
+      factory tile HD_58: -1031215040
       factory tile HD_118: 820765000
       factory tile HD_128: -196416789
       factory tile HD_102: 5927384
@@ -3347,7 +3347,7 @@ TextureImporter:
       factory tile HD_133: -2138334274
       factory tile HD_131: -1503842862
       factory tile HD_124: 579611692
-      factory tile HD_149: -212695250
+      factory tile HD_3: 1322063543
       factory tile HD_115: 1585319532
       factory tile HD_77: -1203111530
       factory tile HD_12: 1028019827
@@ -3470,8 +3470,8 @@ TextureImporter:
       factory tile HD_70: -1674199652
       factory tile HD_84: -647888595
       factory tile HD_69: -1102401780
-      factory tile HD_3: 1322063543
-      factory tile HD_58: -1031215040
+      factory tile HD_149: -212695250
+      factory tile HD_7: 28775887
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
