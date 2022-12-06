@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/DummyScene.unity
     guid: 97793e74c54b8fd49b75615a1170c4ab
   - enabled: 1
-    path: Assets/Scenes/PaulTest_main.unity
-    guid: 3d2b444f9e4f5254191b934362828f07
+    path: Assets/Scenes/Main_Scene.unity
+    guid: 9dbf246cee5bd6f4fb423f59df6c51f9
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 8544ebdf1eb2db146833f0d2b473b524
