@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     private CollisionState collisionState;
     private FacingDirection faceDirection;
     private ObjectControl objectControl;
+    private AudioManager audiomanager;
 
     // Record the obj that the current player can possess to
     private GameObject possessTarget;
@@ -63,6 +64,7 @@ public class PlayerControl : MonoBehaviour
         TryGetComponent<ObjectControl>(out objectControl);
         // TryGetComponent<Animator>(out animator);
         gameManager = GameObject.Find("GameManager");
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void Start()
@@ -190,7 +192,10 @@ public class PlayerControl : MonoBehaviour
         if(name == "Tank"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
-            if(Input.GetKeyDown(KeyCode.E)) objectControl.TankShoot(); // shoot
+            if(Input.GetKeyDown(KeyCode.E)) {
+                objectControl.TankShoot(); // shoot
+                audiomanager.PlaySE_Tower();
+            }
         }
         if(name == "Clock"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.ClockRotate(false);  // turn clockwise
@@ -207,12 +212,14 @@ public class PlayerControl : MonoBehaviour
     private void Jump()
     {
         if(!canJump || isShrinking) return;
+        audiomanager.PlaySE_Jump();
         rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
     }
 
     private void Possess(GameObject obj)
     {
         // determine whether player is possessed on a object
+        audiomanager.PlaySE_Possess();
         if (!isObject) StartCoroutine(PossessToObject(obj));
         else PossessBackToPlayer();
     }
@@ -253,6 +260,7 @@ public class PlayerControl : MonoBehaviour
         // modify Rigidbody bodyType after possess
         if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         if(name=="Tank") transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);
         //renderer.bounds.size.x

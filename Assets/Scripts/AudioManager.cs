@@ -33,18 +33,7 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if key Z is pressed, play SE_Jump
-        if (Input.GetKeyDown(KeyCode.Z)) {
-            PlaySE_Jump();
-        }
-        // if key X is pressed, play SE_Possess
-        if (Input.GetKeyDown(KeyCode.X)) {
-            PlaySE_Possess();
-        }
-        // if key C is pressed, play SE_Tower
-        if (Input.GetKeyDown(KeyCode.C)) {
-            PlaySE_Tower();
-        }
+        
     }
 
     public void SetBGMVolume(float vol)
