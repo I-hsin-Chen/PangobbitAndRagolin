@@ -255,7 +255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &391890016
 MonoBehaviour:
@@ -357,6 +357,10 @@ PrefabInstance:
     - target: {fileID: 7162671108328620468, guid: 38cf26e790431d843a7cdf1b4741f448, type: 3}
       propertyPath: m_Name
       value: PauseCanvasPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7162671108328620468, guid: 38cf26e790431d843a7cdf1b4741f448, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38cf26e790431d843a7cdf1b4741f448, type: 3}
@@ -1428,7 +1432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6039096234197814554, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1506,6 +1510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6039096234197814559, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7814758151a79e4d89486f900ffee4a, type: 3}
 --- !u!1001 &1432171149
@@ -1519,6 +1527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabbit
       objectReference: {fileID: 0}
+    - target: {fileID: 6011116746171985893, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: c75a3402b5e19de4bbbc4004eaeccfc0, type: 2}
     - target: {fileID: 6011116746171985894, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -1665,7 +1677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1450260358
 BoxCollider2D:
@@ -2757,6 +2769,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1793311520947106566, guid: f7477b1ab3b7b0848aca67f4d6658518, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: c75a3402b5e19de4bbbc4004eaeccfc0, type: 2}
     - target: {fileID: 1793311520947106567, guid: f7477b1ab3b7b0848aca67f4d6658518, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -2815,7 +2831,7 @@ Transform:
   - {fileID: 1526268633}
   - {fileID: 965320522}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2073062849
 GameObject:
