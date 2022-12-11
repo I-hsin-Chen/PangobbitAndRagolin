@@ -6,10 +6,18 @@ public class ObjectControl : MonoBehaviour
 {
     public bool canMove = true;
     public GameObject bullet_prefab = null;
+    private SpriteRenderer[] renderers;
+
+    // for highlighing the object that has been raycasted
+    private SpriteRenderer my_renderer;
+    private Color highlightColor;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        TryGetComponent<SpriteRenderer>(out my_renderer);
+        renderers = GetComponentsInChildren<SpriteRenderer>();
+        highlightColor = (Color)(new Color32(255, 172, 238, 255));
     }
 
     // Update is called once per frame
@@ -65,5 +73,24 @@ public class ObjectControl : MonoBehaviour
             if (clockwise) plateRb.AddForce(new Vector2 (0, 2.0f));
             else plateRb.AddForce(new Vector2 (0, -2.0f));
         }
+    }
+
+    // for highlighing the object that has been raycasted
+    public void highlightObject()
+    {
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            renderer.color = highlightColor;
+        }
+        my_renderer.color = highlightColor;
+    }
+
+    public void unhighlightObject()
+    {
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        }
+        my_renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 }

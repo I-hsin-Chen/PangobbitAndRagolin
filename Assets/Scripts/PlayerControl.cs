@@ -81,7 +81,6 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         playerCanMove = gameManager.GetComponent<GameManager>().GetPlayerCanMove();
-        
         if (playerCanMove && isRabbit) RabbitCheck();
         else if (playerCanMove && isPangolin) PangolinCheck();
 
@@ -89,7 +88,7 @@ public class PlayerControl : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(faceDirection.GetDirection(), 0), 3);
             RaycastHit2D hit_up = Physics2D.Raycast(transform.position, new Vector2(0, 1), 3.0f);
 
-            // check left and right
+            // check objects at lefthand side and righthand side
             if (hit.collider != null && hit.collider.gameObject.tag == "Object"){
                 GameObject obj = hit.collider.gameObject;
 
@@ -97,10 +96,17 @@ public class PlayerControl : MonoBehaviour
                 if (hit.collider.gameObject.GetComponent<PlayerControl>().isRabbit || hit.collider.gameObject.GetComponent<PlayerControl>().isPangolin){
                     possessTarget = null;
                 }
-                else possessTarget = hit.collider.gameObject;
-            }
+                else {
+                    // unhighlight the object that is no more the possess target.
+                    if (possessTarget != null && possessTarget != hit.collider.gameObject) 
+                        possessTarget.GetComponent<ObjectControl>().unhighlightObject();
 
-            // check upside
+                    possessTarget = hit.collider.gameObject;
+                    // highlight the object that is the possess target.
+                    possessTarget.GetComponent<ObjectControl>().highlightObject();
+                }
+            }
+            // check objects at upside
             else if (hit_up.collider != null && hit_up.collider.gameObject.tag == "Object"){
                 GameObject obj = hit_up.collider.gameObject;
 
@@ -108,15 +114,26 @@ public class PlayerControl : MonoBehaviour
                 if (hit_up.collider.gameObject.GetComponent<PlayerControl>().isRabbit || hit_up.collider.gameObject.GetComponent<PlayerControl>().isPangolin){
                     possessTarget = null;
                 }
-                else possessTarget = hit_up.collider.gameObject;
-
-                // print (hit_up.collider.gameObject.name);
+                else {
+                    // unhighlight the object that is no more the possess target.
+                    if (possessTarget != null && possessTarget != hit_up.collider.gameObject) 
+                        possessTarget.GetComponent<ObjectControl>().unhighlightObject();
+                    
+                    possessTarget = hit_up.collider.gameObject;
+                    // highlight the object that is the possess target.
+                    possessTarget.GetComponent<ObjectControl>().highlightObject();
+                    // if (possessTarget.name == "Clock") print(possessTarget.GetComponent<SpriteRenderer>().color);
+                }
             }
-            else possessTarget = null;
+            else {
+                if (possessTarget != null) possessTarget.GetComponent<ObjectControl>().unhighlightObject();
+                possessTarget = null;
+            }
 
             AnimationCheck();
             DirectionCheck();
         }
+        else if (isPossessedObject) GetComponent<ObjectControl>().unhighlightObject();
     }
 
     private void FixedUpdate()

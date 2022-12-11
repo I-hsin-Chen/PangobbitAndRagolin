@@ -20,7 +20,7 @@ public class Camera_Position : MonoBehaviour
     void Update()
     {
         Vector3 cen_pos = (rabbit.transform.position + pangolin.transform.position)*0.5f;
-        print(cen_pos);
+        // print(cen_pos);
         cen_pos.y = cen_pos.y + 5f;
         center.transform.position = cen_pos;
     }
