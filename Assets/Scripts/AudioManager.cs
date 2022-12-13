@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// This script is for AudioManager
+// AudioManager is a DontDestroyOnLoad GameObject that is used to control the audio
+// All the audio related functions are in this script
+
 public class AudioManager : MonoBehaviour
 {
+    // There are two audio sources to set volume independently
     private float BGMVolume = 0.5f;
     private float SEVolume = 0.5f;
-    private AudioSource BGMPlayer;
-    private AudioSource SEPlayer;
+    private AudioSource BGMPlayer;  // audio source for BGM, attached to GameManager
+    private AudioSource SEPlayer;   // audio source for SE, attached to AudioManager
     // ===== add audio source here =====
     public AudioClip BGM;
     public AudioClip SE_Jump;
@@ -19,21 +24,17 @@ public class AudioManager : MonoBehaviour
     void Start()
     {   
         DontDestroyOnLoad(this.gameObject);
+        // Set up BGMPlayer here, BGMVolume may be changed in UIEventManager.cs
         BGMPlayer = GameObject.Find("GameManager").GetComponent<AudioSource>();
         BGMPlayer.volume = BGMVolume;
         BGMPlayer.mute = false;
         BGMPlayer.loop = true;
         BGMPlayer.clip = BGM;
         BGMPlayer.Play();
+        // Set up SEPlayer here, SEVolume may be changed in UIEventManager.cs
         SEPlayer = gameObject.GetComponent<AudioSource>();
         SEPlayer.volume = SEVolume;
         SEPlayer.mute = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void SetBGMVolume(float vol)
