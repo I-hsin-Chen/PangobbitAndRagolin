@@ -10,12 +10,14 @@ public class GameManager : MonoBehaviour
     // player cannot move when false
     private bool playerCanMove;
     private float changeSceneDelay = 1.0f;
+    private GameObject audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         playerCanMove = false;
+        audioManager = GameObject.Find("AudioManager");
     }
 
     // Update is called once per frame
@@ -72,10 +74,14 @@ public class GameManager : MonoBehaviour
         if (toDestroy != null)
             Destroy(toDestroy);
         // ==========
+        if (idx == 1)
+            audioManager.GetComponent<AudioManager>().FadeOutBGM(fadeOutTime);
         GameObject fadeCanvas = GameObject.Find("FadeCanvas");
         fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
+        if (idx == 1)
+            audioManager.GetComponent<AudioManager>().FadeInBGM(fadeOutTime);
         Time.timeScale = 1;
     }
     

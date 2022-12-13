@@ -16,9 +16,6 @@ public class UIEventManager : MonoBehaviour
     private GameObject fadeCanvas;
     // ===========================
 
-    // remember to set the index of mainMenu
-    private int mainMenuSceneIndex = 1;
-
     // Start is called before the first frame update
     void Start()
     {

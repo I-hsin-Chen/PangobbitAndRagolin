@@ -59,6 +59,42 @@ public class AudioManager : MonoBehaviour
         return SEVolume;
     }
 
+    public void FadeInBGM(float duration)
+    {
+        BGMPlayer.volume = 0;
+        BGMPlayer.Play();
+        StartCoroutine(ScheduleFadeInBGM(duration * 0.6f));
+    }
+
+    IEnumerator ScheduleFadeInBGM(float duration)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+        while (Time.time < endTime) {
+            float alpha = (Time.time - startTime) / duration;
+            BGMPlayer.volume = BGMVolume * alpha;
+            yield return null;
+        }
+        BGMPlayer.volume = BGMVolume;
+    }
+
+    public void FadeOutBGM(float duration)
+    {
+        StartCoroutine(ScheduleFadeOutBGM(duration * 0.4f));
+    }
+
+    IEnumerator ScheduleFadeOutBGM(float duration)
+    {
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+        while (Time.time < endTime) {
+            float alpha = 1 - (Time.time - startTime) / duration;
+            BGMPlayer.volume = BGMVolume * alpha;
+            yield return null;
+        }
+        BGMPlayer.volume = 0;
+    }
+
     public void PlaySE_Jump()
     {
         SEPlayer.PlayOneShot(SE_Jump);
