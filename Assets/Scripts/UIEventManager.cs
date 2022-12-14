@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// This script contains all the functions that are called by UI elements
+// Attach this script to the anywhere if needed
+
 public class UIEventManager : MonoBehaviour
 {
     private GameObject gameManager;
@@ -12,9 +15,6 @@ public class UIEventManager : MonoBehaviour
     private GameObject exitCanvas;
     private GameObject fadeCanvas;
     // ===========================
-
-    // remember to set the index of mainMenu
-    private int mainMenuSceneIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,18 +28,22 @@ public class UIEventManager : MonoBehaviour
         exitCanvas = GameObject.Find("ExitCanvas");
         fadeCanvas = GameObject.Find("FadeCanvas");
 
+        // Set up pauseCanvas
         if (pauseCanvas != null) {
             Debug.Log("PauseCanvas found");
             GameObject BarRed = pauseCanvas.transform.Find("Background Frame/Fill Bar Red").gameObject;
             GameObject BarGreen = pauseCanvas.transform.Find("Background Frame/Fill Bar Green").gameObject;
+            // Set the value of the slider
             BarRed.GetComponent<Slider>().value = audioManager.GetComponent<AudioManager>().GetBGMVolume();
             BarGreen.GetComponent<Slider>().value = audioManager.GetComponent<AudioManager>().GetSEVolume();
             pauseCanvas.SetActive(false);
         }
+        // Set up exitCanvas
         if (exitCanvas != null) {
             Debug.Log("ExitCanvas found");
             exitCanvas.SetActive(false);
         }
+        // Set up fadeCanvas
         if (fadeCanvas != null) {
             Debug.Log("FadeCanvas found");
         }
@@ -53,6 +57,7 @@ public class UIEventManager : MonoBehaviour
         }
     }
 
+    // Only for testing the function of buttons
     public void TestButton(string name)
     {
         Debug.Log("button clicked: " + name);
@@ -60,70 +65,23 @@ public class UIEventManager : MonoBehaviour
 
     public void GoToScene(int idx)
     {
-        Debug.Log("Go To Scene " + idx);
-        // To make the game run smoothly, destroy some DontDestroyOnLoad objects
-        // ==========
-        GameObject toDestroy;
-        toDestroy = GameObject.Find("PlayText.PlayTextSupport.EventCenter");
-        if (toDestroy != null)
-            Destroy(toDestroy);
-        toDestroy = GameObject.Find("PlayText.PlayTextSupport.ResMgr");
-        if (toDestroy != null)
-            Destroy(toDestroy);
-        toDestroy = GameObject.Find("PlayText.PlayTextSupport.AudioMgr");
-        if (toDestroy != null)
-            Destroy(toDestroy);
-        // ==========
+        Debug.Log("GoToScene " + idx);
         ClosePauseCanvas();
-        float fadeOutTime = 1.0f;
-        if (fadeCanvas == null)
-            fadeCanvas = GameObject.Find("FadeCanvas");
-        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
-        StartCoroutine(ScheduleChangeScene(fadeOutTime, idx));
-    }
-
-    IEnumerator ScheduleChangeScene(float fadeOutTime, int idx){
-        yield return new WaitForSeconds(fadeOutTime);
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
-        if (idx == mainMenuSceneIndex) {
-            Destroy(gameManager);
-            Destroy(audioManager);
-        }
-        Time.timeScale = 1;
+        gameManager.GetComponent<GameManager>().ChangeSceneTo(idx);
     }
 
     public void ReloadScene()
     {
         Debug.Log("Reload Scene");
-        // To make the game run smoothly, destroy some DontDestroyOnLoad objects
-        // ==========
-        GameObject toDestroy;
-        toDestroy = GameObject.Find("PlayText.PlayTextSupport.EventCenter");
-        if (toDestroy != null)
-            Destroy(toDestroy);
-        toDestroy = GameObject.Find("PlayText.PlayTextSupport.ResMgr");
-        if (toDestroy != null)
-            Destroy(toDestroy);
-        toDestroy = GameObject.Find("PlayText.PlayTextSupport.AudioMgr");
-        if (toDestroy != null)
-            Destroy(toDestroy);
-        // ==========
         ClosePauseCanvas();
-        float fadeOutTime = 1.0f;
-        if (fadeCanvas == null)
-            fadeCanvas = GameObject.Find("FadeCanvas");
-        fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
-        StartCoroutine(ScheduleReloadScene(fadeOutTime));
-    }
-
-    IEnumerator ScheduleReloadScene(float fadeOutTime){
-        yield return new WaitForSeconds(fadeOutTime);
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
+        gameManager.GetComponent<GameManager>().ChangeSceneTo(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ShowPauseCanvas()
     {
+        // if player cannot move, it should not be able to pause the game also
+        if (gameManager.GetComponent<GameManager>().GetPlayerCanMove() == false)
+            return;
         if (pauseCanvas == null)
             pauseCanvas = GameObject.Find("PauseCanvas");
         if (pauseCanvas != null) {
@@ -166,7 +124,7 @@ public class UIEventManager : MonoBehaviour
 
     public void CloseGame()
     {
-        Debug.Log("Close Game");
+        Debug.Log("Close Game. Bye~");
         Application.Quit();
     }
 
