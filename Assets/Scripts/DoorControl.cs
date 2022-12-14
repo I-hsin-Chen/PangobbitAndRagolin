@@ -28,13 +28,15 @@ public class DoorControl : MonoBehaviour
         if (col.gameObject.name == "Rabbit"){
             if(pangolinPass && animator.enabled == true)
                 gameManager.GetComponent<GameManager>().Win(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
-            rabbitPass = true;
+            else
+                rabbitPass = true;
         }
 
         if (col.gameObject.name == "Pangolin"){
             if(rabbitPass && animator.enabled == true)
                 gameManager.GetComponent<GameManager>().Win(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
-            pangolinPass = true;
+            else
+                pangolinPass = true;
         }
     }
 
