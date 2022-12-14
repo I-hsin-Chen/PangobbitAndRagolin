@@ -172,7 +172,10 @@ public class PlayerControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I)) Jump();
         if (name == "Tank"){
-            if(Input.GetKeyDown(KeyCode.O)) objectControl.TankShoot(); // shoot
+            if(Input.GetKeyDown(KeyCode.O)){ // shoot
+                objectControl.TankShoot();
+                audiomanager.PlaySE_Tower();
+            }
         }
     }
 

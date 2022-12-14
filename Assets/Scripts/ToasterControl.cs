@@ -5,9 +5,11 @@ using UnityEngine;
 public class ToasterControl : MonoBehaviour
 {
     public Object toast;
+    public GameObject door;
     private GameObject bondedToast;
     private PlayerControl playerCtrl;
     private CollisionState collisionState;
+    private int cntJamToast = 0;
 
     void Awake(){
         TryGetComponent<CollisionState>(out collisionState);
@@ -18,6 +20,7 @@ public class ToasterControl : MonoBehaviour
     void Start()
     {
         bondedToast = GameObject.Find("Toast");
+        cntJamToast = 0;
     }
 
     // Update is called once per frame
@@ -40,5 +43,11 @@ public class ToasterControl : MonoBehaviour
         GameObject newToast = GameObject.Instantiate(toast, Vector3.zero, Quaternion.identity) as GameObject;
         newToast.transform.position = new Vector3 (transform.position.x, transform.position.y + 0.1f, transform.position.z);
         bondedToast = newToast;
+    }
+
+    public void AddJamToast(){
+        cntJamToast += 1;
+        if(cntJamToast == 10)
+            door.GetComponent<Animator>().enabled = true;
     }
 }

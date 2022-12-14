@@ -201,15 +201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2102557571265494410, guid: 7fcc3e87ade9bfa45a65100614646343, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2102557571265494410, guid: 7fcc3e87ade9bfa45a65100614646343, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2102557571265494410, guid: 7fcc3e87ade9bfa45a65100614646343, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2102557571265494410, guid: 7fcc3e87ade9bfa45a65100614646343, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -233,6 +233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fcc3e87ade9bfa45a65100614646343, type: 3}
+--- !u!1 &453683158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2102557571265494408, guid: 7fcc3e87ade9bfa45a65100614646343, type: 3}
+  m_PrefabInstance: {fileID: 453683157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &656646586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,6 +5155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toast: {fileID: 3270163277078491939, guid: 320281cb2adc83747ab5f09e8cdcdcc1, type: 3}
+  door: {fileID: 453683158}
 --- !u!1001 &1944816135
 PrefabInstance:
   m_ObjectHideFlags: 0
