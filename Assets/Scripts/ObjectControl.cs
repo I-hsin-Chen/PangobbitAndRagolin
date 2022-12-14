@@ -5,12 +5,23 @@ using UnityEngine;
 public class ObjectControl : MonoBehaviour
 {
     public bool canMove = true;
+    private bool hinted;
+    private bool possessed;
+    private GameObject myHint;
     public GameObject bullet_prefab = null;
     private SpriteRenderer[] renderers;
 
     // for highlighing the object that has been raycasted
     private SpriteRenderer my_renderer;
     private Color highlightColor;
+
+    private Object pangolinHint;
+    private Object rabbitHint;
+
+    private void Awake(){
+        rabbitHint = Resources.Load("RabbitHint"); 
+        pangolinHint = Resources.Load("PangolinHint"); 
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +34,10 @@ public class ObjectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (possessed) {
+            float y = GetComponent<BoxCollider2D>().bounds.max.y;
+            myHint.transform.position = new Vector3 (transform.position.x, y + 0.5f, transform.position.z);
+        }
     }
 
     // Test
@@ -75,22 +89,56 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-    // for highlighing the object that has been raycasted
-    public void highlightObject()
+    public void highlightObject(bool isRabbit)
     {
-        foreach (SpriteRenderer renderer in renderers)
-        {
-            renderer.color = highlightColor;
-        }
-        my_renderer.color = highlightColor;
+        if (hinted) return;
+        DrawHint(isRabbit, 0.6f);
+        hinted = true;
     }
 
-    public void unhighlightObject()
-    {
-        foreach (SpriteRenderer renderer in renderers)
-        {
-            renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        }
-        my_renderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+    public void unhighlightObject(){
+        if (!hinted) return;
+        GameObject delete = GameObject.Find("/hint_" + gameObject.name).gameObject;
+        GameObject.Destroy(delete);
+        hinted = false;
     }
+
+    public void possessSign(bool isRabbit)
+    {
+        if (possessed) return;
+        possessed = true;
+        DrawHint(isRabbit, 1.0f);
+    }
+
+    public void unpossessSign()
+    {
+        if (!possessed) return;
+        possessed = false;
+        GameObject delete = GameObject.Find("/possesshint_" + gameObject.name).gameObject;
+        GameObject.Destroy(delete);
+    }
+
+    private void DrawHint(bool isRabbit, float transparency){
+        GameObject hint;
+        if (isRabbit) hint = GameObject.Instantiate(rabbitHint, Vector3.zero, Quaternion.identity) as GameObject;
+        else  hint = GameObject.Instantiate(pangolinHint, Vector3.zero, Quaternion.identity) as GameObject;
+
+        float y = GetComponent<BoxCollider2D>().bounds.max.y;
+        hint.transform.position = new Vector3 (transform.position.x, y + 0.5f, transform.position.z);
+
+        // SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        // hint.GetComponent<HintControl>().objToFollow = gameObject;
+        // hint.GetComponent<HintControl>().yOffset = y + 0.5f;
+        // hint.transform.parent = gameObject.transform;
+
+        Color c = hint.GetComponent<SpriteRenderer>().color;
+        hint.GetComponent<SpriteRenderer>().color = new Color(c.r, c.b, c.g, transparency);
+
+        if (transparency == 0.6f) hint.name = "hint_" + gameObject.name;
+        else {
+            hint.name = "possesshint_" + gameObject.name;
+            myHint = hint;
+        }
+    }
+
 }

@@ -65,6 +65,7 @@ public class PlayerControl : MonoBehaviour
         // TryGetComponent<Animator>(out animator);
         gameManager = GameObject.Find("GameManager");
         audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
     }
 
     void Start()
@@ -103,7 +104,7 @@ public class PlayerControl : MonoBehaviour
 
                     possessTarget = hit.collider.gameObject;
                     // highlight the object that is the possess target.
-                    possessTarget.GetComponent<ObjectControl>().highlightObject();
+                    possessTarget.GetComponent<ObjectControl>().highlightObject(isRabbit);
                 }
             }
             // check objects at upside
@@ -121,7 +122,7 @@ public class PlayerControl : MonoBehaviour
                     
                     possessTarget = hit_up.collider.gameObject;
                     // highlight the object that is the possess target.
-                    possessTarget.GetComponent<ObjectControl>().highlightObject();
+                    possessTarget.GetComponent<ObjectControl>().highlightObject(isRabbit);
                     // if (possessTarget.name == "Clock") print(possessTarget.GetComponent<SpriteRenderer>().color);
                 }
             }
@@ -243,6 +244,8 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator PossessToObject(GameObject obj)
     {
+        obj.GetComponent<ObjectControl>().possessSign(isRabbit);
+
         // Let the possessed object knows when canceling possessing, which animals it should return
         obj.GetComponent<PlayerControl>().SetPossessObj(this.gameObject);
         isShrinking = true;
@@ -270,6 +273,8 @@ public class PlayerControl : MonoBehaviour
 
     private void PossessBackToPlayer()
     {
+        GetComponent<ObjectControl>().unpossessSign();
+
         SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
         isRabbit = false;
         isPangolin = false;
