@@ -36,8 +36,8 @@ public class ObjectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (possessed) {
-            float y = GetComponent<BoxCollider2D>().bounds.max.y;
+        if (possessed && gameObject.name != "ColorBox") {
+            float y = GetComponent<Collider2D>().bounds.max.y;
             myHint.transform.position = new Vector3 (transform.position.x, y + 0.5f, transform.position.z);
         }
     }
@@ -121,6 +121,23 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    public void ColorBoxRotate(bool clockwise) // only rotate barrel
+    {
+        if (!GetComponent<ColorBoxControl>().isDynamic){
+            if (clockwise) GetComponent<Rigidbody2D>().rotation += 0.15f;
+            else GetComponent<Rigidbody2D>().rotation -= 0.15f;
+        }
+        else {
+            var body = GetComponent<Rigidbody2D>();
+            float strength;
+            if (clockwise) strength = -3.0f;
+            else strength = 3.0f;
+            var impulse = (strength * Mathf.Deg2Rad) * body.inertia;
+            body.AddTorque(impulse, ForceMode2D.Impulse);
+        }
+    }
+
+    // ************** Draw possessing hint on top of objects ************** //
 
     public void highlightObject(bool isRabbit)
     {
@@ -156,13 +173,8 @@ public class ObjectControl : MonoBehaviour
         if (isRabbit) hint = GameObject.Instantiate(rabbitHint, Vector3.zero, Quaternion.identity) as GameObject;
         else  hint = GameObject.Instantiate(pangolinHint, Vector3.zero, Quaternion.identity) as GameObject;
 
-        float y = GetComponent<BoxCollider2D>().bounds.max.y;
+        float y = GetComponent<Collider2D>().bounds.max.y;
         hint.transform.position = new Vector3 (transform.position.x, y + 0.5f, transform.position.z);
-
-        // SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        // hint.GetComponent<HintControl>().objToFollow = gameObject;
-        // hint.GetComponent<HintControl>().yOffset = y + 0.5f;
-        // hint.transform.parent = gameObject.transform;
 
         Color c = hint.GetComponent<SpriteRenderer>().color;
         hint.GetComponent<SpriteRenderer>().color = new Color(c.r, c.b, c.g, transparency);

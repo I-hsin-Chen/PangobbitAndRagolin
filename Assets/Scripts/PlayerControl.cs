@@ -40,7 +40,8 @@ public class PlayerControl : MonoBehaviour
 
     public bool isRunning { get; private set; } = false;
     public bool isShrinking { get; private set; } = false;
-    public virtual bool canJump => collisionState.grounded;
+    public bool isDrowning { get; private set; } = false;
+    public virtual bool canJump => isRabbit && collisionState.grounded;
 
     // Animation
     private Animator animator;
@@ -48,7 +49,9 @@ public class PlayerControl : MonoBehaviour
     private int jumpState;
     private int idleState;
     private int shrinkState;
+    private int drownState;
     private float xScale;
+
 
     public enum Direction {
         Left, Right
@@ -73,9 +76,11 @@ public class PlayerControl : MonoBehaviour
         xScale = transform.localScale.x;
         if (!isObject) animator = GetComponent<Animator>();
         moveState = Animator.StringToHash("Base Layer.Move");
-        jumpState = Animator.StringToHash("Base Layer.Jump");
         idleState = Animator.StringToHash("Base Layer.Idle");
         shrinkState = Animator.StringToHash("Base Layer.Shrink");
+
+        drownState = Animator.StringToHash("Base Layer.Drown");
+        jumpState = Animator.StringToHash("Base Layer.Jump");
     }
 
     // Update is called once per frame
@@ -240,6 +245,13 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKey(KeyCode.W)) objectControl.GateClose(false);  // open gate
             if(Input.GetKey(KeyCode.S)) objectControl.GateClose(true); // close gate
         }
+
+        // Level 4
+        if(name == "ColorBox"){
+            if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
+            if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
+        }
+
     }
 
     private void Jump()
@@ -287,6 +299,9 @@ public class PlayerControl : MonoBehaviour
         if(obj.gameObject.name=="Gate_Gear")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
+        if(obj.gameObject.name=="ColorBox" && !obj.GetComponent<ColorBoxControl>().isDynamic)
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         isShrinking = false;
         this.gameObject.SetActive(false);
     }
@@ -317,6 +332,8 @@ public class PlayerControl : MonoBehaviour
         // When the other collider is a player or a player in an object, ignore the collision
         if (col.gameObject.tag == "Player" ) // || col.gameObject.tag == "Object" && col.gameObject.GetComponent<PlayerControl>().isPossessedObject)
             Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
+        if (col.gameObject.name == "ColorBox")
+            Physics2D.IgnoreCollision(col.gameObject.GetComponent<PolygonCollider2D>() , GetComponent<BoxCollider2D>());
     }
 
     // For object
@@ -327,8 +344,9 @@ public class PlayerControl : MonoBehaviour
     //Animation control functions
     private void AnimationCheck()
     {
-        if (isShrinking) PlayStateIfNotInState(shrinkState);
-        else if (!canJump) PlayStateIfNotInState(jumpState);
+        if (isDrowning) PlayStateIfNotInState(drownState);
+        else if (isShrinking) PlayStateIfNotInState(shrinkState);
+        else if (!canJump && rb.velocity.y >= 1.0f) PlayStateIfNotInState(jumpState);
         else if (isRunning) PlayStateIfNotInState(moveState);
         else PlayStateIfNotInState(idleState);
     }
@@ -350,6 +368,10 @@ public class PlayerControl : MonoBehaviour
     private void PlayStateIfNotInState(int stateHash){
         if(!IsInState(stateHash))
             PlayState(stateHash);
+    }
+
+    public void SetIsDrowning(){
+        isDrowning = true;
     }
 
 }

@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGM: {fileID: 8300000, guid: 5e24c24ff3767014b903860ecf5d33e6, type: 3}
-  SE1: {fileID: 8300000, guid: c99526ba184e67c42b9353a581d4182f, type: 3}
-  SE2: {fileID: 8300000, guid: 97d2b703130d55241a9286c3d2f93329, type: 3}
+  SE_Jump: {fileID: 8300000, guid: b0b9b263d3ad8b94a936345d0474ccc4, type: 3}
+  SE_Possess: {fileID: 8300000, guid: ccfa9208933d07446978440849521a38, type: 3}
+  SE_Tower: {fileID: 8300000, guid: 7442647a59ad59743bbed614e80e131c, type: 3}
 --- !u!82 &4017719303524947879
 AudioSource:
   m_ObjectHideFlags: 0
