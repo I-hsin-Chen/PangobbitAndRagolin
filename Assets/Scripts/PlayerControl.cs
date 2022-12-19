@@ -260,10 +260,7 @@ public class PlayerControl : MonoBehaviour
 
         // modify Rigidbody bodyType when possess
         if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        if(obj.gameObject.name=="Tank" && isPangolin){
-            obj.gameObject.transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        }
+        
         if(obj.gameObject.name=="Clock")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         
@@ -284,7 +281,6 @@ public class PlayerControl : MonoBehaviour
         
         // modify Rigidbody bodyType after possess
         if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        if(name=="Tank") transform.GetChild(0).gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);
