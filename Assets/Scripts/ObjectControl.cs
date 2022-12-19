@@ -87,6 +87,41 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    // level_3
+    public void ServerRotate(bool clockwise) // rotate server
+    {
+        if(!clockwise) GetComponent<Rigidbody2D>().rotation += 90f;
+        else GetComponent<Rigidbody2D>().rotation -= 90f;
+    }
+
+    public void GearRotate(bool clockwise) // rotate gear and move up
+    {
+        if(!clockwise){
+            GetComponent<Rigidbody2D>().rotation += 1.5f;
+            transform.position += new Vector3(0, 0.0142f, 0);
+        }
+        else{
+            GetComponent<Rigidbody2D>().rotation -= 1.5f;
+            transform.position -= new Vector3(0, 0.0142f, 0);
+        }
+    }
+
+    public void GateClose(bool clockwise) // open/close the gate and rotate the gear
+    {
+        GameObject gate = transform.GetChild(0).gameObject;
+        GameObject gear = transform.GetChild(1).gameObject;
+
+        if(!clockwise && gate.transform.position.x > gear.transform.position.x - 0.8f){
+            gate.transform.position -= new Vector3(0.01f, 0, 0);
+            gear.GetComponent<Rigidbody2D>().rotation += 0.5f;
+        }
+        else if(clockwise && gate.transform.position.x < gear.transform.position.x + 0.8f){
+            gate.transform.position += new Vector3(0.01f, 0, 0);
+            gear.GetComponent<Rigidbody2D>().rotation -= 0.5f;
+        }
+    }
+
+
     public void highlightObject(bool isRabbit)
     {
         if (hinted) return;

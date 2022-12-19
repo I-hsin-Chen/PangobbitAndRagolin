@@ -222,12 +222,24 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.W)) objectControl.ClockRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.ClockRotate(true); // turn counter-clockwise
         }
-
         if(name == "Wheel"){
             if(Input.GetKey(KeyCode.W)) objectControl.PulleyWheelRotate(false);  // turn clockwise
             if(Input.GetKey(KeyCode.S)) objectControl.PulleyWheelRotate(true); // turn counter-clockwise
         }
 
+        // Level_3
+        if(name == "Server"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.ServerRotate(false);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.ServerRotate(true); // turn counter-clockwise
+        }
+        if(name == "Gear"){
+            if(Input.GetKey(KeyCode.W)) objectControl.GearRotate(false);  // turn clockwise
+            if(Input.GetKey(KeyCode.S)) objectControl.GearRotate(true); // turn counter-clockwise
+        }
+        if(name == "Gate_Gear"){
+            if(Input.GetKey(KeyCode.W)) objectControl.GateClose(false);  // open gate
+            if(Input.GetKey(KeyCode.S)) objectControl.GateClose(true); // close gate
+        }
     }
 
     private void Jump()
@@ -261,10 +273,18 @@ public class PlayerControl : MonoBehaviour
         // modify Rigidbody bodyType when possess
         if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         
+        // level_1
         if(obj.gameObject.name=="Clock")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         
+        // level_2
         if(obj.gameObject.name=="Wheel")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+        // level_3
+        if(obj.gameObject.name=="Gear")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        if(obj.gameObject.name=="Gate_Gear")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         isShrinking = false;
