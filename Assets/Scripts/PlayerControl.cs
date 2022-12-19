@@ -40,7 +40,8 @@ public class PlayerControl : MonoBehaviour
 
     public bool isRunning { get; private set; } = false;
     public bool isShrinking { get; private set; } = false;
-    public virtual bool canJump => collisionState.grounded;
+    public bool isDrowning { get; private set; } = false;
+    public virtual bool canJump => isRabbit && collisionState.grounded;
 
     // Animation
     private Animator animator;
@@ -48,7 +49,9 @@ public class PlayerControl : MonoBehaviour
     private int jumpState;
     private int idleState;
     private int shrinkState;
+    private int drownState;
     private float xScale;
+
 
     public enum Direction {
         Left, Right
@@ -73,9 +76,11 @@ public class PlayerControl : MonoBehaviour
         xScale = transform.localScale.x;
         if (!isObject) animator = GetComponent<Animator>();
         moveState = Animator.StringToHash("Base Layer.Move");
-        jumpState = Animator.StringToHash("Base Layer.Jump");
         idleState = Animator.StringToHash("Base Layer.Idle");
         shrinkState = Animator.StringToHash("Base Layer.Shrink");
+
+        drownState = Animator.StringToHash("Base Layer.Drown");
+        jumpState = Animator.StringToHash("Base Layer.Jump");
     }
 
     // Update is called once per frame
@@ -275,7 +280,7 @@ public class PlayerControl : MonoBehaviour
         if(obj.gameObject.name=="Wheel")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
-        if(obj.gameObject.name=="ColorBox")
+        if(obj.gameObject.name=="ColorBox" && !obj.GetComponent<ColorBoxControl>().isDynamic)
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         isShrinking = false;
@@ -321,7 +326,8 @@ public class PlayerControl : MonoBehaviour
     //Animation control functions
     private void AnimationCheck()
     {
-        if (isShrinking) PlayStateIfNotInState(shrinkState);
+        if (isDrowning) PlayStateIfNotInState(drownState);
+        else if (isShrinking) PlayStateIfNotInState(shrinkState);
         else if (!canJump && rb.velocity.y >= 1.0f) PlayStateIfNotInState(jumpState);
         else if (isRunning) PlayStateIfNotInState(moveState);
         else PlayStateIfNotInState(idleState);
@@ -344,6 +350,10 @@ public class PlayerControl : MonoBehaviour
     private void PlayStateIfNotInState(int stateHash){
         if(!IsInState(stateHash))
             PlayState(stateHash);
+    }
+
+    public void SetIsDrowning(){
+        isDrowning = true;
     }
 
 }

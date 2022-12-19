@@ -93,8 +93,18 @@ public class ObjectControl : MonoBehaviour
 
     public void ColorBoxRotate(bool clockwise) // only rotate barrel
     {
-        if (clockwise) GetComponent<Rigidbody2D>().rotation += 0.15f;
-        else GetComponent<Rigidbody2D>().rotation -= 0.15f;
+        if (!GetComponent<ColorBoxControl>().isDynamic){
+            if (clockwise) GetComponent<Rigidbody2D>().rotation += 0.15f;
+            else GetComponent<Rigidbody2D>().rotation -= 0.15f;
+        }
+        else {
+            var body = GetComponent<Rigidbody2D>();
+            float strength;
+            if (clockwise) strength = -3.0f;
+            else strength = 3.0f;
+            var impulse = (strength * Mathf.Deg2Rad) * body.inertia;
+            body.AddTorque(impulse, ForceMode2D.Impulse);
+        }
     }
 
     // ************** Draw possessing hint on top of objects ************** //

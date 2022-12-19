@@ -12,10 +12,12 @@ public class ColorBoxControl : MonoBehaviour
     private GameObject greenStick;
     private bool[] stickState;
     private List<GameObject> stickList;
+    private WaterLevelControl waterCtrl;
 
     // order of sticks : red, yellow, blue, green
     private enum Colors {RED,YELLOW,GREEN,BLUE}
     private bool isCountingDown;
+    public bool isDynamic = false;
     private int remainingTime;
     private float challengeGapTime = 3.0f;
 
@@ -24,24 +26,26 @@ public class ColorBoxControl : MonoBehaviour
     [SerializeField][Min(0)]
     private float startTime;
     private float duration = 1.5f;
-    private float initialYPos;
+    private float yPos;
+    private float waterOffset;
 
     public TMP_Text remainingTimeText;
     public TMP_Text colorHintText;
 
     void Start(){
-        
         stickList = new List<GameObject>();
         stickList.Add(transform.Find("Red").gameObject);
         stickList.Add(transform.Find("Yellow").gameObject);
         stickList.Add(transform.Find("Green").gameObject);
         stickList.Add(transform.Find("Blue").gameObject);
         stickState = new bool[]{true, true, true, true};
+        waterCtrl = GameObject.Find("Water").GetComponent<WaterLevelControl>();
 
         remainingTime = 6;
         isCountingDown = true;
         startTime = Time.fixedTime;
-        initialYPos = transform.position.y;
+        yPos = transform.position.y;
+        waterOffset = transform.position.y - waterCtrl.getWaterLevel();
 
         StartCoroutine(ScheduleColorDisappear());
         StartCoroutine(ScheduleCountDown());
@@ -53,9 +57,19 @@ public class ColorBoxControl : MonoBehaviour
     }
 
     void FixedUpdate(){
+
         float t = Time.fixedTime - startTime;
-        if (t > duration) startTime = Time.fixedTime;
-        else transform.position = new Vector3(transform.position.x, initialYPos + jumpCurve.Evaluate(t), transform.position.z);
+        if (t > duration) {
+            startTime = Time.fixedTime;
+            t = 0;
+        }
+
+        if (waterCtrl.getWaterLevel() > -1.7f) transform.position = new Vector3(transform.position.x, waterCtrl.getWaterLevel() + waterOffset + jumpCurve.Evaluate(t), transform.position.z);
+        else if (!isDynamic) {
+            isDynamic = true;
+            transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            transform.GetComponent<Rigidbody2D>().gravityScale = 3.0f;
+        }
     }
 
     public IEnumerator ScheduleCountDown(){
@@ -103,6 +117,15 @@ public class ColorBoxControl : MonoBehaviour
         setStickState();
         yield return new WaitForSeconds(challengeGapTime);
         resetStickState();
+
+        // After passing all challenges, the water starts to disappear
+
+        remainingTime = 6;
+        stickState[(int)Colors.BLUE] = false;
+        WaterLevelControl waterCtrl = GameObject.Find("Water").GetComponent<WaterLevelControl>();
+        waterCtrl.startFalling();
+        yield return new WaitForSeconds(5.0f);
+        setStickState();
     }
 
     private void setStickState(){
