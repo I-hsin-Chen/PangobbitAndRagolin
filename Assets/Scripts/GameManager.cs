@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5)) {
             ChangeSceneTo(5);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            ChangeSceneTo(6);
+        }
     }
 
     // call this public function when win

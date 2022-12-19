@@ -228,6 +228,11 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKey(KeyCode.S)) objectControl.PulleyWheelRotate(true); // turn counter-clockwise
         }
 
+        if(name == "ColorBox"){
+            if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
+            if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
+        }
+
     }
 
     private void Jump()
@@ -270,6 +275,9 @@ public class PlayerControl : MonoBehaviour
         if(obj.gameObject.name=="Wheel")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
+        if(obj.gameObject.name=="ColorBox")
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
         isShrinking = false;
         this.gameObject.SetActive(false);
     }
@@ -301,6 +309,8 @@ public class PlayerControl : MonoBehaviour
         // When the other collider is a player or a player in an object, ignore the collision
         if (col.gameObject.tag == "Player" ) // || col.gameObject.tag == "Object" && col.gameObject.GetComponent<PlayerControl>().isPossessedObject)
             Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
+        if (col.gameObject.name == "ColorBox")
+            Physics2D.IgnoreCollision(col.gameObject.GetComponent<PolygonCollider2D>() , GetComponent<BoxCollider2D>());
     }
 
     // For object
@@ -312,7 +322,7 @@ public class PlayerControl : MonoBehaviour
     private void AnimationCheck()
     {
         if (isShrinking) PlayStateIfNotInState(shrinkState);
-        else if (!canJump) PlayStateIfNotInState(jumpState);
+        else if (!canJump && rb.velocity.y >= 1.0f) PlayStateIfNotInState(jumpState);
         else if (isRunning) PlayStateIfNotInState(moveState);
         else PlayStateIfNotInState(idleState);
     }
