@@ -57,10 +57,10 @@ public class ObjectControl : MonoBehaviour
     public void TankRotate(bool clockwise) // only rotate barrel
     {
         GameObject obj = transform.GetChild(0).gameObject;
-        if(!clockwise && obj.GetComponent<Rigidbody2D>().rotation < 45f)
-            obj.GetComponent<Rigidbody2D>().rotation += 5f;
+        if(!clockwise && obj.GetComponent<Rigidbody2D>().rotation < 60f)
+            obj.GetComponent<Rigidbody2D>().rotation += 1f; // 5f when GetKeyDown
         else if(clockwise && obj.GetComponent<Rigidbody2D>().rotation > -30f)
-            obj.GetComponent<Rigidbody2D>().rotation -= 5f;
+            obj.GetComponent<Rigidbody2D>().rotation -= 1f; // 5f when GetKeyDown
     }
     public void TankShoot() // shoot bullet
     {
