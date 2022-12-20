@@ -24,24 +24,24 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // just for development, press 1-5 to load different scenes
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            ChangeSceneTo(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            ChangeSceneTo(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            ChangeSceneTo(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) {
-            ChangeSceneTo(4);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) {
-            ChangeSceneTo(5);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6)) {
-            ChangeSceneTo(6);
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        //     ChangeSceneTo(1);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha2)) {
+        //     ChangeSceneTo(2);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        //     ChangeSceneTo(3);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha4)) {
+        //     ChangeSceneTo(4);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha5)) {
+        //     ChangeSceneTo(5);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha6)) {
+        //     ChangeSceneTo(6);
+        // }
     }
 
     // call this public function when win
