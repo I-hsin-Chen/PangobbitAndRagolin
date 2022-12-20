@@ -81,6 +81,8 @@ public class PlayerControl : MonoBehaviour
 
         drownState = Animator.StringToHash("Base Layer.Drown");
         jumpState = Animator.StringToHash("Base Layer.Jump");
+
+        if (isPlayer) dialogFollowRefresh(gameObject);
     }
 
 
@@ -281,6 +283,9 @@ public class PlayerControl : MonoBehaviour
         obj.GetComponent<PlayerControl>().SetPossessObj(this.gameObject);
         isShrinking = true;
 
+        // *** For Dialog box follow *** //
+        dialogFollowRefresh(obj);
+
         // run the possess animation ?
         yield return new WaitForSeconds(0.5f);
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
@@ -308,11 +313,13 @@ public class PlayerControl : MonoBehaviour
 
         isShrinking = false;
         this.gameObject.SetActive(false);
+
     }
 
     private void PossessBackToPlayer()
     {
         GetComponent<ObjectControl>().unpossessSign();
+        dialogFollowRefresh(possessTarget);
 
         SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
         isRabbit = false;
@@ -326,7 +333,6 @@ public class PlayerControl : MonoBehaviour
         //renderer.bounds.size.x
         if (name == "Tank") possessTarget.transform.position = transform.position + new Vector3( (renderer.bounds.size.x / 2 + 0.2f) * faceDirection.GetDirection(), 0, 0);
         else possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
-
     }
 
     // when to ignore collision
@@ -376,6 +382,17 @@ public class PlayerControl : MonoBehaviour
 
     public void SetIsDrowning(){
         isDrowning = true;
+    }
+
+    public void dialogFollowRefresh(GameObject obj){
+        string s = " ";
+        if (isRabbit) s = "Rabbit";
+        else if (isPangolin) s = "Pangolin";
+
+        if (GameObject.Find(s + "Follow") != null){
+            DialogFollowControl follow = GameObject.Find(s + "Follow").GetComponent<DialogFollowControl>();
+            follow.setFollowObject(obj);
+        }
     }
 
 }

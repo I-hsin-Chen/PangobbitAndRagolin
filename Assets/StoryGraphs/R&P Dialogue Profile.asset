@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: R&P Dialogue Profile
   m_EditorClassIdentifier: 
   TalkingPerson:
-  - Name: Rabbit
+  - Name: RabbitFollow
     Voice: {fileID: 0}
     Expression:
     - None
-  - Name: Pangolin
+  - Name: PangolinFollow
     Voice: {fileID: 0}
     Expression:
     - None

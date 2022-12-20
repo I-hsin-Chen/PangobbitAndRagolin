@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Rabbit: Press <b><colo\u2026"
+  m_Name: "RabbitFollow: Press <b><colo\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 504, y: -232}
@@ -43,7 +43,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Pangolin: I can <wa=2>RO\u2026"
+  m_Name: "PangolinFollow: I can <wa=2>RO\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -552, y: 584}
@@ -101,7 +101,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Pangolin
+  TalkingPerson: PangolinFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Rabbit: Hi, I'am Rabbi\u2026"
+  m_Name: "RabbitFollow: Hi, I'am Rabbi\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -904, y: -216}
@@ -158,7 +158,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Rabbit: Now you can pr\u2026"
+  m_Name: "RabbitFollow: Now you can pr\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 488, y: 504}
@@ -215,7 +215,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: 'Event: WaitingForKeyX'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -200, y: 504}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Pangolin: Let's <wa=2>go\u2026"
+  m_Name: "PangolinFollow: Let's <wa=2>go\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 152, y: -8}
@@ -320,7 +320,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Pangolin
+  TalkingPerson: PangolinFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -1160, y: -152}
@@ -416,7 +416,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -108990237935334489}
-  current: {fileID: 4531221043956818425}
+  current: {fileID: -19444966001815500}
 --- !u!114 &1661349686058611087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Rabbit: I can jump <si\u2026"
+  m_Name: "RabbitFollow: I can jump <si\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -904, y: 376}
@@ -460,7 +460,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Pangolin: And I'm Pangol\u2026"
+  m_Name: "PangolinFollow: And I'm Pangol\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -552, y: -8}
@@ -517,7 +517,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Pangolin
+  TalkingPerson: PangolinFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: 'Rabbit: It works!'
+  m_Name: 'RabbitFollow: It works!'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 840, y: 504}
@@ -571,7 +571,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Rabbit: Waiting... (Ke\u2026"
+  m_Name: "RabbitFollow: Waiting... (Ke\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 136, y: 504}
@@ -628,7 +628,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Rabbit: Let's learn ho\u2026"
+  m_Name: "RabbitFollow: Let's learn ho\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -200, y: -232}
@@ -685,7 +685,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Rabbit
+  TalkingPerson: RabbitFollow
   Expression: None
   Facing: 0
   FacingPerson: 
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "Pangolin: Press <b><colo\u2026"
+  m_Name: "PangolinFollow: Press <b><colo\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 856, y: -8}
@@ -742,7 +742,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: Pangolin
+  TalkingPerson: PangolinFollow
   Expression: None
   Facing: 0
   FacingPerson: 
