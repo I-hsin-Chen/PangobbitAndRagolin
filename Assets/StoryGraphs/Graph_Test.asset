@@ -416,7 +416,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -108990237935334489}
-  current: {fileID: -19444966001815500}
+  current: {fileID: 4531221043956818425}
 --- !u!114 &1661349686058611087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Waiting... (KeyE shouldn't work now)
+  - Waiting... (KeyE shouldn't work now, press KeyX instead)
   IsMax: 1
   curIndex: 0
 --- !u!114 &7698071810658022484
