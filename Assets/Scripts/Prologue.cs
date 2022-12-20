@@ -43,7 +43,7 @@ public class Prologue : MonoBehaviour
     void Update() {
         // Press S to skip the prologue
         if (Input.GetKeyDown(KeyCode.S)) {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Test");
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Stage_0");
         }
     }
 
@@ -57,7 +57,7 @@ public class Prologue : MonoBehaviour
         if (contents_index >= contents.Count) {
             Debug.Log("End of prologue");
             // Change to the next scene
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Test");
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Stage_0");
             yield return null;
         }
         else {
