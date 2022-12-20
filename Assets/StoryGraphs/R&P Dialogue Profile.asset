@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8503ede56ac814381d2113fb702e1b, type: 3}
-  m_Name: New Dialogue Profile
+  m_Name: R&P Dialogue Profile
   m_EditorClassIdentifier: 
   TalkingPerson:
-  - Name: Player
+  - Name: Rabbit
     Voice: {fileID: 0}
     Expression:
     - None
-  - Name: StrongMan
+  - Name: Pangolin
     Voice: {fileID: 0}
     Expression:
     - None
   DefaultVoice: {fileID: 8300000, guid: 774486030b696474e8b3cf7f178123da, type: 3}
   Language:
   - English
-  - Chinese
   ReplaceVariable: []
