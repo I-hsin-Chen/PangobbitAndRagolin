@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8701058654670615741
+--- !u!114 &-7961288827548346447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,92 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: Press <b><colo\u2026"
+  m_Name: "PangolinFollow: I'm okay, we f\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 504, y: -232}
+  position: {x: -584, y: -168}
   ports:
     keys:
     - Input
     - Output
     values:
     - _fieldName: Input
-      _node: {fileID: -8701058654670615741}
+      _node: {fileID: -7961288827548346447}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: -193225391264127040}
+        node: {fileID: 1486939077118448915}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Output
-      _node: {fileID: -8701058654670615741}
+      _node: {fileID: -7961288827548346447}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: 8626995005633559620}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  TalkingPerson: RabbitFollow
-  Expression: None
-  Facing: 0
-  FacingPerson: 
-  Width: 0
-  ShowBubble: 1
-  CameraFollow: 1
-  Audio: {fileID: 0}
-  PlayPerChar: 0
-  PlayTyping: 0
-  Dialogue:
-  - Press <b><color="red">J</color></b> or <b><color="red">L</color></b> to move
-    me.
-  IsMax: 1
-  curIndex: 0
---- !u!114 &-8295240146292895659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "PangolinFollow: I can <wa=2>RO\u2026"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -552, y: 584}
-  ports:
-    keys:
-    - Input
-    - Output
-    values:
-    - _fieldName: Input
-      _node: {fileID: -8295240146292895659}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Output
-        node: {fileID: 1661349686058611087}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Output
-      _node: {fileID: -8295240146292895659}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Input
-        node: {fileID: -670467678543321620}
+        node: {fileID: 8854893213720795003}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -112,10 +54,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - I can <wa=2>ROTATE</wa> by pressing <b><color="red">W</color></b>.
+  - I'm okay, we finally got out of there.
   IsMax: 1
   curIndex: 0
---- !u!114 &-6158538786347444998
+--- !u!114 &-6960548543765001964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,34 +67,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: Hi, I'am Rabbi\u2026"
+  m_Name: "RabbitFollow: Press \u201CJ\u201D or \u201D\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -904, y: -216}
+  position: {x: 424, y: -200}
   ports:
     keys:
     - Input
     - Output
     values:
     - _fieldName: Input
-      _node: {fileID: -6158538786347444998}
+      _node: {fileID: -6960548543765001964}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: Ouput
-        node: {fileID: -19444966001815500}
+      - fieldName: Output
+        node: {fileID: 3047314983951603264}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Output
-      _node: {fileID: -6158538786347444998}
+      _node: {fileID: -6960548543765001964}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: 3171243332986569646}
+        node: {fileID: -4007303844130040772}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -169,10 +111,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Hi, I'am Rabbit!
+  - "Press \u201CJ\u201D or \u201DL\u201D to move left or right."
   IsMax: 1
   curIndex: 0
---- !u!114 &-5806914758553138335
+--- !u!114 &-4007303844130040772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,139 +124,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: Now you can pr\u2026"
+  m_Name: "PangolinFollow: Press \u201CW\u201D to r\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 488, y: 504}
+  position: {x: 760, y: -168}
   ports:
     keys:
     - Input
     - Output
     values:
     - _fieldName: Input
-      _node: {fileID: -5806914758553138335}
+      _node: {fileID: -4007303844130040772}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: 5396913828370016108}
+        node: {fileID: -6960548543765001964}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Output
-      _node: {fileID: -5806914758553138335}
+      _node: {fileID: -4007303844130040772}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: 4531221043956818425}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  TalkingPerson: RabbitFollow
-  Expression: None
-  Facing: 0
-  FacingPerson: 
-  Width: 0
-  ShowBubble: 1
-  CameraFollow: 1
-  Audio: {fileID: 0}
-  PlayPerChar: 0
-  PlayTyping: 0
-  Dialogue:
-  - Now you can press E to continue
-  IsMax: 1
-  curIndex: 0
---- !u!114 &-670467678543321620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: 'Event: WaitingForKeyX'
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -200, y: 504}
-  ports:
-    keys:
-    - Input
-    - Output
-    values:
-    - _fieldName: Input
-      _node: {fileID: -670467678543321620}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Output
-        node: {fileID: -8295240146292895659}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Output
-      _node: {fileID: -670467678543321620}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Input
-        node: {fileID: 5396913828370016108}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  EventName: WaitingForKeyX
-  WaitCallback: 0
-  EventValue: []
-  IsMax: 1
-  IsWaiting: 0
---- !u!114 &-193225391264127040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "PangolinFollow: Let's <wa=2>go\u2026"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 152, y: -8}
-  ports:
-    keys:
-    - Input
-    - Output
-    values:
-    - _fieldName: Input
-      _node: {fileID: -193225391264127040}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Output
-        node: {fileID: 7698071810658022484}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Output
-      _node: {fileID: -193225391264127040}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Input
-        node: {fileID: -8701058654670615741}
+        node: {fileID: -1026707718145419266}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -331,7 +168,125 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Let's <wa=2>goooooooooooooo!!</wa>
+  - "Press \u201CW\u201D to rotate."
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &-3828573943537354403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "RabbitFollow: Press \u201CU\u201D to p\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -584, y: 280}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: -3828573943537354403}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 2948760066464901543}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: -3828573943537354403}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 6860501728574107001}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: RabbitFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - "Press \u201CU\u201D to possess an object."
+  - When possessing an object, the rabbit can still jump.
+  - "Try pressing \u201CI\u201D to jump when possessing an object."
+  - "Press \u201CU\u201D again to leave the object."
+  - The last moving direction will affect your position when leaving the object.
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &-1026707718145419266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "RabbitFollow: Press \u201CI\u201D to j\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1096, y: -200}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: -1026707718145419266}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -4007303844130040772}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: -1026707718145419266}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 2948760066464901543}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: RabbitFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - "Press \u201CI\u201D to jump."
   IsMax: 1
   curIndex: 0
 --- !u!114 &-108990237935334489
@@ -362,7 +317,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: 'Start: English'
+  m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -1160, y: -152}
@@ -376,7 +331,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: -6158538786347444998}
+        node: {fileID: 1486939077118448915}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -397,19 +352,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -108990237935334489}
-  - {fileID: 7698071810658022484}
   - {fileID: -19444966001815500}
-  - {fileID: -193225391264127040}
-  - {fileID: -8701058654670615741}
-  - {fileID: 8626995005633559620}
-  - {fileID: -6158538786347444998}
-  - {fileID: 3171243332986569646}
-  - {fileID: 1661349686058611087}
-  - {fileID: -8295240146292895659}
-  - {fileID: -670467678543321620}
-  - {fileID: 5396913828370016108}
-  - {fileID: -5806914758553138335}
-  - {fileID: 4531221043956818425}
+  - {fileID: 1486939077118448915}
+  - {fileID: -7961288827548346447}
+  - {fileID: 8854893213720795003}
+  - {fileID: 3047314983951603264}
+  - {fileID: -6960548543765001964}
+  - {fileID: -1026707718145419266}
+  - {fileID: 2948760066464901543}
+  - {fileID: -3828573943537354403}
+  - {fileID: -4007303844130040772}
+  - {fileID: 6860501728574107001}
   startNode: {fileID: 0}
   dialogueNode: {fileID: 0}
   optionNode: {fileID: 0}
@@ -417,7 +370,7 @@ MonoBehaviour:
   commentNode: {fileID: 0}
   profileNode: {fileID: -108990237935334489}
   current: {fileID: -19444966001815500}
---- !u!114 &1661349686058611087
+--- !u!114 &1486939077118448915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -427,34 +380,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: I can jump <si\u2026"
+  m_Name: "RabbitFollow: Hey are you ok\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -904, y: 376}
+  position: {x: -920, y: -200}
   ports:
     keys:
     - Input
     - Output
     values:
     - _fieldName: Input
-      _node: {fileID: 1661349686058611087}
+      _node: {fileID: 1486939077118448915}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: Output
-        node: {fileID: 8626995005633559620}
+      - fieldName: Ouput
+        node: {fileID: -19444966001815500}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Output
-      _node: {fileID: 1661349686058611087}
+      _node: {fileID: 1486939077118448915}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: -8295240146292895659}
+        node: {fileID: -7961288827548346447}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -471,10 +424,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - I can jump <size=120%>HIGH</size> by pressing <b><color="red">I</color></b>.
+  - Hey are you ok?
   IsMax: 1
   curIndex: 0
---- !u!114 &3171243332986569646
+--- !u!114 &2948760066464901543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,34 +437,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "PangolinFollow: And I'm Pangol\u2026"
+  m_Name: "PangolinFollow: Press \u201CQ\u201D to p\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -552, y: -8}
+  position: {x: -920, y: 312}
   ports:
     keys:
     - Input
     - Output
     values:
     - _fieldName: Input
-      _node: {fileID: 3171243332986569646}
+      _node: {fileID: 2948760066464901543}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: -6158538786347444998}
+        node: {fileID: -1026707718145419266}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Output
-      _node: {fileID: 3171243332986569646}
+      _node: {fileID: 2948760066464901543}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: 7698071810658022484}
+        node: {fileID: -3828573943537354403}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -528,10 +481,14 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - And I'm Pangolin!
+  - "Press \u201CQ\u201D to possess an object."
+  - When possessing an object, the pangolin can rotate the object.
+  - "Try pressing \u201CW\u201D to rotate the object."
+  - "Press \u201CQ\u201D again to leave the object."
+  - The last moving direction will affect your position when leaving the object.
   IsMax: 1
   curIndex: 0
---- !u!114 &4531221043956818425
+--- !u!114 &3047314983951603264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -541,29 +498,86 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: 'RabbitFollow: It works!'
+  m_Name: "PangolinFollow: Press \u201CA\u201D or \u201D\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 840, y: 504}
+  position: {x: 88, y: -168}
   ports:
     keys:
     - Input
     - Output
     values:
     - _fieldName: Input
-      _node: {fileID: 4531221043956818425}
+      _node: {fileID: 3047314983951603264}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: -5806914758553138335}
+        node: {fileID: 8854893213720795003}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: Output
-      _node: {fileID: 4531221043956818425}
+      _node: {fileID: 3047314983951603264}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: -6960548543765001964}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: PangolinFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - "Press \u201CA\u201D or \u201DD\u201D to move left or right."
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &6860501728574107001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "PangolinFollow: Let's try to p\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -248, y: 312}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 6860501728574107001}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -3828573943537354403}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 6860501728574107001}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections: []
@@ -571,177 +585,6 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  TalkingPerson: RabbitFollow
-  Expression: None
-  Facing: 0
-  FacingPerson: 
-  Width: 0
-  ShowBubble: 1
-  CameraFollow: 1
-  Audio: {fileID: 0}
-  PlayPerChar: 0
-  PlayTyping: 0
-  Dialogue:
-  - It works!
-  IsMax: 1
-  curIndex: 0
---- !u!114 &5396913828370016108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: Waiting... (Ke\u2026"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 136, y: 504}
-  ports:
-    keys:
-    - Input
-    - Output
-    values:
-    - _fieldName: Input
-      _node: {fileID: 5396913828370016108}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Output
-        node: {fileID: -670467678543321620}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Output
-      _node: {fileID: 5396913828370016108}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Input
-        node: {fileID: -5806914758553138335}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  TalkingPerson: RabbitFollow
-  Expression: None
-  Facing: 0
-  FacingPerson: 
-  Width: 0
-  ShowBubble: 1
-  CameraFollow: 1
-  Audio: {fileID: 0}
-  PlayPerChar: 0
-  PlayTyping: 0
-  Dialogue:
-  - Waiting... (KeyE shouldn't work now, press KeyX instead)
-  IsMax: 1
-  curIndex: 0
---- !u!114 &7698071810658022484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: Let's learn ho\u2026"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -200, y: -232}
-  ports:
-    keys:
-    - Input
-    - Output
-    values:
-    - _fieldName: Input
-      _node: {fileID: 7698071810658022484}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Output
-        node: {fileID: 3171243332986569646}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Output
-      _node: {fileID: 7698071810658022484}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Input
-        node: {fileID: -193225391264127040}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  TalkingPerson: RabbitFollow
-  Expression: None
-  Facing: 0
-  FacingPerson: 
-  Width: 0
-  ShowBubble: 1
-  CameraFollow: 1
-  Audio: {fileID: 0}
-  PlayPerChar: 0
-  PlayTyping: 0
-  Dialogue:
-  - Let's learn how to play this game!
-  IsMax: 1
-  curIndex: 0
---- !u!114 &8626995005633559620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "PangolinFollow: Press <b><colo\u2026"
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 856, y: -8}
-  ports:
-    keys:
-    - Input
-    - Output
-    values:
-    - _fieldName: Input
-      _node: {fileID: 8626995005633559620}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Output
-        node: {fileID: -8701058654670615741}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: Output
-      _node: {fileID: 8626995005633559620}
-      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-      connections:
-      - fieldName: Input
-        node: {fileID: 1661349686058611087}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
   TalkingPerson: PangolinFollow
   Expression: None
   Facing: 0
@@ -753,7 +596,63 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Press <b><color="red">A</color></b> or <b><color="red">D</color></b> to move
-    me.
+  - Let's try to press the button to get out of here.
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &8854893213720795003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "RabbitFollow: Let's get out \u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -248, y: -200}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 8854893213720795003}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -7961288827548346447}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 8854893213720795003}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 3047314983951603264}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: RabbitFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - Let's get out of here before the guards find us!
   IsMax: 1
   curIndex: 0
