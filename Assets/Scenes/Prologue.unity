@@ -214,6 +214,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.97400004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.09944445
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.8118751
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.0332963
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958464334350032277, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649640431765355238, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_fontSize
+      value: 41.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649640431765355238, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 377b52b31df923441b25eddeb3419e98, type: 2}
+    - target: {fileID: 4649640431765355238, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4014607759132038059, guid: 377b52b31df923441b25eddeb3419e98, type: 2}
     - target: {fileID: 5481677205876258144, guid: 9a5f69247b3bdfb4bb1aa80b0378526f, type: 3}
       propertyPath: m_RootOrder
       value: 1
