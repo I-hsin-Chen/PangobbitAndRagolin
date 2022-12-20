@@ -152,6 +152,10 @@ public class PlayerControl : MonoBehaviour
         if(isRunning) rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y) ;
         else rb.velocity = new Vector2(0, rb.velocity.y);
         if (playerCanMove && isPangolin) {
+            if(name == "Gear"){
+                if(Input.GetKey(KeyCode.W)) objectControl.GearRotate(false);  // gear up
+                if(Input.GetKey(KeyCode.S)) objectControl.GearRotate(true); // gear down
+            }
             if(name == "ColorBox"){
                 if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
                 if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
@@ -243,10 +247,6 @@ public class PlayerControl : MonoBehaviour
         if(name == "Server"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.ServerRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.ServerRotate(true); // turn counter-clockwise
-        }
-        if(name == "Gear"){
-            if(Input.GetKey(KeyCode.W)) objectControl.GearRotate(false);  // turn clockwise
-            if(Input.GetKey(KeyCode.S)) objectControl.GearRotate(true); // turn counter-clockwise
         }
         if(name == "Gate_Gear"){
             if(Input.GetKey(KeyCode.W)) objectControl.GateClose(false);  // open gate
