@@ -24,6 +24,9 @@ public class MyPlayTextEvents : MonoBehaviour
         print("Adding PlayTextEvents");
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("PrintEvent", PrintEvent);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyX", WaitingForKeyX);
+
+        // start the graph
+        EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
     }
 
     void PrintEvent(List<EventValueClass> Value)
