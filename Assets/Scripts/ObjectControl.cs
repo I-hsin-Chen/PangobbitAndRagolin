@@ -99,13 +99,13 @@ public class ObjectControl : MonoBehaviour
 
     public void GearRotate(bool clockwise) // rotate gear and move up
     {
-        if(!clockwise){
-            GetComponent<Rigidbody2D>().rotation += 1.5f;
-            transform.position += new Vector3(0, 0.0142f, 0);
+        if(!clockwise && transform.position.y < 8f){
+            GetComponent<Rigidbody2D>().rotation += 4.5f;
+            transform.position += new Vector3(0, 0.0426f, 0);
         }
-        else{
-            GetComponent<Rigidbody2D>().rotation -= 1.5f;
-            transform.position -= new Vector3(0, 0.0142f, 0);
+        else if(clockwise && transform.position.y > -9f){
+            GetComponent<Rigidbody2D>().rotation -= 4.5f;
+            transform.position -= new Vector3(0, 0.0426f, 0);
         }
     }
 

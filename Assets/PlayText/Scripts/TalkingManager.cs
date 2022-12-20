@@ -1,4 +1,6 @@
-﻿using GraphSpace;
+﻿using System.Collections;
+using System.Collections.Generic;
+using GraphSpace;
 using PlayTextSupport;
 using UnityEngine;
 
@@ -8,10 +10,18 @@ using UnityEngine;
 public class TalkingManager : MonoBehaviour
 {
     public DialogueGraph Graph;
+    public bool LockE = false;
+
+    void Start()
+    {
+        // prepared for disabling graph transition in game
+        EventCenter.GetInstance().AddEventListener("LockKeyE", LockKeyE);
+        EventCenter.GetInstance().AddEventListener("UnlockKeyE", UnlockKeyE);
+    }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && !LockE)
         {
             EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
         }
@@ -29,5 +39,17 @@ public class TalkingManager : MonoBehaviour
         {
             EventCenter.GetInstance().EventTriggered("PlayText.Stop");
         }
+    }
+
+    void LockKeyE()
+    {
+        Debug.Log("LockKeyE");
+        LockE = true;
+    }
+
+    void UnlockKeyE()
+    {
+        Debug.Log("UnlockKeyE");
+        LockE = false;
     }
 }

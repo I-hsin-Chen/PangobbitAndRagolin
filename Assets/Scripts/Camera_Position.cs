@@ -21,7 +21,8 @@ public class Camera_Position : MonoBehaviour
     {
         Vector3 cen_pos = (rabbit.transform.position + pangolin.transform.position)*0.5f;
         // print(cen_pos);
-        cen_pos.y = cen_pos.y + 5f;
+        //cen_pos.y = cen_pos.y + 5f;
+        cen_pos.y = 0.3f;
         center.transform.position = cen_pos;
     }
 }
