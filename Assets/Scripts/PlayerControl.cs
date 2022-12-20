@@ -41,6 +41,7 @@ public class PlayerControl : MonoBehaviour
     public bool isRunning { get; private set; } = false;
     public bool isShrinking { get; private set; } = false;
     public bool isDrowning { get; private set; } = false;
+    public bool isRolling { get; private set; } = false;
     public virtual bool canJump => isRabbit && collisionState.grounded;
 
     // Animation
@@ -50,6 +51,7 @@ public class PlayerControl : MonoBehaviour
     private int idleState;
     private int shrinkState;
     private int drownState;
+    private int rollState;
     private float xScale;
 
 
@@ -81,6 +83,8 @@ public class PlayerControl : MonoBehaviour
 
         drownState = Animator.StringToHash("Base Layer.Drown");
         jumpState = Animator.StringToHash("Base Layer.Jump");
+        
+        rollState = Animator.StringToHash("Base Layer.Roll");
 
         if (isPlayer) dialogFollowRefresh(gameObject);
     }
@@ -225,6 +229,8 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        isRolling = (isPlayer && Input.GetKey(KeyCode.W)) ? true : false;
+            
         // Test
         if(name == "Table"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
@@ -360,6 +366,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (isDrowning) PlayStateIfNotInState(drownState);
         else if (isShrinking) PlayStateIfNotInState(shrinkState);
+        else if (isRolling) PlayStateIfNotInState(rollState);
         else if (!canJump && rb.velocity.y >= 1.0f) PlayStateIfNotInState(jumpState);
         else if (isRunning) PlayStateIfNotInState(moveState);
         else PlayStateIfNotInState(idleState);
