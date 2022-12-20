@@ -83,6 +83,7 @@ public class PlayerControl : MonoBehaviour
         jumpState = Animator.StringToHash("Base Layer.Jump");
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -150,6 +151,12 @@ public class PlayerControl : MonoBehaviour
 
         if(isRunning) rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y) ;
         else rb.velocity = new Vector2(0, rb.velocity.y);
+        if (playerCanMove && isPangolin) {
+            if(name == "ColorBox"){
+                if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
+                if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
+            }
+        }
     }
 
     private void RabbitCheck()
@@ -247,10 +254,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Level 4
-        if(name == "ColorBox"){
-            if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
-            if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
-        }
+        
 
     }
 
