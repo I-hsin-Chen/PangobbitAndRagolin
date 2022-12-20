@@ -129,6 +129,8 @@ public class ObjectControl : MonoBehaviour
         }
         else {
             var body = GetComponent<Rigidbody2D>();
+
+            if (Mathf.Abs(body.angularVelocity) > 200.0f) return;
             float strength;
             if (clockwise) strength = -22.0f;
             else strength = 22.0f;
