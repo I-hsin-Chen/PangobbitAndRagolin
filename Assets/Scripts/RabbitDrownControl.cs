@@ -30,6 +30,7 @@ public class RabbitDrownControl : MonoBehaviour
 
     public IEnumerator ScheduleReload(){
         yield return new WaitForSeconds(2.0f);
-        gameManager.ChangeSceneTo(6);
+        // reload this scene
+        gameManager.ChangeSceneTo(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -21,7 +21,8 @@ public class TalkingManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && !LockE)
+        // change the key to space instead of E
+        if(Input.GetKeyDown(KeyCode.Space) && !LockE)
         {
             EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
         }
