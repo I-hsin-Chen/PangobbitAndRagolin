@@ -289,6 +289,7 @@ public class PlayerControl : MonoBehaviour
 
         // *** For Dialog box follow *** //
         dialogFollowRefresh(obj);
+        obj.GetComponent<ObjectControl>().unhighlightObject();
 
         // run the possess animation ?
         yield return new WaitForSeconds(0.5f);
