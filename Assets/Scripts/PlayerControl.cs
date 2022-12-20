@@ -160,6 +160,10 @@ public class PlayerControl : MonoBehaviour
                 if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
                 if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
             }
+            if(name == "Tank"){
+                if(Input.GetKey(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
+                if(Input.GetKey(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
+            }
         }
     }
 
@@ -227,8 +231,8 @@ public class PlayerControl : MonoBehaviour
 
         // Level_1
         if(name == "Tank"){
-            if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
-            if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
+            // if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
+            // if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
             if(Input.GetKeyDown(KeyCode.E)) {
                 objectControl.TankShoot(); // shoot
                 audiomanager.PlaySE_Tower();
