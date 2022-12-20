@@ -40,6 +40,13 @@ public class Prologue : MonoBehaviour
         StartPrologue();
     }
 
+    void Update() {
+        // Press S to skip the prologue
+        if (Input.GetKeyDown(KeyCode.S)) {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Test");
+        }
+    }
+
     public void StartPrologue(){
         Debug.Log("Start Prologue");
         StartCoroutine(SchedulePrologue(0));
