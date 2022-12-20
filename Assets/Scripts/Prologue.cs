@@ -40,6 +40,13 @@ public class Prologue : MonoBehaviour
         StartPrologue();
     }
 
+    void Update() {
+        // Press S to skip the prologue
+        if (Input.GetKeyDown(KeyCode.S)) {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Test");
+        }
+    }
+
     public void StartPrologue(){
         Debug.Log("Start Prologue");
         StartCoroutine(SchedulePrologue(0));
@@ -53,33 +60,34 @@ public class Prologue : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Test");
             yield return null;
         }
-
-        float startTime;
-        float endTime;
-        float alpha;
-        textObject.GetComponent<TextMeshProUGUI>().text = contents[contents_index];
-        Debug.Log("Displaying contents " + contents_index);
-        // Fade in the text
-        startTime = Time.time;
-        endTime = startTime + fadeInTime;
-        while (Time.time < endTime) {
-            alpha = (Time.time - startTime) / fadeInTime;
-            textObject.GetComponent<TextMeshProUGUI>().alpha = alpha;
-            yield return null;
+        else {
+            float startTime;
+            float endTime;
+            float alpha;
+            textObject.GetComponent<TextMeshProUGUI>().text = contents[contents_index];
+            Debug.Log("Displaying contents " + contents_index);
+            // Fade in the text
+            startTime = Time.time;
+            endTime = startTime + fadeInTime;
+            while (Time.time < endTime) {
+                alpha = (Time.time - startTime) / fadeInTime;
+                textObject.GetComponent<TextMeshProUGUI>().alpha = alpha;
+                yield return null;
+            }
+            // Display the text
+            yield return new WaitForSeconds(duration);
+            // Fade out the text
+            startTime = Time.time;
+            endTime = startTime + fadeOutTime;
+            while (Time.time < endTime) {
+                alpha = 1.0f - (Time.time - startTime) / fadeOutTime;
+                textObject.GetComponent<TextMeshProUGUI>().alpha = alpha;
+                yield return null;
+            }
+            // Delay before the next text
+            yield return new WaitForSeconds(delay);
+            // Start the next text
+            StartCoroutine(SchedulePrologue(contents_index + 1));
         }
-        // Display the text
-        yield return new WaitForSeconds(duration);
-        // Fade out the text
-        startTime = Time.time;
-        endTime = startTime + fadeOutTime;
-        while (Time.time < endTime) {
-            alpha = 1.0f - (Time.time - startTime) / fadeOutTime;
-            textObject.GetComponent<TextMeshProUGUI>().alpha = alpha;
-            yield return null;
-        }
-        // Delay before the next text
-        yield return new WaitForSeconds(delay);
-        // Start the next text
-        StartCoroutine(SchedulePrologue(contents_index + 1));
     }
 }

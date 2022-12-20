@@ -23,25 +23,28 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // just for development, press 1-5 to load different scenes
-        // if (Input.GetKeyDown(KeyCode.Alpha1)) {
-        //     ChangeSceneTo(1);
-        // }
-        // if (Input.GetKeyDown(KeyCode.Alpha2)) {
-        //     ChangeSceneTo(2);
-        // }
-        // if (Input.GetKeyDown(KeyCode.Alpha3)) {
-        //     ChangeSceneTo(3);
-        // }
-        // if (Input.GetKeyDown(KeyCode.Alpha4)) {
-        //     ChangeSceneTo(4);
-        // }
-        // if (Input.GetKeyDown(KeyCode.Alpha5)) {
-        //     ChangeSceneTo(5);
-        // }
-        // if (Input.GetKeyDown(KeyCode.Alpha6)) {
-        //     ChangeSceneTo(6);
-        // }
+        // just for development, press 0-6 to change scene
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            ChangeSceneTo(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            ChangeSceneTo(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            ChangeSceneTo(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            ChangeSceneTo(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            ChangeSceneTo(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            ChangeSceneTo(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            ChangeSceneTo(6);
+        }
     }
 
     // call this public function when win
