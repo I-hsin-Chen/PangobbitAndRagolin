@@ -26,11 +26,8 @@ public class Prologue : MonoBehaviour
         textObject.GetComponent<TextMeshProUGUI>().text = "";
         textObject.GetComponent<TextMeshProUGUI>().alpha = 0.0f;
         // Initialize the contents, just for testing now
-        contents.Add("ouo");
-        contents.Add("ouob");
-        contents.Add("douob");
-        contents.Add("dOuOb");
-        contents.Add("dOUOb");
+        contents.Add("Once upon a time, \nthere was a biotechnology laboratory that conducted inhumane experiments on many animals in order to study illegal drugs.");
+        contents.Add("In these inhumane biological experiments, an accident occurred, and two animals evolved unimaginable extraordinary superpowers because of the drug and escaped from control.");
         // Initialize the fade in/out time and duration
         fadeInTime = 1.0f;
         duration = 2.0f;
