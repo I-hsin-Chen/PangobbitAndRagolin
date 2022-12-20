@@ -36,9 +36,12 @@ public class ObjectControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (possessed && gameObject.name != "ColorBox") {
-            float y = GetComponent<Collider2D>().bounds.max.y;
-            myHint.transform.position = new Vector3 (transform.position.x, y + 0.5f, transform.position.z);
+        if (possessed) {
+            if (gameObject.name != "ColorBox"){
+                float y = GetComponent<Collider2D>().bounds.max.y;
+                myHint.transform.position = new Vector3 (transform.position.x, y + 0.5f, transform.position.z);
+            }
+            else myHint.transform.position = new Vector3 (transform.position.x, transform.position.y + 0.5f, transform.position.z);
         }
     }
 

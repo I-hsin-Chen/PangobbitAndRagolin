@@ -83,40 +83,40 @@ public class ColorBoxControl : MonoBehaviour
     public IEnumerator ScheduleColorDisappear(){
 
         // Challenge 1 : Green disappear //
-        // stickState[(int)Colors.GREEN] = false;
-        // yield return new WaitForSeconds(5.0f);
-        // setStickState();
-        // yield return new WaitForSeconds(challengeGapTime);
-        // resetStickState();
+        stickState[(int)Colors.GREEN] = false;
+        yield return new WaitForSeconds(5.0f);
+        setStickState();
+        yield return new WaitForSeconds(challengeGapTime);
+        resetStickState();
 
-        // // Challenge 2 : Yellow and Blue disappear //
-        // remainingTime = 6;
-        // stickState[(int)Colors.YELLOW] = false;
-        // stickState[(int)Colors.BLUE] = false;
-        // yield return new WaitForSeconds(5.0f);
-        // setStickState();
-        // yield return new WaitForSeconds(challengeGapTime);
-        // resetStickState();
+        // Challenge 2 : Yellow and Blue disappear //
+        remainingTime = 6;
+        stickState[(int)Colors.YELLOW] = false;
+        stickState[(int)Colors.BLUE] = false;
+        yield return new WaitForSeconds(5.0f);
+        setStickState();
+        yield return new WaitForSeconds(challengeGapTime);
+        resetStickState();
 
-        // // Challenge 3 : Red Yellow and Green disappear //
-        // remainingTime = 6;
-        // stickState[(int)Colors.YELLOW] = false;
-        // stickState[(int)Colors.RED] = false;
-        // stickState[(int)Colors.GREEN] = false;
-        // yield return new WaitForSeconds(5.0f);
-        // setStickState();
-        // yield return new WaitForSeconds(challengeGapTime);
-        // resetStickState();
+        // Challenge 3 : Red Yellow and Green disappear //
+        remainingTime = 6;
+        stickState[(int)Colors.YELLOW] = false;
+        stickState[(int)Colors.RED] = false;
+        stickState[(int)Colors.GREEN] = false;
+        yield return new WaitForSeconds(5.0f);
+        setStickState();
+        yield return new WaitForSeconds(challengeGapTime);
+        resetStickState();
 
-        // // Challenge 4 : Red Blue and Green disappear //
-        // remainingTime = 6;
-        // stickState[(int)Colors.BLUE] = false;
-        // stickState[(int)Colors.RED] = false;
-        // stickState[(int)Colors.GREEN] = false;
-        // yield return new WaitForSeconds(5.0f);
-        // setStickState();
-        // yield return new WaitForSeconds(challengeGapTime);
-        // resetStickState();
+        // Challenge 4 : Red Blue and Green disappear //
+        remainingTime = 6;
+        stickState[(int)Colors.BLUE] = false;
+        stickState[(int)Colors.RED] = false;
+        stickState[(int)Colors.GREEN] = false;
+        yield return new WaitForSeconds(5.0f);
+        setStickState();
+        yield return new WaitForSeconds(challengeGapTime);
+        resetStickState();
 
         // After passing all challenges, the water starts to disappear
         remainingTime = 6;
