@@ -46,12 +46,12 @@ public class PlayerControl : MonoBehaviour
 
     // Animation
     private Animator animator;
-    private int moveState;
-    private int jumpState;
-    private int idleState;
-    private int shrinkState;
-    private int drownState;
-    private int rollState;
+    public int moveState;
+    public int jumpState;
+    public int idleState;
+    public int shrinkState;
+    public int drownState;
+    public int rollState;
     private float xScale;
 
 

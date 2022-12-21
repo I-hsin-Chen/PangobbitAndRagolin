@@ -3237,6 +3237,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!61 &1097308509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3289,7 +3295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145995374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.124811, y: -2.7495365, z: 9.362477}
+  m_LocalPosition: {x: -8.542, y: -2.127, z: 9.362477}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5110,6 +5116,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1475956320}
   - component: {fileID: 1475956321}
+  - component: {fileID: 1475956322}
+  - component: {fileID: 1475956323}
+  - component: {fileID: 1475956325}
+  - component: {fileID: 1475956324}
+  - component: {fileID: 1475956326}
   m_Layer: 0
   m_Name: Water_tap_head
   m_TagString: Untagged
@@ -5125,7 +5136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475956319}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -8.12, y: -2.76, z: 0}
+  m_LocalPosition: {x: -8.545, y: -1.855, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5184,6 +5195,90 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1475956322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475956319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4ae99da2ec3624ea8b0b60e4bd9d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+  bullet_prefab: {fileID: 0}
+--- !u!114 &1475956323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475956319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDirection: 0
+--- !u!114 &1475956324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475956319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6576df350fc23b44b1efda7a2500b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1475956325
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475956319}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1475956326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475956319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778270b157f92be449d134e71cdee112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  jumpStrength: 10
+  isRabbit: 1
+  isPangolin: 0
+  isObject: 0
+  isKinematic: 0
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!1 &1729097176
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,6 +5450,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
+--- !u!1 &1855012991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6011116746171985883, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
+  m_PrefabInstance: {fileID: 1855012990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1855012992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855012991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8adb75843fb2949aafa4d6a36e81e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1862586543
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,6 +5746,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 0
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1867208916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5672,7 +5790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907560826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05518931, y: 2.0295365, z: -9.362477}
+  m_LocalPosition: {x: -0.05518931, y: 0.47, z: -9.362477}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
