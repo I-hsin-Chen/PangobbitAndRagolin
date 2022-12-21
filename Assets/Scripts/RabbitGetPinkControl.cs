@@ -38,7 +38,7 @@ public class RabbitGetPinkControl : MonoBehaviour
         rabbitCtrl.enabled = false;
         animator.Play(getPinkState, 0);
         rabbitCtrl.moveState = Animator.StringToHash("Base Layer.Pink_Move");
-        rabbitCtrl.idleState = Animator.StringToHash("Base Layer.Idle");
+        rabbitCtrl.idleState = Animator.StringToHash("Base Layer.Pink_Idle");
         rabbitCtrl.shrinkState = Animator.StringToHash("Base Layer.Pink_Shrink");
         rabbitCtrl.jumpState = Animator.StringToHash("Base Layer.Pink_Jump");
         yield return new WaitForSeconds(pinkAnimLength);
