@@ -196,6 +196,11 @@ public class PlayerControl : MonoBehaviour
                 isRunning = false;
             }
         }
+        else if (isPossessedObject) {
+            if (Input.GetKey(KeyCode.J)) faceDirection.SetDirection(-1);
+            else if (Input.GetKey(KeyCode.L)) faceDirection.SetDirection(1);
+        }
+        
         if (Input.GetKeyDown(KeyCode.I)) Jump();
         if (name == "Tank"){
             if(Input.GetKeyDown(KeyCode.O)){ // shoot
@@ -227,6 +232,10 @@ public class PlayerControl : MonoBehaviour
                 runningDirection = 0;
                 isRunning = false;
             }
+        }
+        else if (isPossessedObject) {
+            if (Input.GetKey(KeyCode.A)) faceDirection.SetDirection(-1);
+            else if (Input.GetKey(KeyCode.D)) faceDirection.SetDirection(1);
         }
 
         isRolling = (isPlayer && Input.GetKey(KeyCode.W)) ? true : false;
@@ -266,7 +275,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Level 4
-        
+        if (name == "WaterTap"){
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) objectControl.WaterTapRotate();  // open gate
+            else objectControl.WaterTapStopRotate(); 
+        }
 
     }
 
@@ -320,6 +332,9 @@ public class PlayerControl : MonoBehaviour
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         if(obj.gameObject.name=="ColorBox" && !obj.GetComponent<ColorBoxControl>().isDynamic)
+            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+        if(obj.gameObject.name=="WaterTap")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         isShrinking = false;

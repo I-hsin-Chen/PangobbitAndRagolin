@@ -142,6 +142,18 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    public void WaterTapRotate(){
+        transform.Find("Head").GetComponent<Animator>().enabled = true;
+        transform.Find("Water").GetComponent<Animator>().enabled = true;
+        transform.Find("WaterArea").GetComponent<WaterAreaControl>().settapOpened(true);
+    }
+
+    public void WaterTapStopRotate(){
+        transform.Find("Head").GetComponent<Animator>().enabled = false;
+        transform.Find("Water").GetComponent<Animator>().enabled = false;
+        transform.Find("WaterArea").GetComponent<WaterAreaControl>().settapOpened(false);
+    }
+
     // ************** Draw possessing hint on top of objects ************** //
 
     public void highlightObject(bool isRabbit)

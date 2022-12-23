@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RabbitGetPinkControl : MonoBehaviour
 {
-    private bool isPink;
+    public bool isPink { get; private set; } = false;
     private float pinkAnimLength = 0.433f;
     private int getPinkState;
     private int getCleanState;
@@ -35,6 +35,7 @@ public class RabbitGetPinkControl : MonoBehaviour
     }
 
     private IEnumerator schedulePinkAnimation(){
+        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         rabbitCtrl.enabled = false;
         animator.Play(getPinkState, 0);
         rabbitCtrl.moveState = Animator.StringToHash("Base Layer.Pink_Move");
@@ -46,7 +47,9 @@ public class RabbitGetPinkControl : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator scheduleCleanAnimation(){
+    public IEnumerator scheduleCleanAnimation(){
+        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        isPink = false;
         rabbitCtrl.enabled = false;
         animator.Play(getCleanState, 0);
         rabbitCtrl.moveState = Animator.StringToHash("Base Layer.Move");
