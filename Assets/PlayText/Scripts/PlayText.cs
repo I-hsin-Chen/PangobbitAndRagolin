@@ -185,6 +185,9 @@ public class PlayText : MonoBehaviour
         EventCenter.GetInstance().AddEventListener<int>("PlayText.OptionHover", OptionHover);
         EventCenter.GetInstance().AddEventListener("PlayText.OptionUp", OptionUp);
         EventCenter.GetInstance().AddEventListener("PlayText.OptionDown", OptionDown);
+
+        // Paul's code
+        EventCenter.GetInstance().AddEventListener("PlayText.ForceNext", ForcePlayTextNext);
     }
 
     void FindPerson()
@@ -1371,5 +1374,17 @@ public class PlayText : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Paul's code
+    // force the conversation to play even if the player is still talking
+    void ForcePlayTextNext() {
+        Debug.Log("ForcePlayTextNext");
+        if (state == STATE.TYPING) {
+            Debug.Log("ForcePlayTextNext: STATE.TYPING");
+            // EventCenter.GetInstance().EventTriggered("PlayText.Next");
+            state = STATE.PAUSED;
+        }
+        EventCenter.GetInstance().EventTriggered("PlayText.Next");
     }
 }

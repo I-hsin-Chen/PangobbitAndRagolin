@@ -10,19 +10,19 @@ using UnityEngine;
 public class TalkingManager : MonoBehaviour
 {
     public DialogueGraph Graph;
-    public bool LockE = false;
+    public bool ConversationLocked = false;
 
     void Start()
     {
         // prepared for disabling graph transition in game
-        EventCenter.GetInstance().AddEventListener("LockKeyE", LockKeyE);
-        EventCenter.GetInstance().AddEventListener("UnlockKeyE", UnlockKeyE);
+        EventCenter.GetInstance().AddEventListener("LockConversation", LockConversation);
+        EventCenter.GetInstance().AddEventListener("UnLockConversation", UnLockConversation);
     }
 
     private void Update()
     {
         // change the key to space instead of E
-        if(Input.GetKeyDown(KeyCode.Space) && !LockE)
+        if(Input.GetKeyDown(KeyCode.Space) && !ConversationLocked)
         {
             EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
         }
@@ -42,15 +42,15 @@ public class TalkingManager : MonoBehaviour
         }
     }
 
-    void LockKeyE()
+    void LockConversation()
     {
-        Debug.Log("LockKeyE");
-        LockE = true;
+        Debug.Log("LockConversation");
+        ConversationLocked = true;
     }
 
-    void UnlockKeyE()
+    void UnLockConversation()
     {
-        Debug.Log("UnlockKeyE");
-        LockE = false;
+        Debug.Log("UnLockConversation");
+        ConversationLocked = false;
     }
 }
