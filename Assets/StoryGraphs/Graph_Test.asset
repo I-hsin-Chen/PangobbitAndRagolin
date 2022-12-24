@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9076172176589050383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: "Event: DestroyPlayTex\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 88, y: 872}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: -9076172176589050383}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 6860501728574107001}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: -9076172176589050383}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: DestroyPlayText_Follow
+  WaitCallback: 0
+  EventValue: []
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &-7961288827548346447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +99,9 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - I'm okay, we finally got out of there.
+  - 'I''m okay, we finally got out of there.
+
+    <color=grey>...press space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &-6960548543765001964
@@ -94,7 +141,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: -4007303844130040772}
+        node: {fileID: -6197769893182632730}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -115,6 +162,54 @@ MonoBehaviour:
     to move left and right."
   IsMax: 1
   curIndex: 0
+--- !u!114 &-6197769893182632730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: 'Event: WaitingForKeyW'
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 424, y: 280}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: -6197769893182632730}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -6960548543765001964}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: -6197769893182632730}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: -4007303844130040772}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: WaitingForKeyW
+  WaitCallback: 0
+  EventValue: []
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &-4927819189750693560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +268,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "PangolinFollow: Press \u201CW\u201D to r\u2026"
+  m_Name: "PangolinFollow: Try pressing <\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 760, y: -168}
+  position: {x: 744, y: 280}
   ports:
     keys:
     - Input
@@ -188,7 +283,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: -6960548543765001964}
+        node: {fileID: -6197769893182632730}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -200,7 +295,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: -1026707718145419266}
+        node: {fileID: 7616767417801610813}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -217,7 +312,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "Press \u201CW\u201D to rotate."
+  - "Try pressing <color=red>\u201CW\u201D</color> to rotate."
   IsMax: 1
   curIndex: 0
 --- !u!114 &-3828573943537354403
@@ -233,7 +328,7 @@ MonoBehaviour:
   m_Name: "RabbitFollow: Press \u201CU\u201D to p\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -584, y: 1192}
+  position: {x: -600, y: 872}
   ports:
     keys:
     - Input
@@ -291,10 +386,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
-  m_Name: "RabbitFollow: Press \u201CI\u201D to j\u2026"
+  m_Name: "RabbitFollow: Try pressing <\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1096, y: -200}
+  position: {x: 1416, y: 248}
   ports:
     keys:
     - Input
@@ -306,7 +401,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: -4007303844130040772}
+        node: {fileID: 7616767417801610813}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -335,7 +430,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "Press \u201CI\u201D to jump."
+  - "Try pressing <color=red>\u201CI\u201D</color> to jump."
   IsMax: 1
   curIndex: 0
 --- !u!114 &-108990237935334489
@@ -366,7 +461,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -1160, y: -152}
@@ -414,13 +509,17 @@ MonoBehaviour:
   - {fileID: 6860501728574107001}
   - {fileID: 6006742895279303912}
   - {fileID: -4927819189750693560}
+  - {fileID: -6197769893182632730}
+  - {fileID: 7616767417801610813}
+  - {fileID: 4672568720062618969}
+  - {fileID: -9076172176589050383}
   startNode: {fileID: 0}
   dialogueNode: {fileID: 0}
   optionNode: {fileID: 0}
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -108990237935334489}
-  current: {fileID: -4007303844130040772}
+  current: {fileID: -19444966001815500}
 --- !u!114 &1486939077118448915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,7 +574,9 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Hey are you okay?
+  - 'Hey are you okay?
+
+    <color=grey>...press space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &2948760066464901543
@@ -491,7 +592,7 @@ MonoBehaviour:
   m_Name: "PangolinFollow: Press \u201CQ\u201D to p\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -920, y: 1224}
+  position: {x: -936, y: 904}
   ports:
     keys:
     - Input
@@ -597,6 +698,60 @@ MonoBehaviour:
     to move left and right."
   IsMax: 1
   curIndex: 0
+--- !u!114 &4672568720062618969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: "Event: SetPlayerCanMo\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 120, y: -200}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 4672568720062618969}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 8854893213720795003}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 4672568720062618969}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 6006742895279303912}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: SetPlayerCanMove
+  WaitCallback: 0
+  EventValue:
+  - ValueType: 3
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    boolValue: 1
+    guid: 
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &6006742895279303912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +777,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Output
-        node: {fileID: 8854893213720795003}
+        node: {fileID: 4672568720062618969}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -658,7 +813,7 @@ MonoBehaviour:
   m_Name: "PangolinFollow: Let's try to p\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -248, y: 1224}
+  position: {x: -264, y: 904}
   ports:
     keys:
     - Input
@@ -680,7 +835,10 @@ MonoBehaviour:
       _node: {fileID: 6860501728574107001}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: Input
+        node: {fileID: -9076172176589050383}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -699,6 +857,54 @@ MonoBehaviour:
   - Let's try to press the button to get out of here.
   IsMax: 1
   curIndex: 0
+--- !u!114 &7616767417801610813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: 'Event: WaitingForKeyI'
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1096, y: 248}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 7616767417801610813}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -4007303844130040772}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 7616767417801610813}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: -1026707718145419266}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: WaitingForKeyI
+  WaitCallback: 0
+  EventValue: []
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &8854893213720795003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +942,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: 6006742895279303912}
+        node: {fileID: 4672568720062618969}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -753,6 +959,9 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Let's get out of here before the guards find us!
+  - 'Let''s get out of here before the guards find us!
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0

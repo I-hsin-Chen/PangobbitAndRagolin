@@ -15,26 +15,29 @@ using UnityEngine;
 // PlayText.Play: Play/Continue the graph
 // PlayText.ForceNext: Force to go to next node even if the current node is not finished
 
-public enum STATE
-{
-    OFF,
-    TYPING,
-    PAUSED
-}
-
 public class MyPlayTextEvents : MonoBehaviour
 {
     public DialogueGraph Graph;
+    private GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
+        // set playerCanMove and playerCanPossess to false
+        gameManager.GetComponent<GameManager>().SetPlayerCanMove(false);
+        gameManager.GetComponent<GameManager>().SetPlayerCanPossess(false);
+
+        // adding events to EventCenter
         print("Adding PlayTextEvents");
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("PrintEvent", PrintEvent);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetPlayerCanMove", SetPlayerCanMove);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetPlayerCanPossess", SetPlayerCanPossess);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyAD", WaitingForKeyAD);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyJL", WaitingForKeyJL);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyW", WaitingForKeyW);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyI", WaitingForKeyI);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("DestroyPlayText_Follow", DestroyPlayText_Follow);
 
         // start the graph
         EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
@@ -48,6 +51,20 @@ public class MyPlayTextEvents : MonoBehaviour
         Debug.Log(Value[1].floatValue);
         Debug.Log(Value[2].stringValue);
         Debug.Log(Value[3].boolValue);
+    }
+
+    // set playerCanMove in event way
+    void SetPlayerCanMove(List<EventValueClass> Value)
+    {
+        Debug.Log("SetPlayerCanMove");
+        gameManager.GetComponent<GameManager>().SetPlayerCanMove(Value[0].boolValue);
+    }
+
+    // set playerCanPossess in event way
+    void SetPlayerCanPossess(List<EventValueClass> Value)
+    {
+        Debug.Log("SetPlayerCanPossess");
+        gameManager.GetComponent<GameManager>().SetPlayerCanPossess(Value[0].boolValue);
     }
 
     // lock conversation and start waiting for player to press KeyA and KeyD
@@ -76,7 +93,6 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         // unlock conversation after A and D are pressed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
-        // EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
 
@@ -106,7 +122,6 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         // unlock conversation after J and L are pressed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
-        // EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
 
@@ -125,7 +140,7 @@ public class MyPlayTextEvents : MonoBehaviour
         EventCenter.GetInstance().EventTriggered("LockConversation");
         bool W_pressed = false;
         // wait for player to press KeyW
-        while (!W_pressed)
+        while (!W_pressed || Input.GetKey(KeyCode.W))
         {
             if (Input.GetKeyDown(KeyCode.W))
                 W_pressed = true;
@@ -133,7 +148,7 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         // unlock conversation after W is pressed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
-        EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
 
     // lock conversation and start waiting for player to press KeyI
@@ -151,7 +166,7 @@ public class MyPlayTextEvents : MonoBehaviour
         EventCenter.GetInstance().EventTriggered("LockConversation");
         bool I_pressed = false;
         // wait for player to press KeyI
-        while (!I_pressed)
+        while (!I_pressed || Input.GetKey(KeyCode.I))
         {
             if (Input.GetKeyDown(KeyCode.I))
                 I_pressed = true;
@@ -159,6 +174,15 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         // unlock conversation after I is pressed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
-        EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
+    // destroy PlayText_Follow
+    void DestroyPlayText_Follow(List<EventValueClass> Value)
+    {
+        Debug.Log("DestroyPlayText_Follow");
+        GameObject to_destroy = GameObject.Find("PlayText_Follow");
+        if (to_destroy != null)
+            Destroy(GameObject.Find("PlayText_Follow"));
     }
 }

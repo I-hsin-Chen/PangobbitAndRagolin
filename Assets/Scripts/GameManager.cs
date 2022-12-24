@@ -7,8 +7,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // player cannot move when false
+    // player cannot move (left, right, up) when false
     private bool playerCanMove;
+    // player cannot possess when false
+    private bool playerCanPossess;
     private float changeSceneDelay = 1.0f;
     private GameObject audioManager;
 
@@ -101,5 +103,17 @@ public class GameManager : MonoBehaviour
     public bool GetPlayerCanMove()
     {
         return playerCanMove;
+    }
+
+    // Function to set playerCanPossess
+    public void SetPlayerCanPossess(bool playerCanPossess)
+    {
+        this.playerCanPossess = playerCanPossess;
+    }
+
+    // Function to get playerCanPossess
+    public bool GetPlayerCanPossess()
+    {
+        return playerCanPossess;
     }
 }
