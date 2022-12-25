@@ -247,7 +247,7 @@ public class PlayerControl : MonoBehaviour
         isRolling = (isPlayer && Input.GetKey(KeyCode.W)) ? true : false;
             
         // Test
-        if(name.Substring(0, 5) == "Table"){
+        if(name.Length > 5 && name.Substring(0, 5) == "Table"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(true); // turn counter-clockwise
         }
