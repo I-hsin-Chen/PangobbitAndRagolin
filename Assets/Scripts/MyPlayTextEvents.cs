@@ -199,16 +199,17 @@ public class MyPlayTextEvents : MonoBehaviour
         Debug.Log("SchduleWaitingForPangolinPossessTable");
         // lock conversation before waiting
         EventCenter.GetInstance().EventTriggered("LockConversation");
-        // TODO: check if pangolin have possessed a table
-        // currently, just wait for keyQ
-        bool Q_pressed = false;
-        // wait for player to press KeyQ
-        while (!Q_pressed || Input.GetKey(KeyCode.Q))
+        bool pangolinIsPossessing = false;
+        // wait for Pangolin to possess a table
+        while (!pangolinIsPossessing || Input.GetKey(KeyCode.Q))
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-                Q_pressed = true;
+            if (GameObject.Find("Table").GetComponent<PlayerControl>().isPangolin ||
+                GameObject.Find("Table_0").GetComponent<PlayerControl>().isPangolin ) {
+                pangolinIsPossessing = true;
+            }
             yield return null;
         }
+
         // unlock conversation after table is possessed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
@@ -227,16 +228,17 @@ public class MyPlayTextEvents : MonoBehaviour
         Debug.Log("SchduleWaitingForRabbitPossessTable");
         // lock conversation before waiting
         EventCenter.GetInstance().EventTriggered("LockConversation");
-        // TODO: check if rabbit have possessed a table
-        // currently, just wait for keyU
-        bool U_pressed = false;
-        // wait for player to press KeyU
-        while (!U_pressed || Input.GetKey(KeyCode.U))
+        bool rabbitIsPossessing = false;
+        // wait for Rabbit to possess a table
+        while (!rabbitIsPossessing || Input.GetKey(KeyCode.U))
         {
-            if (Input.GetKeyDown(KeyCode.U))
-                U_pressed = true;
+            if (GameObject.Find("Table").GetComponent<PlayerControl>().isRabbit ||
+                GameObject.Find("Table_0").GetComponent<PlayerControl>().isRabbit ) {
+                rabbitIsPossessing = true;
+            }
             yield return null;
         }
+        
         // unlock conversation after table is possessed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");

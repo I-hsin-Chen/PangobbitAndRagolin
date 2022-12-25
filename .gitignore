@@ -76,5 +76,5 @@ crashlytics-build.properties
 /[Aa]ssets/PlayText/Font.meta
 
 # graphs and dialogue provided by PlayText that we don't need
-/[Aa]ssets/PlayText/Graph/*
-/[Aa]ssets/PlayText/Visual Novel/Graph/*
+/[Aa]ssets/PlayText/Graph/*.asset
+/[Aa]ssets/PlayText/Visual Novel/Graph/*.asset
