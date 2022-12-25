@@ -7,8 +7,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // player cannot move when false
+    // player cannot move (left, right, up) when false
     private bool playerCanMove;
+    // player cannot possess when false
+    // two players are independent for teaching purpose
+    private bool pangolinCanPossess;
+    private bool rabbitCanPossess;
+
     private float changeSceneDelay = 1.0f;
     private GameObject audioManager;
 
@@ -101,5 +106,29 @@ public class GameManager : MonoBehaviour
     public bool GetPlayerCanMove()
     {
         return playerCanMove;
+    }
+
+    // Function to set pangolinCanPossess
+    public void SetPangolinCanPossess(bool pangolinCanPossess)
+    {
+        this.pangolinCanPossess = pangolinCanPossess;
+    }
+
+    // Function to get pangolinCanPossess
+    public bool GetPangolinCanPossess()
+    {
+        return pangolinCanPossess;
+    }
+
+    // Function to set rabbitCanPossess
+    public void SetRabbitCanPossess(bool rabbitCanPossess)
+    {
+        this.rabbitCanPossess = rabbitCanPossess;
+    }
+
+    // Function to get rabbitCanPossess
+    public bool GetRabbitCanPossess()
+    {
+        return rabbitCanPossess;
     }
 }
