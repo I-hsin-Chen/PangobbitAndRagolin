@@ -56,9 +56,9 @@ public class ObjectControl : MonoBehaviour
     {
         GameObject obj = transform.GetChild(0).gameObject;
         if(!clockwise && obj.GetComponent<Rigidbody2D>().rotation < 60f)
-            obj.GetComponent<Rigidbody2D>().rotation += 1f; // 5f when GetKeyDown
+            obj.GetComponent<Rigidbody2D>().rotation += 5f; // 5f when GetKeyDown
         else if(clockwise && obj.GetComponent<Rigidbody2D>().rotation > -30f)
-            obj.GetComponent<Rigidbody2D>().rotation -= 1f; // 5f when GetKeyDown
+            obj.GetComponent<Rigidbody2D>().rotation -= 5f; // 5f when GetKeyDown
     }
     public void TankShoot() // shoot bullet
     {

@@ -34,6 +34,9 @@ public class PlayerControl : MonoBehaviour
     public bool isKinematic = false;
 
     private bool playerCanMove = true;
+    private bool rabbitCanPossess = true;
+    private bool pangolinCanPossess = true;
+    private int tankRotate = 0;
 
     public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
     public virtual bool isPossessedObject => isObject && (isRabbit || isPangolin);
@@ -94,6 +97,8 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         playerCanMove = gameManager.GetComponent<GameManager>().GetPlayerCanMove();
+        rabbitCanPossess = gameManager.GetComponent<GameManager>().GetRabbitCanPossess();
+        pangolinCanPossess = gameManager.GetComponent<GameManager>().GetPangolinCanPossess();
         if (playerCanMove && isRabbit) RabbitCheck();
         else if (playerCanMove && isPangolin) PangolinCheck();
 
@@ -166,9 +171,10 @@ public class PlayerControl : MonoBehaviour
                 if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
                 if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
             }
-            if(name == "Tank"){
-                if(Input.GetKey(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
-                if(Input.GetKey(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
+            if(name == "Tank" && tankRotate != 0){
+                if(tankRotate == 1) objectControl.TankRotate(false);  // turn clockwise
+                else objectControl.TankRotate(true); // turn counter-clockwise
+                tankRotate = 0;
             }
         }
     }
@@ -178,7 +184,7 @@ public class PlayerControl : MonoBehaviour
         if (!isRabbit || isShrinking) return;
 
         // possess
-        if (Input.GetKeyDown(KeyCode.U) && possessTarget != null ) Possess(possessTarget);
+        if (Input.GetKeyDown(KeyCode.U) && rabbitCanPossess && possessTarget != null ) Possess(possessTarget);
 
         if(isPlayer || objectControl.canMove){ // some object cannot move
             if (Input.GetKey(KeyCode.J)) {
@@ -215,7 +221,7 @@ public class PlayerControl : MonoBehaviour
         if (!isPangolin || isShrinking) return;
 
         // possess
-        if (Input.GetKeyDown(KeyCode.Q) && possessTarget != null ) Possess(possessTarget);
+        if (Input.GetKeyDown(KeyCode.Q) && pangolinCanPossess && possessTarget != null ) Possess(possessTarget);
 
         if(isPlayer || objectControl.canMove){ // some object cannot move
             if (Input.GetKey(KeyCode.A)) {
@@ -254,6 +260,8 @@ public class PlayerControl : MonoBehaviour
                 objectControl.TankShoot(); // shoot
                 audiomanager.PlaySE_Tower();
             }
+            if(Input.GetKeyDown(KeyCode.W)) tankRotate = 1;  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) tankRotate = -1; // turn counter-clockwise
         }
         if(name == "Clock"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.ClockRotate(false);  // turn clockwise
