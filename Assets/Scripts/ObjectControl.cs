@@ -63,11 +63,13 @@ public class ObjectControl : MonoBehaviour
     public void TankShoot() // shoot bullet
     {
         GameObject obj = transform.GetChild(0).gameObject;
-        Vector2 pos = new Vector2(obj.transform.position.x, obj.transform.position.y);
+        GameObject cannon = obj.transform.GetChild(0).gameObject;
+        Vector2 pos = new Vector2(cannon.transform.position.x, cannon.transform.position.y);
+        pos += new Vector2(cannon.GetComponent<SpriteRenderer>().bounds.size.x / 2, ((obj.GetComponent<Rigidbody2D>().rotation >= 0) ? 1 : -1) * cannon.GetComponent<SpriteRenderer>().bounds.size.y / 3);
         Vector2 rot = new Vector2(obj.transform.rotation[3], obj.transform.rotation[2]*2.4f);
 
-        GameObject bullet = Instantiate(bullet_prefab, pos+rot, transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(rot * 200);
+        GameObject bullet = Instantiate(bullet_prefab, pos, transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(rot * 240);
     }
 
     public void ClockRotate(bool clockwise) // rotate clock
