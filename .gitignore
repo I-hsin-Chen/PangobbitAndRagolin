@@ -72,5 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # large size font files in PlayText
-# /[Aa]ssets/PlayText/Font/
-# /[Aa]ssets/PlayText/Font.meta
+/[Aa]ssets/PlayText/Font/
+/[Aa]ssets/PlayText/Font.meta
