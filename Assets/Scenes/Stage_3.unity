@@ -3440,7 +3440,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097308501}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3452,7 +3452,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!114 &1097308506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,7 +3478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4ae99da2ec3624ea8b0b60e4bd9d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 0
+  canMove: 1
   bullet_prefab: {fileID: 2119138395161547036, guid: 8ddc7e4bed7939943bb0a8f1a0cbb179, type: 3}
 --- !u!114 &1097308508
 MonoBehaviour:
@@ -3497,7 +3497,6 @@ MonoBehaviour:
   isRabbit: 0
   isPangolin: 0
   isObject: 1
-  isKinematic: 1
   moveState: 0
   jumpState: 0
   idleState: 0
@@ -5665,7 +5664,6 @@ MonoBehaviour:
   isRabbit: 0
   isPangolin: 0
   isObject: 1
-  isKinematic: 1
   moveState: 0
   jumpState: 0
   idleState: 0
@@ -5984,7 +5982,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!114 &1867208913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6041,7 +6039,6 @@ MonoBehaviour:
   isRabbit: 0
   isPangolin: 0
   isObject: 1
-  isKinematic: 0
   moveState: 0
   jumpState: 0
   idleState: 0

@@ -7198,6 +7198,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 403298423066000344, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
       propertyPath: m_Name
       value: Table_0
@@ -7313,6 +7321,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 403298423066000344, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
       propertyPath: m_Name
       value: Table

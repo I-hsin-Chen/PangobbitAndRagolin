@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     public bool isRabbit = true;
     public bool isPangolin = false;
     public bool isObject = false;
-    public bool isKinematic = false;
+    // public bool isKinematic = true;
 
     private bool playerCanMove = true;
     private bool rabbitCanPossess = true;
@@ -247,7 +247,7 @@ public class PlayerControl : MonoBehaviour
         isRolling = (isPlayer && Input.GetKey(KeyCode.W)) ? true : false;
             
         // Test
-        if(name.Length > 5 && name.Substring(0, 5) == "Table"){
+        if(name.Length >= 5 && name.Substring(0, 5) == "Table"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(true); // turn counter-clockwise
         }
@@ -322,25 +322,31 @@ public class PlayerControl : MonoBehaviour
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
 
-        // modify Rigidbody bodyType when possess
-        if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        
-        // level_1
-        if(obj.gameObject.name=="Clock")
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        
-        // level_2
-        if(obj.gameObject.name=="Wheel")
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        // let object can move after possess
+        obj.gameObject.transform.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+        // // modify Rigidbody bodyType when possess
+        // if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-        // level_3
-        if(obj.gameObject.name=="Gear")
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        if(obj.gameObject.name=="Gate_Gear")
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        // // level_1
+        // if(obj.gameObject.name=="Clock")
+        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        
+        // // level_2
+        // if(obj.gameObject.name=="Wheel")
+        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
-        if(obj.gameObject.name=="ColorBox" && !obj.GetComponent<ColorBoxControl>().isDynamic)
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        // // level_3
+        // if(obj.gameObject.name=="Gear")
+        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        // if(obj.gameObject.name=="Gate_Gear")
+        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+        if(obj.gameObject.name=="ColorBox"){
+            if(!obj.GetComponent<ColorBoxControl>().isDynamic)
+                obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            else
+                obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        }
 
         if(obj.gameObject.name=="WaterTap")
             obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -359,8 +365,11 @@ public class PlayerControl : MonoBehaviour
         isRabbit = false;
         isPangolin = false;
         
+        // lock object movement before possess back
+        GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
         // modify Rigidbody bodyType after possess
-        if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        // if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);

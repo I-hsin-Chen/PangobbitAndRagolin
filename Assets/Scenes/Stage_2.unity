@@ -3639,9 +3639,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: c75a3402b5e19de4bbbc4004eaeccfc0, type: 2}
+    - target: {fileID: 403298423066000337, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 403298423066000338, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
+      propertyPath: isKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 403298423066000344, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
       propertyPath: m_Name
       value: Table
@@ -8116,7 +8128,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6398816591392958576}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -8128,7 +8140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!1 &6398816591392958576
 GameObject:
   m_ObjectHideFlags: 0
