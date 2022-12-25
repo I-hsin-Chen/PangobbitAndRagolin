@@ -29,8 +29,6 @@ public class ObjectControl : MonoBehaviour
         TryGetComponent<SpriteRenderer>(out my_renderer);
         renderers = GetComponentsInChildren<SpriteRenderer>();
         highlightColor = (Color)(new Color32(255, 172, 238, 255));
-        if(name == "Tank") GetComponent<Rigidbody2D>().freezeRotation = true;
-    
     }
 
     // Update is called once per frame

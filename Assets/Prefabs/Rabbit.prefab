@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -167,6 +167,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 0
   isKinematic: 0
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &6011116746171985902
 MonoBehaviour:
   m_ObjectHideFlags: 0

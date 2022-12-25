@@ -423,6 +423,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &34414090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +820,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &48585197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,6 +1058,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &92912590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,6 +1486,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &169542540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2128,6 +2152,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!212 &312888067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2304,6 +2334,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &316814376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3219,6 +3255,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &490057227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3627,6 +3669,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &544105506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4392,6 +4440,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &710471796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4588,6 +4642,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &739194340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4926,6 +4986,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &797543426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7341,6 +7407,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &875330243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7581,6 +7653,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 0
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!61 &879403366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16070,6 +16148,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &936941773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16266,6 +16350,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &937041465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16462,6 +16552,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &946122646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16800,6 +16896,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1020741905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16996,6 +17098,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1024078589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17228,6 +17336,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1090146089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18012,6 +18126,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1170970277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18208,6 +18328,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1199167968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18404,6 +18530,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1228467055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18755,6 +18887,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!61 &1231757545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18903,7 +19041,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1254067321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18935,6 +19073,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1254067323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19205,6 +19349,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1335607148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19860,6 +20010,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!50 &1452092210
 Rigidbody2D:
   serializedVersion: 4
@@ -26827,6 +26983,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1700218005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27854,6 +28016,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1848136360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28050,6 +28218,12 @@ MonoBehaviour:
   isPangolin: 0
   isObject: 1
   isKinematic: 1
+  moveState: 0
+  jumpState: 0
+  idleState: 0
+  shrinkState: 0
+  drownState: 0
+  rollState: 0
 --- !u!114 &1857285284
 MonoBehaviour:
   m_ObjectHideFlags: 0
