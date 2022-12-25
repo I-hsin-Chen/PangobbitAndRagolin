@@ -271,9 +271,17 @@ PrefabInstance:
       value: Press <color=yellow><b>Space</b></color> to play text.
       objectReference: {fileID: 0}
     - target: {fileID: 8901363438290686583, guid: 1832971c1a4c25444aab6a42cbbfa402, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 377b52b31df923441b25eddeb3419e98, type: 2}
+    - target: {fileID: 8901363438290686583, guid: 1832971c1a4c25444aab6a42cbbfa402, type: 3}
       propertyPath: m_textAlignment
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 8901363438290686583, guid: 1832971c1a4c25444aab6a42cbbfa402, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4014607759132038059, guid: 377b52b31df923441b25eddeb3419e98, type: 2}
     - target: {fileID: 8901363438290686583, guid: 1832971c1a4c25444aab6a42cbbfa402, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
