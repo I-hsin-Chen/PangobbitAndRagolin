@@ -27,7 +27,7 @@ public class FadeHandler : MonoBehaviour
         StartCoroutine(FadeIn(duration));
     }
 
-    // Fade in effect, will also set playerCanMove to true
+    // Fade in effect
     IEnumerator FadeIn(float duration){
         float startTime = Time.time;
         float endTime = startTime + duration;
@@ -38,8 +38,14 @@ public class FadeHandler : MonoBehaviour
             yield return null;
         }
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-        // After fade in, player can move
-        gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);
+        // After fade in, if there is no story in the scene, player can do actions
+        // otherwise, player cannot do actions until the story is finished
+        // (playerCanMove, pangolinCanPossess, and rabbitCanPossess will be set to true in story Graph)
+        if (GameObject.Find("PlayText_Follow") == null) {
+            gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);        
+            gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
+            gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
+        }
         // After fade in, hide the black image to avoid blocking the UI
         imageBlack.SetActive(false);
     }
@@ -51,12 +57,14 @@ public class FadeHandler : MonoBehaviour
         StartCoroutine(FadeOut(duration));
     }
 
-    // Fade out effect, will also set playerCanMove to false
+    // Fade out effect, will also set playerCanMove, pangolinCanPossess, and rabbitCanPossess to false
     public IEnumerator FadeOut(float duration){
         // Before fade out, show the black image
         imageBlack.SetActive(true);
-        // During fade out, player cannot move
+        // During fade out, player cannot move or possess
         gameManager.GetComponent<GameManager>().SetPlayerCanMove(false);
+        gameManager.GetComponent<GameManager>().SetPangolinCanPossess(false);
+        gameManager.GetComponent<GameManager>().SetRabbitCanPossess(false);
         float startTime = Time.time;
         float endTime = startTime + duration;
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
