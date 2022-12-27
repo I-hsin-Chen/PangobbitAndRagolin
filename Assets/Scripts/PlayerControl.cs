@@ -32,9 +32,11 @@ public class PlayerControl : MonoBehaviour
     public bool isPangolin = false;
     public bool isObject = false;
 
+    // restrict player movement
     private bool playerCanMove = true;
     private bool rabbitCanPossess = true;
     private bool pangolinCanPossess = true;
+
     private int tankRotate = 0;
 
     public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
@@ -56,7 +58,6 @@ public class PlayerControl : MonoBehaviour
     public int rollState;
     private float xScale;
 
-
     public enum Direction {
         Left, Right
     }
@@ -72,7 +73,6 @@ public class PlayerControl : MonoBehaviour
         // TryGetComponent<Animator>(out animator);
         gameManager = GameObject.Find("GameManager");
         audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-
     }
 
     void Start()
@@ -82,15 +82,14 @@ public class PlayerControl : MonoBehaviour
         moveState = Animator.StringToHash("Base Layer.Move");
         idleState = Animator.StringToHash("Base Layer.Idle");
         shrinkState = Animator.StringToHash("Base Layer.Shrink");
-
+        // rabbit animator
         drownState = Animator.StringToHash("Base Layer.Drown");
         jumpState = Animator.StringToHash("Base Layer.Jump");
-        
+        // pangolin animator
         rollState = Animator.StringToHash("Base Layer.Roll");
 
         if (isPlayer) dialogFollowRefresh(gameObject);
     }
-
 
     // Update is called once per frame
     void Update()
@@ -139,7 +138,6 @@ public class PlayerControl : MonoBehaviour
                     possessTarget = hit_up.collider.gameObject;
                     // highlight the object that is the possess target.
                     possessTarget.GetComponent<ObjectControl>().highlightObject(isRabbit);
-                    // if (possessTarget.name == "Clock") print(possessTarget.GetComponent<SpriteRenderer>().color);
                 }
             }
             else {
@@ -162,18 +160,21 @@ public class PlayerControl : MonoBehaviour
         if(isRunning) rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y) ;
         else rb.velocity = new Vector2(0, rb.velocity.y);
         if (playerCanMove && isPangolin) {
-            if(name == "Gear"){
-                if(Input.GetKey(KeyCode.W)) objectControl.GearRotate(false);  // gear up
-                if(Input.GetKey(KeyCode.S)) objectControl.GearRotate(true); // gear down
-            }
+            // Stage_1
             if(name == "ColorBox"){
                 if(Input.GetKey(KeyCode.W)) objectControl.ColorBoxRotate(false);  // turn clockwise
                 if(Input.GetKey(KeyCode.S)) objectControl.ColorBoxRotate(true); // turn counter-clockwise
             }
+            // Stage_2
             if(name == "Tank" && tankRotate != 0){
                 if(tankRotate == 1) objectControl.TankRotate(false);  // turn clockwise
                 else objectControl.TankRotate(true); // turn counter-clockwise
                 tankRotate = 0;
+            }
+            // Stage_4
+            if(name == "Gear"){
+                if(Input.GetKey(KeyCode.W)) objectControl.GearRotate(false);  // gear up
+                if(Input.GetKey(KeyCode.S)) objectControl.GearRotate(true); // gear down
             }
         }
     }
@@ -207,11 +208,9 @@ public class PlayerControl : MonoBehaviour
         }
         
         if (Input.GetKeyDown(KeyCode.I)) Jump();
-        if (name == "Tank"){
-            if(Input.GetKeyDown(KeyCode.O)){ // shoot
-                objectControl.TankShoot();
-                audiomanager.PlaySE_Tower();
-            }
+        if (name == "Tank" && Input.GetKeyDown(KeyCode.O)){ // shoot
+            objectControl.TankShoot();
+            audiomanager.PlaySE_Tower();
         }
     }
 
@@ -245,16 +244,14 @@ public class PlayerControl : MonoBehaviour
 
         isRolling = (isPlayer && Input.GetKey(KeyCode.W)) ? true : false;
             
-        // Test
+        // Stage_0
         if(name.Length >= 5 && name.Substring(0, 5) == "Table"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.TableRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.TableRotate(true); // turn counter-clockwise
         }
 
-        // Level_1
+        // Stage_2
         if(name == "Tank"){
-            // if(Input.GetKeyDown(KeyCode.W)) objectControl.TankRotate(false);  // turn clockwise
-            // if(Input.GetKeyDown(KeyCode.S)) objectControl.TankRotate(true); // turn counter-clockwise
             if(Input.GetKeyDown(KeyCode.E)) {
                 objectControl.TankShoot(); // shoot
                 audiomanager.PlaySE_Tower();
@@ -271,7 +268,13 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKey(KeyCode.S)) objectControl.PulleyWheelRotate(true); // turn counter-clockwise
         }
 
-        // Level_3
+        // Stage_3
+        if (name == "WaterTap"){
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) objectControl.WaterTapRotate();  // open gate
+            else objectControl.WaterTapStopRotate(); 
+        }
+
+        // Stage_4
         if(name == "Server"){
             if(Input.GetKeyDown(KeyCode.W)) objectControl.ServerRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.ServerRotate(true); // turn counter-clockwise
@@ -280,13 +283,6 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKey(KeyCode.W)) objectControl.GateClose(false);  // open gate
             if(Input.GetKey(KeyCode.S)) objectControl.GateClose(true); // close gate
         }
-
-        // Level 4
-        if (name == "WaterTap"){
-            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) objectControl.WaterTapRotate();  // open gate
-            else objectControl.WaterTapStopRotate(); 
-        }
-
     }
 
     private void Jump()
@@ -348,17 +344,11 @@ public class PlayerControl : MonoBehaviour
         
         // lock object movement before possess back
         GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
-        // modify Rigidbody bodyType after possess
-        // if(isKinematic) transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);
 
-        //renderer.bounds.size.x
-        // if (name == "Tank") possessTarget.transform.position = transform.position + new Vector3( (renderer.bounds.size.x / 2 + 0.2f) * faceDirection.GetDirection(), 0, 0);
-        // else possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
-
+        // decide player position when possess back
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(faceDirection.GetDirection() * renderer.bounds.size.x / 2, 0, 0), new Vector2(faceDirection.GetDirection(), 0), 1);
         RaycastHit2D Nhit = Physics2D.Raycast(transform.position - new Vector3(faceDirection.GetDirection() * renderer.bounds.size.x / 2, 0, 0), new Vector2(-1*faceDirection.GetDirection(), 0), 1);
         RaycastHit2D Uhit = Physics2D.Raycast(transform.position + new Vector3(renderer.bounds.size.y / 2, 0, 0), new Vector2(0, 1), 0.6f);
@@ -435,5 +425,4 @@ public class PlayerControl : MonoBehaviour
             follow.setFollowObject(obj);
         }
     }
-
 }

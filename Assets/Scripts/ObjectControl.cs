@@ -43,15 +43,36 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-    // Test
+    // Stage_0
     public void TableRotate(bool clockwise) // rotate table
     {
         if(!clockwise) GetComponent<Rigidbody2D>().rotation += 90f;
         else GetComponent<Rigidbody2D>().rotation -= 90f;
-        transform.position -= new Vector3(0, transform.position.y/3.6f);;
+        transform.position -= new Vector3(0, transform.position.y/3.6f);
     }
+    // Stage_0 end ======================================================================
 
-    // Level_1
+    // Stage_1
+    public void ColorBoxRotate(bool clockwise) // only rotate barrel
+    {
+        if (!GetComponent<ColorBoxControl>().isDynamic){
+            if (clockwise) GetComponent<Rigidbody2D>().rotation += 0.5f;
+            else GetComponent<Rigidbody2D>().rotation -= 0.5f;
+        }
+        else {
+            var body = GetComponent<Rigidbody2D>();
+
+            if (Mathf.Abs(body.angularVelocity) > 200.0f) return;
+            float strength;
+            if (clockwise) strength = -60.0f;
+            else strength = 60.0f;
+            var impulse = (strength * Mathf.Deg2Rad) * body.inertia;
+            body.AddTorque(impulse, ForceMode2D.Impulse);
+        }
+    }
+    // Stage_1 end ======================================================================
+
+    // Stage_2
     public void TankRotate(bool clockwise) // only rotate barrel
     {
         GameObject obj = transform.GetChild(0).gameObject;
@@ -89,8 +110,23 @@ public class ObjectControl : MonoBehaviour
             else plateRb.AddForce(new Vector2 (0, -2.0f));
         }
     }
+    // Stage_2 end ======================================================================
 
-    // level_3
+    // Stage_3
+    public void WaterTapRotate(){
+        transform.Find("Head").GetComponent<Animator>().enabled = true;
+        transform.Find("Water").GetComponent<Animator>().enabled = true;
+        transform.Find("WaterArea").GetComponent<WaterAreaControl>().settapOpened(true);
+    }
+
+    public void WaterTapStopRotate(){
+        transform.Find("Head").GetComponent<Animator>().enabled = false;
+        transform.Find("Water").GetComponent<Animator>().enabled = false;
+        transform.Find("WaterArea").GetComponent<WaterAreaControl>().settapOpened(false);
+    }
+    // Stage_3 end ======================================================================
+
+    // Stage_4
     public void ServerRotate(bool clockwise) // rotate server
     {
         if(!clockwise) GetComponent<Rigidbody2D>().rotation += 90f;
@@ -123,36 +159,7 @@ public class ObjectControl : MonoBehaviour
             gear.GetComponent<Rigidbody2D>().rotation -= 0.5f;
         }
     }
-
-    public void ColorBoxRotate(bool clockwise) // only rotate barrel
-    {
-        if (!GetComponent<ColorBoxControl>().isDynamic){
-            if (clockwise) GetComponent<Rigidbody2D>().rotation += 0.5f;
-            else GetComponent<Rigidbody2D>().rotation -= 0.5f;
-        }
-        else {
-            var body = GetComponent<Rigidbody2D>();
-
-            if (Mathf.Abs(body.angularVelocity) > 200.0f) return;
-            float strength;
-            if (clockwise) strength = -60.0f;
-            else strength = 60.0f;
-            var impulse = (strength * Mathf.Deg2Rad) * body.inertia;
-            body.AddTorque(impulse, ForceMode2D.Impulse);
-        }
-    }
-
-    public void WaterTapRotate(){
-        transform.Find("Head").GetComponent<Animator>().enabled = true;
-        transform.Find("Water").GetComponent<Animator>().enabled = true;
-        transform.Find("WaterArea").GetComponent<WaterAreaControl>().settapOpened(true);
-    }
-
-    public void WaterTapStopRotate(){
-        transform.Find("Head").GetComponent<Animator>().enabled = false;
-        transform.Find("Water").GetComponent<Animator>().enabled = false;
-        transform.Find("WaterArea").GetComponent<WaterAreaControl>().settapOpened(false);
-    }
+    // Stage_4 end ======================================================================
 
     // ************** Draw possessing hint on top of objects ************** //
 
