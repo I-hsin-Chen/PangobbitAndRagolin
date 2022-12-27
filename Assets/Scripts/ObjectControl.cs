@@ -18,6 +18,9 @@ public class ObjectControl : MonoBehaviour
     private Object pangolinHint;
     private Object rabbitHint;
 
+    // record bullet
+    private List<GameObject> bullets = new List<GameObject>();
+
     private void Awake(){
         rabbitHint = Resources.Load("RabbitHint"); 
         pangolinHint = Resources.Load("PangolinHint"); 
@@ -83,6 +86,11 @@ public class ObjectControl : MonoBehaviour
     }
     public void TankShoot() // shoot bullet
     {
+        while(bullets.Count > 0 && bullets[0] == null)
+            bullets.RemoveAt(0);
+
+        if(bullets.Count > 3) return;
+
         GameObject obj = transform.GetChild(0).gameObject;
         GameObject cannon = obj.transform.GetChild(0).gameObject;
         Vector2 pos = new Vector2(cannon.transform.position.x, cannon.transform.position.y);
@@ -91,6 +99,8 @@ public class ObjectControl : MonoBehaviour
 
         GameObject bullet = Instantiate(bullet_prefab, pos, transform.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(rot * 240);
+
+        bullets.Add(bullet);
     }
 
     public void ClockRotate(bool clockwise) // rotate clock
