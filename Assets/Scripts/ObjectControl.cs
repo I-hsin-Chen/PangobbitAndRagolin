@@ -10,6 +10,7 @@ public class ObjectControl : MonoBehaviour
     private GameObject myHint;
     public GameObject bullet_prefab = null;
     private SpriteRenderer[] renderers;
+    private AudioManager audiomanager;
 
     // for highlighing the object that has been raycasted
     private SpriteRenderer my_renderer;
@@ -24,6 +25,7 @@ public class ObjectControl : MonoBehaviour
     private void Awake(){
         rabbitHint = Resources.Load("RabbitHint"); 
         pangolinHint = Resources.Load("PangolinHint"); 
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     // Start is called before the first frame update
@@ -99,6 +101,7 @@ public class ObjectControl : MonoBehaviour
 
         GameObject bullet = Instantiate(bullet_prefab, pos, transform.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(rot * 240);
+        audiomanager.PlaySE_Tower();
 
         bullets.Add(bullet);
     }

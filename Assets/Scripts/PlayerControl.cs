@@ -208,10 +208,7 @@ public class PlayerControl : MonoBehaviour
         }
         
         if (Input.GetKeyDown(KeyCode.I)) Jump();
-        if (name == "Tank" && Input.GetKeyDown(KeyCode.O)){ // shoot
-            objectControl.TankShoot();
-            audiomanager.PlaySE_Tower();
-        }
+        if (name == "Tank" && Input.GetKeyDown(KeyCode.O)) objectControl.TankShoot(); // shoot
     }
 
     private void PangolinCheck()
@@ -252,10 +249,7 @@ public class PlayerControl : MonoBehaviour
 
         // Stage_2
         if(name == "Tank"){
-            if(Input.GetKeyDown(KeyCode.E)) {
-                objectControl.TankShoot(); // shoot
-                audiomanager.PlaySE_Tower();
-            }
+            if(Input.GetKeyDown(KeyCode.E)) objectControl.TankShoot(); // shoot
             if(Input.GetKeyDown(KeyCode.W)) tankRotate = 1;  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) tankRotate = -1; // turn counter-clockwise
         }
@@ -319,14 +313,6 @@ public class PlayerControl : MonoBehaviour
 
         // let object can move after possess
         obj.gameObject.transform.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionX;
-        // // modify Rigidbody bodyType when possess
-        // if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
-        // // level_3
-        // if(obj.gameObject.name=="Gear")
-        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        // if(obj.gameObject.name=="Gate_Gear")
-        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         isShrinking = false;
         this.gameObject.SetActive(false);
