@@ -2331,6 +2331,18 @@ PrefabInstance:
       propertyPath: remainingTimeText
       value: 
       objectReference: {fileID: 265757364}
+    - target: {fileID: 7491304492513522947, guid: 49812bb01f40a394f8b706e800042e92, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491304492513522947, guid: 49812bb01f40a394f8b706e800042e92, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491304492513522947, guid: 49812bb01f40a394f8b706e800042e92, type: 3}
+      propertyPath: m_Constraints
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7491304492513522951, guid: 49812bb01f40a394f8b706e800042e92, type: 3}
       propertyPath: m_Name
       value: ColorBox

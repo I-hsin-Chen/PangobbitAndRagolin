@@ -135,8 +135,8 @@ public class ObjectControl : MonoBehaviour
 
             if (Mathf.Abs(body.angularVelocity) > 200.0f) return;
             float strength;
-            if (clockwise) strength = -22.0f;
-            else strength = 22.0f;
+            if (clockwise) strength = -60.0f;
+            else strength = 60.0f;
             var impulse = (strength * Mathf.Deg2Rad) * body.inertia;
             body.AddTorque(impulse, ForceMode2D.Impulse);
         }

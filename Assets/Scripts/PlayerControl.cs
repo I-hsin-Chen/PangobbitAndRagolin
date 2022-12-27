@@ -31,7 +31,6 @@ public class PlayerControl : MonoBehaviour
     public bool isRabbit = true;
     public bool isPangolin = false;
     public bool isObject = false;
-    // public bool isKinematic = true;
 
     private bool playerCanMove = true;
     private bool rabbitCanPossess = true;
@@ -327,29 +326,11 @@ public class PlayerControl : MonoBehaviour
         // // modify Rigidbody bodyType when possess
         // if(obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Kinematic) obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-        // // level_1
-        // if(obj.gameObject.name=="Clock")
-        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        
-        // // level_2
-        // if(obj.gameObject.name=="Wheel")
-        //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-
         // // level_3
         // if(obj.gameObject.name=="Gear")
         //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         // if(obj.gameObject.name=="Gate_Gear")
         //     obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-
-        if(obj.gameObject.name=="ColorBox"){
-            if(!obj.GetComponent<ColorBoxControl>().isDynamic)
-                obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            else
-                obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        }
-
-        if(obj.gameObject.name=="WaterTap")
-            obj.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         isShrinking = false;
         this.gameObject.SetActive(false);
