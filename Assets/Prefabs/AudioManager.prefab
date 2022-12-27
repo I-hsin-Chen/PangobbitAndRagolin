@@ -49,6 +49,13 @@ MonoBehaviour:
   SE_Jump: {fileID: 8300000, guid: b0b9b263d3ad8b94a936345d0474ccc4, type: 3}
   SE_Possess: {fileID: 8300000, guid: ccfa9208933d07446978440849521a38, type: 3}
   SE_Tower: {fileID: 8300000, guid: 7442647a59ad59743bbed614e80e131c, type: 3}
+  SE_Answer: {fileID: 8300000, guid: c8c749fa4bb19b94a9122499981466e5, type: 3}
+  SE_Pitch1: {fileID: 8300000, guid: cf6e60a2139d4c84ca2252e25fb3882a, type: 3}
+  SE_Pitch2: {fileID: 8300000, guid: e3ea659bd5413a8488188d9efb4f81c5, type: 3}
+  SE_Pitch3: {fileID: 8300000, guid: 6a7bab90adca3f245abcae13443ec455, type: 3}
+  SE_Pitch4: {fileID: 8300000, guid: f3b2ff9aa35452f409093315959b9ec0, type: 3}
+  SE_Pitch5: {fileID: 8300000, guid: c5c3850543a0d0d4db42544048768cc2, type: 3}
+  SE_Accompaniment: {fileID: 8300000, guid: 61e3f15f9c069454c86fe55a11120fff, type: 3}
 --- !u!82 &4017719303524947879
 AudioSource:
   m_ObjectHideFlags: 0

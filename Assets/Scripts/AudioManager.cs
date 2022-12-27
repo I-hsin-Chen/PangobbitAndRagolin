@@ -9,7 +9,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     // There are two audio sources to set volume independently
-    private float BGMVolume = 0.5f;
+    private float BGMVolume = 0f;
     private float SEVolume = 0.5f;
     private AudioSource BGMPlayer;  // audio source for BGM, attached to GameManager
     private AudioSource SEPlayer;   // audio source for SE, attached to AudioManager
@@ -18,6 +18,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip SE_Jump;
     public AudioClip SE_Possess;
     public AudioClip SE_Tower;
+
+    // Stage_4 audio
+    public AudioClip SE_Answer;
+    public AudioClip SE_Pitch1;
+    public AudioClip SE_Pitch2;
+    public AudioClip SE_Pitch3;
+    public AudioClip SE_Pitch4;
+    public AudioClip SE_Pitch5;
+    public AudioClip SE_Accompaniment;
+
     // =================================
 
     // Start is called before the first frame update
@@ -108,5 +118,41 @@ public class AudioManager : MonoBehaviour
     public void PlaySE_Tower()
     {
         SEPlayer.PlayOneShot(SE_Tower);
+    }
+
+    // Stage_4 function
+    public void PlaySE_Answer()
+    {
+        SEPlayer.PlayOneShot(SE_Answer);
+    }
+
+    public void PlaySE_Pitch1()
+    {
+        SEPlayer.PlayOneShot(SE_Pitch1);
+    }
+
+    public void PlaySE_Pitch2()
+    {
+        SEPlayer.PlayOneShot(SE_Pitch2);
+    }
+
+    public void PlaySE_Pitch3()
+    {
+        SEPlayer.PlayOneShot(SE_Pitch3);
+    }
+
+    public void PlaySE_Pitch4()
+    {
+        SEPlayer.PlayOneShot(SE_Pitch4);
+    }
+
+    public void PlaySE_Pitch5()
+    {
+        SEPlayer.PlayOneShot(SE_Pitch5);
+    }
+
+    public void PlaySE_Accompaniment()
+    {
+        SEPlayer.PlayOneShot(SE_Accompaniment);
     }
 }
