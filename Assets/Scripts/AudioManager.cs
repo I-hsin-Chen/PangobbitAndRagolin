@@ -9,7 +9,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     // There are two audio sources to set volume independently
-    private float BGMVolume = 0f;
+    private float BGMVolume = 0.5f;
     private float SEVolume = 0.5f;
     private AudioSource BGMPlayer;  // audio source for BGM, attached to GameManager
     private AudioSource SEPlayer;   // audio source for SE, attached to AudioManager
