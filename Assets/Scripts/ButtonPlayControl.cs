@@ -9,13 +9,13 @@ public class ButtonPlayControl : MonoBehaviour
     private BoxCollider2D collider;
 
     private ContactFilter2D pressFilter;
-    private List<Collider2D> contactBuffer = new List<Collider2D>();
+    private List<ContactPoint2D> contactBuffer = new List<ContactPoint2D>();
     private bool pressed = false;
 
     public Sprite pressedImage;
     public Sprite unpressedImage;
     private AudioManager audiomanager;
-    
+
     private void Awake() {
         TryGetComponent<Rigidbody2D>(out rb);
         TryGetComponent<SpriteRenderer>(out renderer);
@@ -31,33 +31,33 @@ public class ButtonPlayControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckButtonPressed();
+    }
+
+    void CheckButtonPressed()
+    {
         int groundHits = rb.GetContacts(pressFilter, contactBuffer);
-        if (!pressed){
-            if (groundHits > 0){
-                renderer.sprite = pressedImage;
-                // collider.size = new Vector2 (collider.size.x, collider.size.y/2);
-                // foreach (Collider2D col in contactBuffer)
-                //     col.gameObject.transform.position -= new Vector3(0, collider.size.y, 0);
+        if (!pressed && groundHits > 0)
+            StartCoroutine(ButtonPlayAnswer());
+    }
 
-                audiomanager.PlaySE_Answer();
-                pressed = true;
-            }
-        }
-        else{
-            if(groundHits <= 0){
-                renderer.sprite = unpressedImage;
-                // foreach (Collider2D col in contactBuffer)
-                //     col.gameObject.transform.position += new Vector3(0, collider.size.y, 0);
-                // collider.size = new Vector2 (collider.size.x, collider.size.y*2);
+    IEnumerator ButtonPlayAnswer()
+    {
+        pressed = true;
+        renderer.sprite = pressedImage;
+        collider.size = new Vector2 (collider.size.x, collider.size.y/2);
 
-                pressed = false;
-            }
-        }
+        audiomanager.PlaySE_Answer();
+        yield return new WaitForSeconds(1.75f); // remain the button pressed when playing answer
+
+        renderer.sprite = unpressedImage;
+        collider.size = new Vector2 (collider.size.x, collider.size.y*2);
+        yield return new WaitForSeconds(0.25f); // make the button rebound for a while
+        pressed = false;
     }
 }

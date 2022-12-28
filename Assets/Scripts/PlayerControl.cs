@@ -176,6 +176,10 @@ public class PlayerControl : MonoBehaviour
                 if(Input.GetKey(KeyCode.W)) objectControl.GearRotate(false);  // gear up
                 if(Input.GetKey(KeyCode.S)) objectControl.GearRotate(true); // gear down
             }
+            if(name == "Phonograph"){
+                if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) objectControl.PhonographPlay(true); // play the Phonograph
+                if(!(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) objectControl.PhonographPlay(false); // stop the Phonograph
+            }
         }
     }
 
@@ -273,7 +277,7 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.W)) objectControl.ServerRotate(false);  // turn clockwise
             if(Input.GetKeyDown(KeyCode.S)) objectControl.ServerRotate(true); // turn counter-clockwise
         }
-        if(name == "Gate_Gear"){
+        if(name.Length > 5 && name.Substring(0, 5) == "Pitch"){
             if(Input.GetKey(KeyCode.W)) objectControl.GateClose(false);  // open gate
             if(Input.GetKey(KeyCode.S)) objectControl.GateClose(true); // close gate
         }

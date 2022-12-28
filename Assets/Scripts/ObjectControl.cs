@@ -22,6 +22,12 @@ public class ObjectControl : MonoBehaviour
     // record bullet
     private List<GameObject> bullets = new List<GameObject>();
 
+    // record stage_4 Gate and Marbel collision
+    private bool[,] collidedGate = new bool[5, 5];
+    private bool playing = false;
+    public float time = 0.3f;
+    private Coroutine coroutine;
+
     private void Awake(){
         rabbitHint = Resources.Load("RabbitHint"); 
         pangolinHint = Resources.Load("PangolinHint"); 
@@ -34,6 +40,11 @@ public class ObjectControl : MonoBehaviour
         TryGetComponent<SpriteRenderer>(out my_renderer);
         renderers = GetComponentsInChildren<SpriteRenderer>();
         highlightColor = (Color)(new Color32(255, 172, 238, 255));
+
+        // init stage_4 Gate and Marbel collision
+        for(int i = 0; i < 5; i++)
+            for(int j = 0; j < 5; j++)
+                collidedGate[i, j] = false;
     }
 
     // Update is called once per frame
@@ -171,6 +182,42 @@ public class ObjectControl : MonoBehaviour
             gate.transform.position += new Vector3(0.01f, 0, 0);
             gear.GetComponent<Rigidbody2D>().rotation -= 0.5f;
         }
+    }
+    
+    public void PhonographPlay(bool rotating)
+    {
+        if(rotating && !playing) coroutine = StartCoroutine(CheckMarbels());
+        else if(!rotating && playing){ 
+            Debug.Log("!!!!!!!!!!!!!!!!!!!Stop!!!!!!!!!!!!!!!!!!!");
+            if(coroutine != null)
+            StopCoroutine(coroutine);
+            playing = false;
+        }
+    }
+    
+    IEnumerator CheckMarbels()
+    {
+        playing = true;
+        for(int i = 0; i < 5; i++){
+            if(collidedGate[i, 0]) audiomanager.PlaySE_Pitch1();
+            if(collidedGate[i, 1]) audiomanager.PlaySE_Pitch2();
+            if(collidedGate[i, 2]) audiomanager.PlaySE_Pitch3();
+            if(collidedGate[i, 3]) audiomanager.PlaySE_Pitch4();
+            if(collidedGate[i, 4]) audiomanager.PlaySE_Pitch5();
+
+            yield return new WaitForSeconds(time);
+        }
+        yield return new WaitForSeconds(0.5f);
+        playing = false;
+    }
+    public void SetCollision(int i, int j)
+    {
+        collidedGate[i, j] = true;
+    }
+
+    public void ClearCollision(int i, int j)
+    {
+        collidedGate[i, j] = false;
     }
     // Stage_4 end ======================================================================
 
