@@ -188,9 +188,7 @@ public class ObjectControl : MonoBehaviour
     {
         if(rotating && !playing) coroutine = StartCoroutine(CheckMarbels());
         else if(!rotating && playing){ 
-            Debug.Log("!!!!!!!!!!!!!!!!!!!Stop!!!!!!!!!!!!!!!!!!!");
-            if(coroutine != null)
-            StopCoroutine(coroutine);
+            if(coroutine != null) StopCoroutine(coroutine);
             playing = false;
         }
     }
