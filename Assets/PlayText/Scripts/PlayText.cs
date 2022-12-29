@@ -235,14 +235,18 @@ public class PlayText : MonoBehaviour
     void FinishTalking()
     {
         IsFinished = true;
-        cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+        // Paul's code
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void StopTalking()
     {
         IsFinished = true;
         GoToState(STATE.OFF);
-        cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+        // Paul's code
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
         dialogueGraph = null;
     }
 
@@ -295,8 +299,11 @@ public class PlayText : MonoBehaviour
                         Transform focusing = TalkingPersonTransform[dia.TalkingPerson];
                         if (!IsFinished)
                             cam.Follow = focusing;
-                        else
-                            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+                        else {
+                            // Paul's code
+                            if (GameObject.FindGameObjectWithTag("Player") != null)
+                                cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+                        }
                         if (IsBubbleFollow)
                         {
                             Vector2 screenPos = Camera.main.WorldToScreenPoint(focusing.position);//Change With Resolution
@@ -361,7 +368,10 @@ public class PlayText : MonoBehaviour
                     }
                     else if(IsCameraFollow && AllowCameraFollow)
                     {
-                        cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+                        // Paul's code
+                        if (GameObject.FindGameObjectWithTag("Player") != null)
+                            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+
                         Debug.LogWarning("Couldn't Find Talking Person");
                     }
                 }
@@ -369,7 +379,11 @@ public class PlayText : MonoBehaviour
         }
         else if (current == Current.Option)
         {
-            Transform focusing = GameObject.FindGameObjectWithTag("Player").transform;
+            // Paul's code
+            Transform focusing = null;
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+                focusing = GameObject.FindGameObjectWithTag("Player").transform;
+
             cam.Follow = focusing;
             if (cam.Follow != LastFollow)
             {
