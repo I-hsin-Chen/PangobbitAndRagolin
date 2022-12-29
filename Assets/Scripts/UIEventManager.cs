@@ -79,9 +79,6 @@ public class UIEventManager : MonoBehaviour
 
     public void ShowPauseCanvas()
     {
-        // if player cannot move, it should not be able to pause the game also
-        if (gameManager.GetComponent<GameManager>().GetPlayerCanMove() == false)
-            return;
         if (pauseCanvas == null)
             pauseCanvas = GameObject.Find("PauseCanvas");
         if (pauseCanvas != null) {
