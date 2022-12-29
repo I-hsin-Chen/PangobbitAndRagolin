@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayTextSupport;
 
 // This script is for AudioManager
 // AudioManager is a DontDestroyOnLoad GameObject that is used to control the audio
@@ -62,6 +63,8 @@ public class AudioManager : MonoBehaviour
     {
         SEVolume = vol;
         SEPlayer.volume = SEVolume;
+        // also set the volume of PlayText typing sound
+        EventCenter.GetInstance().EventTriggered("PlayText.SetVolume", SEVolume);
     }
 
     public float GetSEVolume()

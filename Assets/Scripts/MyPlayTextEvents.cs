@@ -19,11 +19,13 @@ public class MyPlayTextEvents : MonoBehaviour
 {
     public DialogueGraph Graph;
     private GameObject gameManager;
+    private GameObject audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        audioManager = GameObject.Find("AudioManager");
 
         // adding events to EventCenter
         print("Adding PlayTextEvents");
@@ -40,6 +42,10 @@ public class MyPlayTextEvents : MonoBehaviour
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyQ", WaitingForKeyQ);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyU", WaitingForKeyU);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FinishConversation", FinishConversation);
+
+        // set the typing volume (same with the SE volume)
+        // typing volume will be handle by AudioManager in the rest of the game
+        EventCenter.GetInstance().EventTriggered("PlayText.SetVolume", audioManager.GetComponent<AudioManager>().GetSEVolume());
 
         // start the graph
         EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
