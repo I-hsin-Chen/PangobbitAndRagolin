@@ -39,7 +39,7 @@ public class MyPlayTextEvents : MonoBehaviour
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForRabbitPossessTable", WaitingForRabbitPossessTable);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyQ", WaitingForKeyQ);
         EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyU", WaitingForKeyU);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("DestroyPlayText_Follow", DestroyPlayText_Follow);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FinishConversation", FinishConversation);
 
         // start the graph
         EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
@@ -296,15 +296,13 @@ public class MyPlayTextEvents : MonoBehaviour
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
 
-    // destroy PlayText_Follow
-    void DestroyPlayText_Follow(List<EventValueClass> Value)
+    // Finish the conversation
+    void FinishConversation(List<EventValueClass> Value)
     {
-        Debug.Log("DestroyPlayText_Follow");
+        Debug.Log("FinishConversation");
         gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);
         gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
         gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
-        GameObject to_destroy = GameObject.Find("PlayText_Follow");
-        if (to_destroy != null)
-            Destroy(GameObject.Find("PlayText_Follow"));
+        EventCenter.GetInstance().EventTriggered("PlayText.Stop");
     }
 }
