@@ -36,10 +36,10 @@ public class TalkingManager : MonoBehaviour
             EventCenter.GetInstance().EventTriggered("PlayText.OptionDown");
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            EventCenter.GetInstance().EventTriggered("PlayText.Stop");
-        }
+        // if(Input.GetKeyDown(KeyCode.P))
+        // {
+        //     EventCenter.GetInstance().EventTriggered("PlayText.Stop");
+        // }
     }
 
     void LockConversation()
