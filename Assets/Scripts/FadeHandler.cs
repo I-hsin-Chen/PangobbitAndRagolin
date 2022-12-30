@@ -38,10 +38,11 @@ public class FadeHandler : MonoBehaviour
             yield return null;
         }
         imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        // TODO: don't need this when all scenes have story
         // After fade in, if there is no story in the scene, player can do actions
         // otherwise, player cannot do actions until the story is finished
         // (playerCanMove, pangolinCanPossess, and rabbitCanPossess will be set to true in story Graph)
-        if (GameObject.Find("PlayText_Follow") == null) {
+        if (GameObject.Find("MyPlayText_Follow") == null) {
             gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);        
             gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
             gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
