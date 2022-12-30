@@ -20,7 +20,7 @@ public class WaterLevelControl : MonoBehaviour
         if (isFalling && waterLevel > targetLevel ) waterLevel = waterLevel - 0.012f;
         else if (isFalling && waterLevel <= targetLevel ) GameObject.Find("Door").GetComponent<Animator>().enabled = true;
 
-        drownLevel = waterLevel - 0.5f;
+        drownLevel = waterLevel - 1.5f;
         transform.position = new Vector3 (transform.position.x, waterLevel, transform.position.z);
     }
 

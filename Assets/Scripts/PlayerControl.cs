@@ -58,6 +58,9 @@ public class PlayerControl : MonoBehaviour
     public int rollState;
     private float xScale;
 
+    // For keyboard left right movement
+    private bool lastDirection = false;
+
     public enum Direction {
         Left, Right
     }
@@ -183,6 +186,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private void setRunningDirection(int dir){
+        runningDirection = dir;
+        if (dir != 0) {
+            faceDirection.SetDirection(dir);
+            isRunning = true;
+        }
+        else isRunning = false;
+    }
+
     private void RabbitCheck()
     {
         if (!isRabbit || isShrinking) return;
@@ -190,21 +202,18 @@ public class PlayerControl : MonoBehaviour
         // possess
         if (Input.GetKeyDown(KeyCode.U) && rabbitCanPossess && possessTarget != null ) Possess(possessTarget);
 
-        if(isPlayer || objectControl.canMove){ // some object cannot move
-            if (Input.GetKey(KeyCode.J)) {
-                runningDirection = -1;
-                isRunning = true;
-                faceDirection.SetDirection(-1);
+        // some object cannot move
+        if(isPlayer || objectControl.canMove){
+            if (Input.GetKeyDown(KeyCode.J)) lastDirection = false;
+            else if (Input.GetKeyDown(KeyCode.L)) lastDirection = true;
+   
+            if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.L)){
+                if (lastDirection) setRunningDirection(1);
+                else  setRunningDirection(-1);
             }
-            else if (Input.GetKey(KeyCode.L)) {
-                runningDirection = 1;
-                isRunning = true;
-                faceDirection.SetDirection(1);
-            }
-            else {
-                runningDirection = 0;
-                isRunning = false;
-            }
+            else if (Input.GetKey(KeyCode.J)) setRunningDirection(-1);
+            else if (Input.GetKey(KeyCode.L)) setRunningDirection(1);
+            else setRunningDirection(0);
         }
         else if (isPossessedObject) {
             if (Input.GetKey(KeyCode.J)) faceDirection.SetDirection(-1);
@@ -222,21 +231,17 @@ public class PlayerControl : MonoBehaviour
         // possess
         if (Input.GetKeyDown(KeyCode.Q) && pangolinCanPossess && possessTarget != null ) Possess(possessTarget);
 
-        if(isPlayer || objectControl.canMove){ // some object cannot move
-            if (Input.GetKey(KeyCode.A)) {
-                runningDirection = -1;
-                isRunning = true;
-                faceDirection.SetDirection(-1);
+        if(isPlayer || objectControl.canMove){
+            if (Input.GetKeyDown(KeyCode.A)) lastDirection = false;
+            else if (Input.GetKeyDown(KeyCode.D)) lastDirection = true;
+   
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)){
+                if (lastDirection) setRunningDirection(1);
+                else  setRunningDirection(-1);
             }
-            else if (Input.GetKey(KeyCode.D)) {
-                runningDirection = 1;
-                isRunning = true;
-                faceDirection.SetDirection(1);
-            }
-            else {
-                runningDirection = 0;
-                isRunning = false;
-            }
+            else if (Input.GetKey(KeyCode.A)) setRunningDirection(-1);
+            else if (Input.GetKey(KeyCode.D)) setRunningDirection(1);
+            else setRunningDirection(0);
         }
         else if (isPossessedObject) {
             if (Input.GetKey(KeyCode.A)) faceDirection.SetDirection(-1);
@@ -306,7 +311,7 @@ public class PlayerControl : MonoBehaviour
         obj.GetComponent<PlayerControl>().SetPossessObj(this.gameObject);
         isShrinking = true;
 
-        // *** For Dialog box follow *** //
+        // For Dialog box follow 
         dialogFollowRefresh(obj);
         obj.GetComponent<ObjectControl>().unhighlightObject();
 
