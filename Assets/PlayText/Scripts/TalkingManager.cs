@@ -24,7 +24,10 @@ public class TalkingManager : MonoBehaviour
         // change the key to space instead of E
         if(Input.GetKeyDown(KeyCode.Space) && !ConversationLocked)
         {
-            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
+            // the Space can now only be used to continue a exist conversation
+            // to start a new conversation, use the PlayText.Play event
+            EventCenter.GetInstance().EventTriggered("PlayText.Next");
+            // EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -36,10 +39,10 @@ public class TalkingManager : MonoBehaviour
             EventCenter.GetInstance().EventTriggered("PlayText.OptionDown");
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            EventCenter.GetInstance().EventTriggered("PlayText.Stop");
-        }
+        // if(Input.GetKeyDown(KeyCode.P))
+        // {
+        //     EventCenter.GetInstance().EventTriggered("PlayText.Stop");
+        // }
     }
 
     void LockConversation()

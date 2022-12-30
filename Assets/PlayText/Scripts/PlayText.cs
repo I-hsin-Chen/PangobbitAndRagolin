@@ -188,6 +188,7 @@ public class PlayText : MonoBehaviour
 
         // Paul's code
         EventCenter.GetInstance().AddEventListener("PlayText.ForceNext", ForcePlayTextNext);
+        EventCenter.GetInstance().AddEventListener<float>("PlayText.SetVolume", SetVolume);
     }
 
     void FindPerson()
@@ -209,10 +210,14 @@ public class PlayText : MonoBehaviour
             {
                 OptionIndex = OptionGameObject.Count - 1;
             }
-            if (IsChangingVolume)
-                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
-            else
-                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+            // Paul's code
+            AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+            // ===== original code =====
+            // if (IsChangingVolume)
+            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+            // else
+            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+            // =========================
         }
     }
 
@@ -225,24 +230,32 @@ public class PlayText : MonoBehaviour
             {
                 OptionIndex = 0;
             }
-            if (IsChangingVolume)
-                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
-            else
-                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+            // Paul's code
+            AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+            // ===== original code =====
+            // if (IsChangingVolume)
+            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+            // else
+            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+            // =========================
         } 
     }
 
     void FinishTalking()
     {
         IsFinished = true;
-        cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+        // Paul's code
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void StopTalking()
     {
         IsFinished = true;
         GoToState(STATE.OFF);
-        cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+        // Paul's code
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
         dialogueGraph = null;
     }
 
@@ -295,8 +308,11 @@ public class PlayText : MonoBehaviour
                         Transform focusing = TalkingPersonTransform[dia.TalkingPerson];
                         if (!IsFinished)
                             cam.Follow = focusing;
-                        else
-                            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+                        else {
+                            // Paul's code
+                            if (GameObject.FindGameObjectWithTag("Player") != null)
+                                cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+                        }
                         if (IsBubbleFollow)
                         {
                             Vector2 screenPos = Camera.main.WorldToScreenPoint(focusing.position);//Change With Resolution
@@ -361,7 +377,10 @@ public class PlayText : MonoBehaviour
                     }
                     else if(IsCameraFollow && AllowCameraFollow)
                     {
-                        cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+                        // Paul's code
+                        if (GameObject.FindGameObjectWithTag("Player") != null)
+                            cam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+
                         Debug.LogWarning("Couldn't Find Talking Person");
                     }
                 }
@@ -369,7 +388,11 @@ public class PlayText : MonoBehaviour
         }
         else if (current == Current.Option)
         {
-            Transform focusing = GameObject.FindGameObjectWithTag("Player").transform;
+            // Paul's code
+            Transform focusing = null;
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+                focusing = GameObject.FindGameObjectWithTag("Player").transform;
+
             cam.Follow = focusing;
             if (cam.Follow != LastFollow)
             {
@@ -501,10 +524,14 @@ public class PlayText : MonoBehaviour
                         {
                             if (!dia.PlayPerChar)
                             {
-                                if (IsChangingVolume)
-                                    AudioMgr.GetInstance().PlayAudio(dia.Audio, Volume, false);
-                                else
-                                    AudioMgr.GetInstance().PlayAudio(dia.Audio, 0.35f, false);
+                                // Paul's code
+                                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                                // ===== original code =====
+                                // if (IsChangingVolume)
+                                //     AudioMgr.GetInstance().PlayAudio(dia.Audio, Volume, false);
+                                // else
+                                //     AudioMgr.GetInstance().PlayAudio(dia.Audio, 0.35f, false);
+                                // ==========================
                             }
                         }
                     }
@@ -782,19 +809,27 @@ public class PlayText : MonoBehaviour
                         {
                             if (dia.PlayPerChar)
                             {
-                                if (IsChangingVolume)
-                                    AudioMgr.GetInstance().PlayAudio(dia.Audio, Volume, false);
-                                else
-                                    AudioMgr.GetInstance().PlayAudio(dia.Audio, 0.35f, false);
+                                // Paul's code
+                                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                                // ===== original code =====
+                                // if (IsChangingVolume)
+                                //     AudioMgr.GetInstance().PlayAudio(dia.Audio, Volume, false);
+                                // else
+                                //     AudioMgr.GetInstance().PlayAudio(dia.Audio, 0.35f, false);
+                                // ==========================
                             }
                         }
 
                         if (dia.Audio == null || dia.PlayTyping)
                         {
-                            if (IsChangingVolume)
-                                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
-                            else
-                                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.35f, false);
+                            // Paul's code
+                            AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                            // ===== original code =====
+                            // if (IsChangingVolume)
+                            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                            // else
+                            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.35f, false);
+                            // ==========================
                         }
                     }
                 }
@@ -1015,10 +1050,14 @@ public class PlayText : MonoBehaviour
                         }
                         else
                         {
-                            if (IsChangingVolume)
-                                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
-                            else
-                                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+                            // Paul's code
+                            AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                            // ===== original code =====
+                            // if (IsChangingVolume)
+                            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                            // else
+                            //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+                            // =========================
                             if (!IsOptionShowing)
                             {
                                 foreach (var item in OptionGameObject)
@@ -1109,10 +1148,14 @@ public class PlayText : MonoBehaviour
                     }
                     else
                     {
-                        if (IsChangingVolume)
-                            AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
-                        else
-                            AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+                        // Paul's code
+                        AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                        // ===== original code =====
+                        // if (IsChangingVolume)
+                        //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                        // else
+                        //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+                        // =========================
                         if (!IsOptionShowing)
                         {
                             foreach (var item in OptionGameObject)
@@ -1190,10 +1233,14 @@ public class PlayText : MonoBehaviour
                 tryText.text = temp;
                 DefaultColor = tryText.color;
                 OptionGameObject.Add(OptionObject);
-                if (IsChangingVolume)
-                    AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
-                else
-                    AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+                // Paul's code
+                AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                // ===== original code =====
+                // if (IsChangingVolume)
+                //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), Volume, false);
+                // else
+                //     AudioMgr.GetInstance().PlayAudio(GetCurVoice(), 0.6f, false);
+                // =========================
                 OptionObject.TryGetComponent(out LayoutElement LayEle);
                 if(LayEle != null && opt.Width != 0)
                 {
@@ -1376,7 +1423,8 @@ public class PlayText : MonoBehaviour
         }
     }
 
-    // Paul's code
+    // ===== Paul's codes below =====
+
     // force the conversation to play even if the player is still talking
     void ForcePlayTextNext() {
         Debug.Log("ForcePlayTextNext");
@@ -1386,5 +1434,11 @@ public class PlayText : MonoBehaviour
             state = STATE.PAUSED;
         }
         EventCenter.GetInstance().EventTriggered("PlayText.Next");
+    }
+
+    // set the Volume to keep the typing volume close to other SEs volume
+    void SetVolume(float volume) {
+        // times a constant to make the volume a bit louder (sound track is a bit quiet)
+        Volume = volume * 1.3f;
     }
 }
