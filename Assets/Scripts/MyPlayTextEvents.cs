@@ -5,8 +5,8 @@ using PlayTextSupport;
 using UnityEngine;
 
 
-// This script contains all the events used in PlayText
-// All functions are called by EventCenter
+// This script contains all customized the events used in PlayText
+// All functions should be triggered by EventCenter, but not directly called
 // Add events to EventCenter in Start()
 
 // Outer Events:
@@ -14,10 +14,17 @@ using UnityEngine;
 // UnLockConversation: Unlock Conversation after certain event
 // PlayText.Play: Play/Continue the graph
 // PlayText.ForceNext: Force to go to next node even if the current node is not finished
+// PlayText.SetVolume: Set the volume of PlayText audioMgr
+// PlayText.Stop: Stop the graph
 
 public class MyPlayTextEvents : MonoBehaviour
 {
-    public DialogueGraph Graph;
+    // all used graphs should be assigned in the inspector
+    public DialogueGraph Graph_Stage_0 = null;
+    public DialogueGraph Graph_Stage_1 = null;
+    public DialogueGraph Graph_Stage_2 = null;
+    public DialogueGraph Graph_Stage_3 = null;
+    public DialogueGraph Graph_Stage_4 = null;
     private GameObject gameManager;
     private GameObject audioManager;
 
@@ -27,38 +34,70 @@ public class MyPlayTextEvents : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
         audioManager = GameObject.Find("AudioManager");
 
-        // adding events to EventCenter
-        print("Adding PlayTextEvents");
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("PrintEvent", PrintEvent);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetPlayerCanMove", SetPlayerCanMove);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetPangolinCanPossess", SetPangolinCanPossess);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetRabbitCanPossess", SetRabbitCanPossess);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyAD", WaitingForKeyAD);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyJL", WaitingForKeyJL);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyW", WaitingForKeyW);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyI", WaitingForKeyI);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForPangolinPossessTable", WaitingForPangolinPossessTable);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForRabbitPossessTable", WaitingForRabbitPossessTable);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyQ", WaitingForKeyQ);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyU", WaitingForKeyU);
-        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FinishConversation", FinishConversation);
-
         // set the typing volume (same with the SE volume)
         // typing volume will be handle by AudioManager in the rest of the game
         EventCenter.GetInstance().EventTriggered("PlayText.SetVolume", audioManager.GetComponent<AudioManager>().GetSEVolume());
 
-        // start the graph
-        EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph);
+        // adding events to EventCenter by stage
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("PrintEvent", PrintEvent);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetPlayerCanMove", SetPlayerCanMove);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetPangolinCanPossess", SetPangolinCanPossess);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("SetRabbitCanPossess", SetRabbitCanPossess);
+        EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FinishConversation", FinishConversation);
+        string curStage = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        Debug.Log("Adding PlayTextEvents in " + curStage);
+        if (curStage == "Stage_0") {
+            // Stage_0 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyAD", WaitingForKeyAD);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyJL", WaitingForKeyJL);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyW", WaitingForKeyW);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyI", WaitingForKeyI);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForPangolinPossessTable", WaitingForPangolinPossessTable);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForRabbitPossessTable", WaitingForRabbitPossessTable);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyQ", WaitingForKeyQ);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyU", WaitingForKeyU);
+        }
+        else if (curStage == "Stage_1") {
+            // Stage_1 events here
+        }
+        else if (curStage == "Stage_2") {
+            // Stage_2 events here
+        }
+        else if (curStage == "Stage_3") {
+            // Stage_3 events here
+        }
+        else if (curStage == "Stage_4") {
+            // Stage_4 events here
+        }
+
+        // play graphs
+        if (curStage == "Stage_0") {
+            // play Graph_Stage_0
+            if (Graph_Stage_0 == null)
+                Debug.LogError("Graph_Stage_0 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_0);
+        }
+        else if (curStage == "Stage_1") {
+            // play Graph_Stage_1
+            if (Graph_Stage_1 == null)
+                Debug.LogError("Graph_Stage_1 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_1);
+        }
+        else if (curStage == "Stage_2") {
+            // play Graph_Stage_2
+        }
+        else if (curStage == "Stage_3") {
+            // play Graph_Stage_3
+        }
+        else if (curStage == "Stage_4") {
+            // play Graph_Stage_4
+        }
     }
 
     // for testing purpose
     void PrintEvent(List<EventValueClass> Value)
     {
-        Debug.Log("Print Event");
-        Debug.Log(Value[0].intValue);
-        Debug.Log(Value[1].floatValue);
-        Debug.Log(Value[2].stringValue);
-        Debug.Log(Value[3].boolValue);
+        Debug.Log("Hello World!");
     }
 
     // set playerCanMove in event way

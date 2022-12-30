@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: WaitingForKeyJ\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -248, y: 248}
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: 'Event: WaitingForKeyQ'
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1176, y: 1048}
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: 'Start: English'
+  m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -1160, y: -152}
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2784bac956dac04b9b62556f83545a0, type: 3}
-  m_Name: Graph_Test
+  m_Name: Graph_Stage_0
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -108990237935334489}
@@ -755,7 +755,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -108990237935334489}
-  current: {fileID: -19444966001815500}
+  current: {fileID: 0}
 --- !u!114 &458704876033674518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: WaitingForPang\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -920, y: 1048}
@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: SetPangolinCan\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -584, y: 1176}
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: SetRabbitCanPo\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 104, y: 1144}
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: SetPlayerCanMo\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 120, y: -200}
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: WaitingForKeyA\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -920, y: 280}
@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: SetPangolinCan\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1176, y: 792}
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: 'Event: WaitingForKeyI'
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1096, y: 248}
@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: 'Event: WaitingForKeyU'
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1528, y: 1016}
@@ -1687,7 +1687,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: SetPangolinCan\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -920, y: 792}
@@ -1741,7 +1741,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: SetRabbitCanPo\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1528, y: 760}
