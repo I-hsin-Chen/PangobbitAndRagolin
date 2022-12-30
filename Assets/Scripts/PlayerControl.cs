@@ -358,6 +358,9 @@ public class PlayerControl : MonoBehaviour
         else if(Dhit.collider == null || Dhit.collider.gameObject.tag == "Player")
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
         else possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
+
+        if(name.Length > 5 && name.Substring(0, 5) == "Pitch")
+            possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
     }
 
     // when to ignore collision
