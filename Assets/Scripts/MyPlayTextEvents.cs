@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 // This script contains all customized the events used in PlayText
-// All functions should be triggered by EventCenter, but not directly called
+// Most functions should be triggered by EventCenter, but not directly called
 // Add events to EventCenter in Start()
 
 // Outer Events:
@@ -25,6 +25,8 @@ public class MyPlayTextEvents : MonoBehaviour
     public DialogueGraph Graph_Stage_2 = null;
     public DialogueGraph Graph_Stage_3 = null;
     public DialogueGraph Graph_Stage_4 = null;
+    public DialogueGraph Graph_Tank_Rabbit = null;
+    public DialogueGraph Graph_Tank_Pangolin = null;
     private GameObject gameManager;
     private GameObject audioManager;
 
@@ -358,5 +360,35 @@ public class MyPlayTextEvents : MonoBehaviour
         gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
         gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
         EventCenter.GetInstance().EventTriggered("PlayText.Stop");
+    }
+
+    // ===== Functions that can be called directly from other scripts =====
+
+    private bool tankPossessed_Rabbit = false;
+    private bool tankPossessed_Pangolin = false;
+    // Call this function when Tank is possessed
+    // who: "Rabbit" or "Pangolin"
+    public void PlayGraphTank(string who)
+    {
+        switch (who)
+        {
+            case "Rabbit":
+                if (tankPossessed_Rabbit)
+                    return;
+                Debug.Log("Play Graph_Tank_Rabbit");
+                tankPossessed_Rabbit = true;
+                EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Tank_Rabbit);
+                break;
+            case "Pangolin":
+                if (tankPossessed_Pangolin)
+                    return;
+                Debug.Log("Play Graph_Tank_Pangolin");
+                tankPossessed_Pangolin = true;
+                EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Tank_Pangolin);
+                break;
+            default:
+                Debug.LogError("PlayGraphTank: who is invalid");
+                break;
+        }
     }
 }
