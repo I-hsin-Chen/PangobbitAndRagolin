@@ -85,12 +85,21 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         else if (curStage == "Stage_2") {
             // play Graph_Stage_2
+            if (Graph_Stage_2 == null)
+                Debug.LogError("Graph_Stage_2 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_2);
         }
         else if (curStage == "Stage_3") {
             // play Graph_Stage_3
+            if (Graph_Stage_3 == null)
+                Debug.LogError("Graph_Stage_3 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_3);
         }
         else if (curStage == "Stage_4") {
             // play Graph_Stage_4
+            if (Graph_Stage_4 == null)
+                Debug.LogError("Graph_Stage_4 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_4);
         }
     }
 
