@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Graph_Stage_0: {fileID: 11400000, guid: 5c0dede254dcdd04e8ab87fcd04e4c6a, type: 2}
   Graph_Stage_1: {fileID: 11400000, guid: 47f8071986c8a4f42a2bcec7624bc038, type: 2}
-  Graph_Stage_2: {fileID: 0}
-  Graph_Stage_3: {fileID: 0}
-  Graph_Stage_4: {fileID: 0}
+  Graph_Stage_2: {fileID: 11400000, guid: e2c3f39ee74514349b0792da971d4fa5, type: 2}
+  Graph_Stage_3: {fileID: 11400000, guid: 2696ed4ce7af9b842b55c6364d529297, type: 2}
+  Graph_Stage_4: {fileID: 11400000, guid: 2346ed0b32eee0d459e593380add1670, type: 2}
+  Graph_Tank_Rabbit: {fileID: 11400000, guid: 6b321ac14909bab4692f559e13c219d0, type: 2}
+  Graph_Tank_Pangolin: {fileID: 11400000, guid: bca574bfb1f006644bd4e553d568cb13, type: 2}

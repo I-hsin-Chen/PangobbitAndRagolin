@@ -25,7 +25,6 @@ public class ObjectControl : MonoBehaviour
     // record stage_4 Gate and Marbel collision
     private bool[,] collidedGate = new bool[5, 5];
     private bool playing = false;
-    public float time = 0.3f;
     private Coroutine coroutine;
 
     private void Awake(){
@@ -127,14 +126,11 @@ public class ObjectControl : MonoBehaviour
     
     public void PulleyWheelRotate(bool clockwise) // only rotate barrel
     {
-        Rigidbody2D plateRb = GameObject.Find("LeftPlate").GetComponent<Rigidbody2D>();
-        PulleyControl ctrl = GameObject.Find("Pulley").GetComponent<PulleyControl>();
-        // if (clockwise) plateRb.velocity = new Vector2 (0, 1);
-        // else plateRb.velocity = new Vector2 (0, -1);
-        if (ctrl.canRole()) {
-            if (clockwise) plateRb.AddForce(new Vector2 (0, 2.0f));
-            else plateRb.AddForce(new Vector2 (0, -2.0f));
-        }
+        Animator wheelAnimator = GetComponent<Animator>();
+        PulleyControlv3 ctrl = GameObject.Find("Pulley").GetComponent<PulleyControlv3>();
+
+        if (clockwise && !ctrl.toggle) ctrl.toggleThePlates();
+        else if (!clockwise && ctrl.toggle) ctrl.toggleThePlates();
     }
     // Stage_2 end ======================================================================
 
@@ -171,6 +167,21 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    public void GearDown() // move gear to buttom
+    {
+        StartCoroutine(CheckGearDown());
+    }
+    
+    IEnumerator CheckGearDown()
+    {
+        yield return new WaitForSeconds(2f);
+        while(transform.position.y > -9f){
+            GetComponent<Rigidbody2D>().rotation -= 4.5f;
+            transform.position -= new Vector3(0, 0.0426f, 0);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
     public void GateClose(bool clockwise) // open/close the gate and rotate the gear
     {
         GameObject gate = transform.GetChild(0).gameObject;
@@ -200,19 +211,65 @@ public class ObjectControl : MonoBehaviour
     {
         playing = true;
         audiomanager.PlaySE_Accompaniment();
-        for(int i = 0; i < 5; i++){
-            if(collidedGate[i, 0]) audiomanager.PlaySE_Pitch1();
-            if(collidedGate[i, 1]) audiomanager.PlaySE_Pitch2();
-            if(collidedGate[i, 2]) audiomanager.PlaySE_Pitch3();
-            if(collidedGate[i, 3]) audiomanager.PlaySE_Pitch4();
-            if(collidedGate[i, 4]) audiomanager.PlaySE_Pitch5();
+        if(collidedGate[0, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[0, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[0, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[0, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[0, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.3515625f);
 
-            yield return new WaitForSeconds(time);
-        }
+        if(collidedGate[1, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[1, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[1, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[1, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[1, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.3515625f);
+
+        if(collidedGate[2, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[2, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[2, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[2, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[2, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.234375f);
+        
+        if(collidedGate[3, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[3, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[3, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[3, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[3, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.46875f);
+        
+        if(collidedGate[4, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[4, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[4, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[4, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[4, 4]) audiomanager.PlaySE_Pitch5();
+        if(CheckStage4Pass())
+            GetComponent<PhonographControl>().Stage4Pass();
+        
+        yield return new WaitForSeconds(0.46875f);
         audiomanager.StopSE_Accompaniment();
-        yield return new WaitForSeconds(0.75f);
+        
+        yield return new WaitForSeconds(0.5f);
         playing = false;
     }
+
+    public bool CheckStage4Pass()
+    {
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                if((i==0 && j==2) || (i==1 && j==3) || (i==2 && j==2) || (i==3 && j==4) || (i==4 && j==0)){
+                    if(!collidedGate[i, j]) return false;
+                }
+                else{
+                    if(collidedGate[i, j]) return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void SetCollision(int i, int j)
     {
         collidedGate[i, j] = true;
@@ -224,7 +281,8 @@ public class ObjectControl : MonoBehaviour
     }
     // Stage_4 end ======================================================================
 
-    // ************** Draw possessing hint on top of objects ************** //
+
+    // Draw possessing hint on top of objects ===========================================
 
     public void highlightObject(bool isRabbit)
     {

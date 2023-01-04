@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 // This script contains all customized the events used in PlayText
-// All functions should be triggered by EventCenter, but not directly called
+// Most functions should be triggered by EventCenter, but not directly called
 // Add events to EventCenter in Start()
 
 // Outer Events:
@@ -25,6 +25,8 @@ public class MyPlayTextEvents : MonoBehaviour
     public DialogueGraph Graph_Stage_2 = null;
     public DialogueGraph Graph_Stage_3 = null;
     public DialogueGraph Graph_Stage_4 = null;
+    public DialogueGraph Graph_Tank_Rabbit = null;
+    public DialogueGraph Graph_Tank_Pangolin = null;
     private GameObject gameManager;
     private GameObject audioManager;
 
@@ -62,12 +64,17 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         else if (curStage == "Stage_2") {
             // Stage_2 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyEorQ", WaitingForKeyEorQ);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyOorU", WaitingForKeyOorU);
         }
         else if (curStage == "Stage_3") {
             // Stage_3 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyEorQ", WaitingForKeyEorQ);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyOorU", WaitingForKeyOorU);
         }
         else if (curStage == "Stage_4") {
             // Stage_4 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FadeOutBGM", FadeOutBGM);
         }
 
         // play graphs
@@ -85,12 +92,21 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         else if (curStage == "Stage_2") {
             // play Graph_Stage_2
+            if (Graph_Stage_2 == null)
+                Debug.LogError("Graph_Stage_2 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_2);
         }
         else if (curStage == "Stage_3") {
             // play Graph_Stage_3
+            if (Graph_Stage_3 == null)
+                Debug.LogError("Graph_Stage_3 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_3);
         }
         else if (curStage == "Stage_4") {
             // play Graph_Stage_4
+            if (Graph_Stage_4 == null)
+                Debug.LogError("Graph_Stage_4 is not assigned!");
+            EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_4);
         }
     }
 
@@ -341,6 +357,64 @@ public class MyPlayTextEvents : MonoBehaviour
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
 
+    // lock conversation and start waiting for player to press KeyE or keyQ
+    void WaitingForKeyEorQ(List<EventValueClass> Value)
+    {
+        Debug.Log("WaitingForKeyEorQ");
+        StartCoroutine(SchduleWaitingForKeyEorQ(Value));
+    }
+
+    // coroutine to wait for player to press KeyE or keyQ
+    IEnumerator SchduleWaitingForKeyEorQ(List<EventValueClass> Value)
+    {
+        Debug.Log("SchduleWaitingForKeyEorQ");
+        // lock conversation before waiting
+        EventCenter.GetInstance().EventTriggered("LockConversation");
+        bool E_pressed = false;
+        bool Q_pressed = false;
+        // wait for player to press KeyE or keyQ
+        while ( (!E_pressed || Input.GetKey(KeyCode.E)) && (!Q_pressed || Input.GetKey(KeyCode.Q)) )
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+                E_pressed = true;
+            if (Input.GetKeyDown(KeyCode.Q))
+                Q_pressed = true;
+            yield return null;
+        }
+        // unlock conversation after E or Q is pressed
+        EventCenter.GetInstance().EventTriggered("UnLockConversation");
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
+    // lock conversation and start waiting for player to press KeyO or keyU
+    void WaitingForKeyOorU(List<EventValueClass> Value)
+    {
+        Debug.Log("WaitingForKeyOorU");
+        StartCoroutine(SchduleWaitingForKeyOorU(Value));
+    }
+
+    // coroutine to wait for player to press KeyO or keyU
+    IEnumerator SchduleWaitingForKeyOorU(List<EventValueClass> Value)
+    {
+        Debug.Log("SchduleWaitingForKeyOorU");
+        // lock conversation before waiting
+        EventCenter.GetInstance().EventTriggered("LockConversation");
+        bool O_pressed = false;
+        bool U_pressed = false;
+        // wait for player to press KeyO or keyU
+        while ( (!O_pressed || Input.GetKey(KeyCode.O)) && (!U_pressed || Input.GetKey(KeyCode.U)) )
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+                O_pressed = true;
+            if (Input.GetKeyDown(KeyCode.U))
+                U_pressed = true;
+            yield return null;
+        }
+        // unlock conversation after O or U is pressed
+        EventCenter.GetInstance().EventTriggered("UnLockConversation");
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
     // Finish the conversation
     void FinishConversation(List<EventValueClass> Value)
     {
@@ -349,5 +423,41 @@ public class MyPlayTextEvents : MonoBehaviour
         gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
         gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
         EventCenter.GetInstance().EventTriggered("PlayText.Stop");
+    }
+
+    void FadeOutBGM(List<EventValueClass> Value)
+    {
+        Debug.Log("FadeOutBGM");
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().FadeOutBGM();
+    }
+
+    // ===== Functions that can be called directly from other scripts =====
+
+    private bool tankPossessed_Rabbit = false;
+    private bool tankPossessed_Pangolin = false;
+    // Call this function when Tank is possessed
+    // who: "Rabbit" or "Pangolin"
+    public void PlayGraphTank(string who)
+    {
+        switch (who)
+        {
+            case "Rabbit":
+                if (tankPossessed_Rabbit)
+                    return;
+                Debug.Log("Play Graph_Tank_Rabbit");
+                tankPossessed_Rabbit = true;
+                EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Tank_Rabbit);
+                break;
+            case "Pangolin":
+                if (tankPossessed_Pangolin)
+                    return;
+                Debug.Log("Play Graph_Tank_Pangolin");
+                tankPossessed_Pangolin = true;
+                EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Tank_Pangolin);
+                break;
+            default:
+                Debug.LogError("PlayGraphTank: who is invalid");
+                break;
+        }
     }
 }
