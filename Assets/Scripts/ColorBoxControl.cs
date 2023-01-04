@@ -118,6 +118,26 @@ public class ColorBoxControl : MonoBehaviour
         yield return new WaitForSeconds(challengeGapTime);
         resetStickState();
 
+        // Challenge 5 : Yellow Blue and Green disappear //
+        remainingTime = 4;
+        stickState[(int)Colors.YELLOW] = false;
+        stickState[(int)Colors.BLUE] = false;
+        stickState[(int)Colors.GREEN] = false;
+        yield return new WaitForSeconds(3.0f);
+        setStickState();
+        yield return new WaitForSeconds(challengeGapTime);
+        resetStickState();
+
+        // Challenge 6 : Yellow Blue and Red disappear //
+        remainingTime = 4;
+        stickState[(int)Colors.RED] = false;
+        stickState[(int)Colors.BLUE] = false;
+        stickState[(int)Colors.YELLOW] = false;
+        yield return new WaitForSeconds(3.0f);
+        setStickState();
+        yield return new WaitForSeconds(challengeGapTime);
+        resetStickState();
+
         // After passing all challenges, the water starts to disappear
         remainingTime = 6;
         stickState[(int)Colors.BLUE] = false;
