@@ -101,7 +101,10 @@ public class ObjectControl : MonoBehaviour
         while(bullets.Count > 0 && bullets[0] == null)
             bullets.RemoveAt(0);
 
-        if(bullets.Count > 3) return;
+        if(bullets.Count > 3){
+            audiomanager.PlaySE_Empty();
+            return;
+        }
 
         GameObject obj = transform.GetChild(0).gameObject;
         GameObject cannon = obj.transform.GetChild(0).gameObject;
