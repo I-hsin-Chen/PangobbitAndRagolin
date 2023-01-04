@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ToasterControl : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class ToasterControl : MonoBehaviour
     private GameObject bondedToast;
     private PlayerControl playerCtrl;
     private CollisionState collisionState;
-    private int cntJamToast = 0;
+
+    public TMP_Text remainingToastText;
+    public int cntJamToast { get; private set; } = 0;
 
     void Awake(){
         TryGetComponent<CollisionState>(out collisionState);
@@ -35,6 +38,7 @@ public class ToasterControl : MonoBehaviour
             bondedToast.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.0f, 2.0f), 12.0f);
             StartCoroutine(waitForNewToast());
         }
+        remainingToastText.text = "Remaining Jam Toasts : " + (10 - cntJamToast).ToString();
     }
 
     private IEnumerator waitForNewToast(){
@@ -46,7 +50,7 @@ public class ToasterControl : MonoBehaviour
     }
 
     public void AddJamToast(){
-        cntJamToast += 1;
+        if (cntJamToast < 10) cntJamToast += 1;
         if(cntJamToast == 10)
             door.GetComponent<Animator>().enabled = true;
     }
