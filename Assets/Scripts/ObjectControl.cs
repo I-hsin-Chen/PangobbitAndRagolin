@@ -191,6 +191,7 @@ public class ObjectControl : MonoBehaviour
         if(rotating && !playing) coroutine = StartCoroutine(CheckMarbels());
         else if(!rotating && playing){ 
             if(coroutine != null) StopCoroutine(coroutine);
+            audiomanager.StopSE_Accompaniment();
             playing = false;
         }
     }
@@ -198,6 +199,7 @@ public class ObjectControl : MonoBehaviour
     IEnumerator CheckMarbels()
     {
         playing = true;
+        audiomanager.PlaySE_Accompaniment();
         for(int i = 0; i < 5; i++){
             if(collidedGate[i, 0]) audiomanager.PlaySE_Pitch1();
             if(collidedGate[i, 1]) audiomanager.PlaySE_Pitch2();
@@ -207,7 +209,8 @@ public class ObjectControl : MonoBehaviour
 
             yield return new WaitForSeconds(time);
         }
-        yield return new WaitForSeconds(0.5f);
+        audiomanager.StopSE_Accompaniment();
+        yield return new WaitForSeconds(0.75f);
         playing = false;
     }
     public void SetCollision(int i, int j)

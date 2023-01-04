@@ -156,6 +156,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySE_Accompaniment()
     {
-        SEPlayer.PlayOneShot(SE_Accompaniment);
+        SEPlayer.clip = SE_Accompaniment;
+        SEPlayer.Play();
+    }
+
+    public void StopSE_Accompaniment()
+    {
+        SEPlayer.Stop();
     }
 }
