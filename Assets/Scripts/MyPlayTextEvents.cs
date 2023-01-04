@@ -74,6 +74,7 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         else if (curStage == "Stage_4") {
             // Stage_4 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FadeOutBGM", FadeOutBGM);
         }
 
         // play graphs
@@ -422,6 +423,12 @@ public class MyPlayTextEvents : MonoBehaviour
         gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
         gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
         EventCenter.GetInstance().EventTriggered("PlayText.Stop");
+    }
+
+    void FadeOutBGM(List<EventValueClass> Value)
+    {
+        Debug.Log("FadeOutBGM");
+        GameObject.Find("AudioManager").GetComponent<AudioManager>().FadeOutBGM();
     }
 
     // ===== Functions that can be called directly from other scripts =====
