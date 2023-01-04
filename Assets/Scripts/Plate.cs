@@ -22,8 +22,6 @@ public class Plate : MonoBehaviour
         if  (collsionObject.gameObject.name == "Bulle(1)")
             ifCollision = true;
             
-            
-            
 
     }
 

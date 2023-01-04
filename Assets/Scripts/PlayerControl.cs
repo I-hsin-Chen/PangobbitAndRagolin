@@ -267,8 +267,17 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.S)) objectControl.ClockRotate(true); // turn counter-clockwise
         }
         if(name == "Wheel"){
-            if(Input.GetKey(KeyCode.W)) objectControl.PulleyWheelRotate(false);  // turn clockwise
-            if(Input.GetKey(KeyCode.S)) objectControl.PulleyWheelRotate(true); // turn counter-clockwise
+            Animator wheelAnimator = GetComponent<Animator>();
+
+            if(Input.GetKey(KeyCode.W)) {
+                objectControl.PulleyWheelRotate(false);  // turn clockwise
+                wheelAnimator.enabled = true;
+            }
+            else if(Input.GetKey(KeyCode.S)) {
+                objectControl.PulleyWheelRotate(true); // turn counter-clockwise
+                wheelAnimator.enabled = true;
+            }
+            else wheelAnimator.enabled = false;
         }
 
         // Stage_3

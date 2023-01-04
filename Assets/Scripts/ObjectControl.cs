@@ -127,14 +127,11 @@ public class ObjectControl : MonoBehaviour
     
     public void PulleyWheelRotate(bool clockwise) // only rotate barrel
     {
-        Rigidbody2D plateRb = GameObject.Find("LeftPlate").GetComponent<Rigidbody2D>();
-        PulleyControl ctrl = GameObject.Find("Pulley").GetComponent<PulleyControl>();
-        // if (clockwise) plateRb.velocity = new Vector2 (0, 1);
-        // else plateRb.velocity = new Vector2 (0, -1);
-        if (ctrl.canRole()) {
-            if (clockwise) plateRb.AddForce(new Vector2 (0, 2.0f));
-            else plateRb.AddForce(new Vector2 (0, -2.0f));
-        }
+        Animator wheelAnimator = GetComponent<Animator>();
+        PulleyControlv3 ctrl = GameObject.Find("Pulley").GetComponent<PulleyControlv3>();
+
+        if (clockwise && !ctrl.toggle) ctrl.toggleThePlates();
+        else if (!clockwise && ctrl.toggle) ctrl.toggleThePlates();
     }
     // Stage_2 end ======================================================================
 
@@ -224,7 +221,8 @@ public class ObjectControl : MonoBehaviour
     }
     // Stage_4 end ======================================================================
 
-    // ************** Draw possessing hint on top of objects ************** //
+
+    // Draw possessing hint on top of objects ===========================================
 
     public void highlightObject(bool isRabbit)
     {
