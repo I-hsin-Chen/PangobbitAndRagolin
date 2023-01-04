@@ -25,7 +25,6 @@ public class ObjectControl : MonoBehaviour
     // record stage_4 Gate and Marbel collision
     private bool[,] collidedGate = new bool[5, 5];
     private bool playing = false;
-    public float time = 0.3f;
     private Coroutine coroutine;
 
     private void Awake(){
@@ -197,17 +196,43 @@ public class ObjectControl : MonoBehaviour
     {
         playing = true;
         audiomanager.PlaySE_Accompaniment();
-        for(int i = 0; i < 5; i++){
-            if(collidedGate[i, 0]) audiomanager.PlaySE_Pitch1();
-            if(collidedGate[i, 1]) audiomanager.PlaySE_Pitch2();
-            if(collidedGate[i, 2]) audiomanager.PlaySE_Pitch3();
-            if(collidedGate[i, 3]) audiomanager.PlaySE_Pitch4();
-            if(collidedGate[i, 4]) audiomanager.PlaySE_Pitch5();
+        if(collidedGate[0, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[0, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[0, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[0, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[0, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.3515625f);
 
-            yield return new WaitForSeconds(time);
-        }
+        if(collidedGate[1, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[1, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[1, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[1, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[1, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.3515625f);
+
+        if(collidedGate[2, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[2, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[2, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[2, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[2, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.234375f);
+        
+        if(collidedGate[3, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[3, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[3, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[3, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[3, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.46875f);
+        
+        if(collidedGate[4, 0]) audiomanager.PlaySE_Pitch1();
+        if(collidedGate[4, 1]) audiomanager.PlaySE_Pitch2();
+        if(collidedGate[4, 2]) audiomanager.PlaySE_Pitch3();
+        if(collidedGate[4, 3]) audiomanager.PlaySE_Pitch4();
+        if(collidedGate[4, 4]) audiomanager.PlaySE_Pitch5();
+        yield return new WaitForSeconds(0.46875f);
         audiomanager.StopSE_Accompaniment();
-        yield return new WaitForSeconds(0.75f);
+        
+        yield return new WaitForSeconds(0.5f);
         playing = false;
     }
     public void SetCollision(int i, int j)

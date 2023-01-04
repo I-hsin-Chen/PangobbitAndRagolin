@@ -1,0 +1,409 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3699676781935173002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "RabbitFollow: <color=red>Ten\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1144, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: -3699676781935173002}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 1522533721884123856}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: -3699676781935173002}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 8080965354105031906}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: RabbitFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - <color=red>Ten strawberry jam toasts</color> please.
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2784bac956dac04b9b62556f83545a0, type: 3}
+  m_Name: Graph_Stage_3
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 1178654012171670059}
+  - {fileID: 8397645906097182743}
+  - {fileID: 4319646348177514017}
+  - {fileID: 2499609674129623706}
+  - {fileID: 1407835240414005468}
+  - {fileID: 1522533721884123856}
+  - {fileID: -3699676781935173002}
+  - {fileID: 8080965354105031906}
+  startNode: {fileID: 0}
+  dialogueNode: {fileID: 0}
+  optionNode: {fileID: 0}
+  eventNode: {fileID: 0}
+  commentNode: {fileID: 0}
+  profileNode: {fileID: 1178654012171670059}
+  current: {fileID: 8397645906097182743}
+--- !u!114 &1178654012171670059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6a5d78950873f44a797d0c84c321bc, type: 3}
+  m_Name: Profile
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -504, y: -136}
+  ports:
+    keys: []
+    values: []
+  dialogueProfile: {fileID: 11400000, guid: a2728e862ef41984290fa506c322846a, type: 2}
+--- !u!114 &1407835240414005468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "RabbitFollow: I don\u2019t think \u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 440, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 1407835240414005468}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 2499609674129623706}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 1407835240414005468}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 1522533721884123856}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: RabbitFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - "I don\u2019t think so. \nIt\u2019s hard to tell how far it is from the exit."
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &1522533721884123856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "PangolinFollow: You\u2019re right. "
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 792, y: -8}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 1522533721884123856}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 1407835240414005468}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 1522533721884123856}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: -3699676781935173002}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: PangolinFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - "You\u2019re right. \nThere is a toaster, I think we can bake some toast here."
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &2499609674129623706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "PangolinFollow: Me too. But ca\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 88, y: -8}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 2499609674129623706}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 4319646348177514017}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 2499609674129623706}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 1407835240414005468}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: PangolinFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - Me too. But can we just stand for a while until we escape?
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &4319646348177514017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54790c38d56d240bbd83cf672713a4, type: 3}
+  m_Name: "RabbitFollow: Damn, I\u2019m hung\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -264, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 4319646348177514017}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Ouput
+        node: {fileID: 8397645906097182743}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 4319646348177514017}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 2499609674129623706}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  TalkingPerson: RabbitFollow
+  Expression: None
+  Facing: 0
+  FacingPerson: 
+  Width: 0
+  ShowBubble: 1
+  CameraFollow: 1
+  Audio: {fileID: 0}
+  PlayPerChar: 0
+  PlayTyping: 0
+  Dialogue:
+  - "Damn, I\u2019m hungry\u2026"
+  IsMax: 1
+  curIndex: 0
+--- !u!114 &8080965354105031906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1496, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 8080965354105031906}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -3699676781935173002}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 8080965354105031906}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: FinishConversation
+  WaitCallback: 0
+  EventValue: []
+  IsMax: 1
+  IsWaiting: 0
+--- !u!114 &8397645906097182743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -504, y: -40}
+  ports:
+    keys:
+    - Ouput
+    values:
+    - _fieldName: Ouput
+      _node: {fileID: 8397645906097182743}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 4319646348177514017}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  Language: English
