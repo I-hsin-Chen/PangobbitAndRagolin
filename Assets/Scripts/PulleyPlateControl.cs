@@ -4,31 +4,74 @@ using UnityEngine;
 
 public class PulleyPlateControl : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private float DragForce;
+    private CollisionState colState;
+    private bool bulletTouch = false;
+    private bool characterTouch = false;
+    private bool otherTouch = false;
 
-    private void Awake() {
+    public virtual bool bulletForce => bulletTouch && colState.touchingCeiling;
+    public virtual bool characterForce => characterTouch && colState.touchingCeiling;
+    public virtual bool isForced => bulletForce || characterForce;
+    private float bulletMass = 5.0f;
+    private float characterMass = 1.0f;
+    private float g = 9.8f;
+    public float force { get; private set; } = 0.0f;
 
-        TryGetComponent<Rigidbody2D>(out rb);
-        // if (name == "LeftPlate") DragForce = GameObject.Find("Pulley").GetComponent<PulleyControl>().ropeDragForceLeft;
-        // else if (name == "RightPlate") DragForce = GameObject.Find("Pulley").GetComponent<PulleyControl>().ropeDragForceRight;
-        // TryGetComponent<Animator>(out animator);
+
+    void Awake() {
+        TryGetComponent<CollisionState>(out colState);
     }
 
-    void OnCollisionStay2D(Collision2D col) {
-
-        Vector3 normal = col.contacts[0].normal;
-        if (name == "RightPlate" && normal == new Vector3(0, -1, 0))
-            GameObject.Find("Pulley").GetComponent<PulleyControl>().ChangeRightForce(rb.mass * 9.8f + col.gameObject.GetComponent<Rigidbody2D>().mass * 9.8f );
+    public IEnumerator lerpPosition(Vector3 StartPos, Vector3 EndPos, float LerpTime)
+    {
+        float StartTime = Time.time;
+        float EndTime = StartTime + LerpTime;
+ 
+        while(Time.time < EndTime)
+        {
+            if (colState.grounded && EndPos.y < StartPos.y && (transform.position.y - EndPos.y) < 2.0f){
+                transform.parent.gameObject.GetComponent<PulleyControlv3>().forceToStop();
+            } 
+            float timeProgressed = (Time.time - StartTime) / LerpTime;  // this will be 0 at the beginning and 1 at the end.
+            transform.position = Vector3.Lerp(StartPos, EndPos, timeProgressed);
+            yield return new WaitForFixedUpdate();
+        }
         
     }
 
-    // void OnCollisionExit2D(Collision2D col) {
 
-    //     if (name == "RightPlate")
-    //         GameObject.Find("Pulley").GetComponent<PulleyControl>().ChangeRightForce(rb.mass * 9.8f);
-    // } 
+    // void Update(){
+    //     if (!colState.touchingCeiling){
+    //         characterTouch = false;
+    //         bulletTouch = false;
+    //     }
+    //     int bt = bulletForce ? 1 : 0 ;
+    //     int ct = characterForce ? 1 : 0;
+    //     force = (bt * bulletMass + ct * characterMass) * g;
+    //     // print (gameObject.name + " " + force.ToString());
+    // }
 
+    // void OnCollisionStay2D(Collision2D col) {
+    //     // print(col.contacts[0].normal.y);
+    //     // ignore collisions that are not colliding from the ceiling side
+    //     if (col.contacts[0].normal.y < 0) {
+    //         // print (col.gameObject.name.StartsWith("Bullet"));
+    //         if (col.gameObject.name.StartsWith("Bullet")) bulletTouch = true; 
+    //         else if (col.gameObject.name.StartsWith("Rabbit") || col.gameObject.name.StartsWith("Pangolin")) characterTouch = true; 
+    //         else otherTouch = true;
+    //     }
+    //     else {
+    //         if (col.gameObject.name.StartsWith("Bullet")) bulletTouch = false; 
+    //         else if (col.gameObject.name.StartsWith("Rabbit") || col.gameObject.name.StartsWith("Pangolin")) characterTouch = false; 
+    //         else otherTouch = false;
+    //     }
+    // }
+
+    // void OnCollisionExit2D(Collision2D col){
+    //     if (col.gameObject.name.StartsWith("Bullet")) bulletTouch = false; 
+    //     else if (col.gameObject.name.StartsWith("Rabbit") || col.gameObject.name.StartsWith("Pangolin")) characterTouch = false; 
+    //     else otherTouch = false;
+    // }
 
 
 }
