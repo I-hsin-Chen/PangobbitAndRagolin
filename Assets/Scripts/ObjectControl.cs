@@ -247,9 +247,28 @@ public class ObjectControl : MonoBehaviour
         yield return new WaitForSeconds(0.46875f);
         audiomanager.StopSE_Accompaniment();
         
+        if(CheckStage4Pass())
+            GetComponent<PhonographControl>().Stage4Pass();
         yield return new WaitForSeconds(0.5f);
         playing = false;
     }
+
+    public bool CheckStage4Pass()
+    {
+        for(int i = 0; i < 5; i++){
+            for(int j = 0; j < 5; j++){
+                if((i==0 && j==2) || (i==1 && j==3) || (i==2 && j==2) || (i==3 && j==4) || (i==4 && j==0)){
+                    if(!collidedGate[i, j]) return false;
+                }
+                else{
+                    if(collidedGate[i, j]) return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void SetCollision(int i, int j)
     {
         collidedGate[i, j] = true;
