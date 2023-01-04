@@ -56,7 +56,10 @@ MonoBehaviour:
   Dialogue:
   - 'Hey, keep the voice down.
 
-    The guards are not leaving yet.'
+    The guards are not leaving yet.
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &-4312550171680756518
@@ -69,7 +72,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -504, y: -40}
@@ -144,7 +147,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Well, I think they are just not off duty yet.
+  - 'Well, I think they are just not off duty yet.
+
+    <color=grey>...press space
+    to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &11400000
@@ -247,7 +253,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Ah, poor. But what should we do? They will catch us once we leave this room.
+  - 'Ah, poor. But what should we do? They will catch us once we leave this room.
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &1740222164368904790
@@ -304,7 +313,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - <wa=2>Oh no</wa>, they noticed our escape.
+  - '<wa=2>Oh no</wa>, they noticed our escape.
+
+    <color=grey>...press space to
+    continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &5937556106793130724
@@ -361,8 +373,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - " I remember they will be off duty at <color=red>9:30</color>.\nLet\u2019s sneak
-    out after then."
+  - " I remember they will be off duty at <color=red>21:30</color>.\nLet\u2019s sneak
+    out after then.\n<color=grey>...press space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &8196711669757091028
@@ -375,7 +387,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: FinishConversa\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1496, y: -40}

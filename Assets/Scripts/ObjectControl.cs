@@ -167,6 +167,21 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
+    public void GearDown() // move gear to buttom
+    {
+        StartCoroutine(CheckGearDown());
+    }
+    
+    IEnumerator CheckGearDown()
+    {
+        yield return new WaitForSeconds(2f);
+        while(transform.position.y > -9f){
+            GetComponent<Rigidbody2D>().rotation -= 4.5f;
+            transform.position -= new Vector3(0, 0.0426f, 0);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
     public void GateClose(bool clockwise) // open/close the gate and rotate the gear
     {
         GameObject gate = transform.GetChild(0).gameObject;

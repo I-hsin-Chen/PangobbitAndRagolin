@@ -380,8 +380,14 @@ public class PlayerControl : MonoBehaviour
         // stage_4 
         if(name.Length > 5 && name.Substring(0, 5) == "Pitch")
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
-        if(name == "Marbel" && (Physics2D.Raycast(transform.position + new Vector3(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2, 0), new Vector2(1, 1), 1f) != null || Physics2D.Raycast(transform.position + new Vector3(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2, 0), new Vector2(-1, 1), 1f) != null))
-            possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2, 0);
+        if(possessTarget.name == "Rabbit" && name == "Marbel" && (Physics2D.Raycast(transform.position + new Vector3(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2, 0), new Vector2(1, 1), 1f) != null || Physics2D.Raycast(transform.position + new Vector3(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2, 0), new Vector2(-1, 1), 1f) != null)){
+            if(Dhit.collider == null)
+                possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
+            else
+                possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2, 0);
+        }
+        if(name == "Gear") // move gear to buttom after possessback
+            objectControl.GearDown();
     }
 
     // when to ignore collision
