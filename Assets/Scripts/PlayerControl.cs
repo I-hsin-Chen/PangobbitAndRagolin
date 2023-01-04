@@ -346,8 +346,8 @@ public class PlayerControl : MonoBehaviour
         // decide player position when possess back
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(faceDirection.GetDirection() * renderer.bounds.size.x / 2, 0, 0), new Vector2(faceDirection.GetDirection(), 0), 1);
         RaycastHit2D Nhit = Physics2D.Raycast(transform.position - new Vector3(faceDirection.GetDirection() * renderer.bounds.size.x / 2, 0, 0), new Vector2(-1*faceDirection.GetDirection(), 0), 1);
-        RaycastHit2D Uhit = Physics2D.Raycast(transform.position + new Vector3(renderer.bounds.size.y / 2, 0, 0), new Vector2(0, 1), 0.6f);
-        RaycastHit2D Dhit = Physics2D.Raycast(transform.position - new Vector3(renderer.bounds.size.y / 2, 0, 0), new Vector2(0, -1), 0.6f);
+        RaycastHit2D Uhit = Physics2D.Raycast(transform.position + new Vector3(0, renderer.bounds.size.y / 2, 0), new Vector2(0, 1), 0.6f);
+        RaycastHit2D Dhit = Physics2D.Raycast(transform.position - new Vector3(0, renderer.bounds.size.y / 2, 0), new Vector2(0, -1), 0.6f);
         
         if (hit.collider == null || hit.collider.gameObject.tag == "Player")
             possessTarget.transform.position = transform.position + new Vector3( (renderer.bounds.size.x / 2 + 0.5f) * faceDirection.GetDirection(), 0.3f, 0);
@@ -357,10 +357,14 @@ public class PlayerControl : MonoBehaviour
             possessTarget.transform.position = transform.position + new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
         else if(Dhit.collider == null || Dhit.collider.gameObject.tag == "Player")
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
-        else possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
+        else
+            possessTarget.transform.position = transform.position + new Vector3( renderer.bounds.size.x / 2 * faceDirection.GetDirection() + 0.1f, 0, 0);
 
+        // stage_4 
         if(name.Length > 5 && name.Substring(0, 5) == "Pitch")
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
+        if(name == "Marbel" && (Physics2D.Raycast(transform.position + new Vector3(renderer.bounds.size.x / 2, renderer.bounds.size.y / 2, 0), new Vector2(1, 1), 1f) != null || Physics2D.Raycast(transform.position + new Vector3(-renderer.bounds.size.x / 2, renderer.bounds.size.y / 2, 0), new Vector2(-1, 1), 1f) != null))
+            possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2, 0);
     }
 
     // when to ignore collision
