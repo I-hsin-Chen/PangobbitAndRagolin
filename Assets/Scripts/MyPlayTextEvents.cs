@@ -64,9 +64,13 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         else if (curStage == "Stage_2") {
             // Stage_2 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyE", WaitingForKeyE);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyO", WaitingForKeyO);
         }
         else if (curStage == "Stage_3") {
             // Stage_3 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyE", WaitingForKeyE);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyO", WaitingForKeyO);
         }
         else if (curStage == "Stage_4") {
             // Stage_4 events here
@@ -348,6 +352,58 @@ public class MyPlayTextEvents : MonoBehaviour
             yield return null;
         }
         // unlock conversation after U is pressed
+        EventCenter.GetInstance().EventTriggered("UnLockConversation");
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
+    // lock conversation and start waiting for player to press KeyE
+    void WaitingForKeyE(List<EventValueClass> Value)
+    {
+        Debug.Log("WaitingForKeyE");
+        StartCoroutine(SchduleWaitingForKeyE(Value));
+    }
+
+    // coroutine to wait for player to press KeyE
+    IEnumerator SchduleWaitingForKeyE(List<EventValueClass> Value)
+    {
+        Debug.Log("SchduleWaitingForKeyE");
+        // lock conversation before waiting
+        EventCenter.GetInstance().EventTriggered("LockConversation");
+        bool E_pressed = false;
+        // wait for player to press KeyE
+        while (!E_pressed || Input.GetKey(KeyCode.E))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+                E_pressed = true;
+            yield return null;
+        }
+        // unlock conversation after E is pressed
+        EventCenter.GetInstance().EventTriggered("UnLockConversation");
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
+    // lock conversation and start waiting for player to press KeyO
+    void WaitingForKeyO(List<EventValueClass> Value)
+    {
+        Debug.Log("WaitingForKeyO");
+        StartCoroutine(SchduleWaitingForKeyO(Value));
+    }
+
+    // coroutine to wait for player to press KeyO
+    IEnumerator SchduleWaitingForKeyO(List<EventValueClass> Value)
+    {
+        Debug.Log("SchduleWaitingForKeyO");
+        // lock conversation before waiting
+        EventCenter.GetInstance().EventTriggered("LockConversation");
+        bool O_pressed = false;
+        // wait for player to press KeyO
+        while (!O_pressed || Input.GetKey(KeyCode.O))
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+                O_pressed = true;
+            yield return null;
+        }
+        // unlock conversation after O is pressed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
