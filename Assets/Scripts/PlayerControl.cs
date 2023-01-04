@@ -335,6 +335,14 @@ public class PlayerControl : MonoBehaviour
         isShrinking = false;
         this.gameObject.SetActive(false);
 
+        // =================
+        if (obj.name == "Tank") {
+            if (isRabbit)
+                GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Rabbit");
+            else if (isPangolin)
+                GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Pangolin");
+        }
+        // =================
     }
 
     private void PossessBackToPlayer()
