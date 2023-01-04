@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // This script contains all the functions that are called by UI elements
 // Attach this script to the anywhere if needed
@@ -139,5 +140,63 @@ public class UIEventManager : MonoBehaviour
         if (audioManager == null)
             audioManager = GameObject.Find("AudioManager");
         audioManager.GetComponent<AudioManager>().SetSEVolume(vol);
+    }
+
+    // Dynamically show this message in the canvas
+    public string instruction = "This is a test instruction.";
+    // 0 for not showing, 1 for during showing, 2 for finished showing
+    private int instructionState = 0;
+
+    public void QuestionButtonClicked()
+    {
+        Debug.Log("Question Button Clicked");
+        if (instructionState == 0)
+            ShowInstruction();
+        else if (instructionState == 2)
+            CloseInstruction();
+    }
+
+    public void ShowInstruction()
+    {
+        instructionState = 1;
+        Debug.Log("Show Instruction");
+        StartCoroutine(ScheduleShowInstruction());
+    }
+
+    IEnumerator ScheduleShowInstruction(){
+        GameObject Instruction = GameObject.Find("InstructionCanvas/Instruction");
+        if (Instruction == null) {
+            Debug.Log("Instruction Object not found");
+            yield break;
+        }
+        string text = "";
+        while (text.Length < instruction.Length) {
+            text = text + instruction[text.Length];
+            Instruction.GetComponent<TextMeshProUGUI>().text = text;
+            yield return new WaitForSeconds(0.01f);
+        }
+        instructionState = 2;
+    }
+
+    public void CloseInstruction()
+    {
+        instructionState = 1;
+        Debug.Log("Close Instruction");
+        StartCoroutine(ScheduleCloseInstruction());
+    }
+
+    IEnumerator ScheduleCloseInstruction(){
+        GameObject Instruction = GameObject.Find("InstructionCanvas/Instruction");
+        if (Instruction == null) {
+            Debug.Log("Instruction Object not found");
+            yield break;
+        }
+        string text = Instruction.GetComponent<TextMeshProUGUI>().text;
+        while (text.Length > 0) {
+            text = text.Substring(0, text.Length - 1);
+            Instruction.GetComponent<TextMeshProUGUI>().text = text;
+            yield return new WaitForSeconds(0.01f);
+        }
+        instructionState = 0;
     }
 }
