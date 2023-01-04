@@ -54,7 +54,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - <color=red>Ten strawberry jam toasts</color> please.
+  - '<color=red>Ten strawberry jam toasts</color> please.
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &11400000
@@ -157,7 +160,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "I don\u2019t think so. \nIt\u2019s hard to tell how far it is from the exit."
+  - "I don\u2019t think so. \nIt\u2019s hard to tell how far it is from the exit.\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &1522533721884123856
@@ -214,7 +218,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "You\u2019re right. \nThere is a toaster, I think we can bake some toast here."
+  - "You\u2019re right. \nThere is a toaster, I think we can bake some toast here.\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &2499609674129623706
@@ -271,7 +276,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Me too. But can we just stand for a while until we escape?
+  - 'Me too. But can we just stand for a while until we escape?
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &4319646348177514017
@@ -328,7 +336,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "Damn, I\u2019m hungry\u2026"
+  - "Damn, I\u2019m hungry\u2026\n<color=grey>...press space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &8080965354105031906

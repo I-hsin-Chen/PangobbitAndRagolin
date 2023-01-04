@@ -54,7 +54,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "Then let\u2019s <color=red>find the BGM back</color>!"
+  - "Then let\u2019s <color=red>find the BGM back</color>!\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &-8868728741521430474
@@ -111,7 +112,9 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - ' ... yap.'
+  - ' ... yap.
+
+    <color=grey>...press space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &-8688550436748431449
@@ -124,7 +127,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: FinishConversa\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 2552, y: 8}
@@ -213,7 +216,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "But\u2026 the BGM is really good right?"
+  - "But\u2026 the BGM is really good right?\n<color=grey>...press space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &-2969366435352212081
@@ -270,7 +273,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "And it can\u2019t be a good game without a good BGM right?"
+  - "And it can\u2019t be a good game without a good BGM right?\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &-2590177782488740481
@@ -327,7 +331,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "What? Don\u2019t care much about it. Let\u2019s keep running first."
+  - "What? Don\u2019t care much about it. Let\u2019s keep running first.\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &11400000
@@ -433,7 +438,9 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Wait, where is the BGM?
+  - 'Wait, where is the BGM?
+
+    <color=grey>...press space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &1521724165666575493
@@ -490,7 +497,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - " \u2026 whatever you say."
+  - " \u2026 whatever you say.\n<color=grey>...press space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &1867663721428586041
@@ -503,7 +510,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -504, y: -24}
@@ -578,6 +585,6 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - " \u2026 yap."
+  - " \u2026 yap.\n<color=grey>...press space to continue</color>"
   IsMax: 1
   curIndex: 0
