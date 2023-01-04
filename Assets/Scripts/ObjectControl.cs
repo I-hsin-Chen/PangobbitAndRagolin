@@ -119,6 +119,8 @@ public class ObjectControl : MonoBehaviour
 
     public void ClockRotate(bool clockwise) // rotate clock
     {
+        if(!GetComponent<ClockControl>().GetClockCanRotate()) return; // the door is already open
+
         if(!clockwise) GetComponent<Rigidbody2D>().rotation += 30f;
         else GetComponent<Rigidbody2D>().rotation -= 30f;
     }
