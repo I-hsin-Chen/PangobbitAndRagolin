@@ -54,7 +54,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - <color=red>Ten strawberry jam toasts</color> please.
+  - '<color=red>Ten strawberry jam toasts</color> please.
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &11400000
@@ -157,7 +160,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "I don\u2019t think so. \nIt\u2019s hard to tell how far it is from the exit."
+  - "I don\u2019t think so. \nIt\u2019s hard to tell how far it is from the exit.\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &1522533721884123856
@@ -214,7 +218,8 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "You\u2019re right. \nThere is a toaster, I think we can bake some toast here."
+  - "You\u2019re right. \nThere is a toaster, I think we can bake some toast here.\n<color=grey>...press
+    space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &2499609674129623706
@@ -271,7 +276,10 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - Me too. But can we just stand for a while until we escape?
+  - 'Me too. But can we just stand for a while until we escape?
+
+    <color=grey>...press
+    space to continue</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &4319646348177514017
@@ -328,7 +336,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "Damn, I\u2019m hungry\u2026"
+  - "Damn, I\u2019m hungry\u2026\n<color=grey>...press space to continue</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &8080965354105031906
@@ -341,7 +349,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: FinishConversa\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1496, y: -40}
@@ -386,7 +394,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -504, y: -40}
