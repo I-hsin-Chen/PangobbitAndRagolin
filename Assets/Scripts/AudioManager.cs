@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         return SEVolume;
     }
 
-    public void FadeInBGM(float duration)
+    public void FadeInBGM(float duration = 1.0f)
     {
         BGMPlayer.volume = 0;
         BGMPlayer.Play();
@@ -91,7 +91,7 @@ public class AudioManager : MonoBehaviour
         BGMPlayer.volume = BGMVolume;
     }
 
-    public void FadeOutBGM(float duration)
+    public void FadeOutBGM(float duration = 1.0f)
     {
         StartCoroutine(ScheduleFadeOutBGM(duration * 0.4f));
     }
