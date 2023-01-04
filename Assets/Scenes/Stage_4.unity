@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &8754156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &8754159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,11 +397,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1793311520947106560, guid: f7477b1ab3b7b0848aca67f4d6658518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.35
+      value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 1793311520947106560, guid: f7477b1ab3b7b0848aca67f4d6658518, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.08
+      value: -9.05
       objectReference: {fileID: 0}
     - target: {fileID: 1793311520947106560, guid: f7477b1ab3b7b0848aca67f4d6658518, type: 3}
       propertyPath: m_LocalPosition.z
@@ -610,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &54542136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,7 +657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &54542139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &121239109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -978,7 +976,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &121239112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,7 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &216233384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,7 +1335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &216233387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,11 +1567,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6011116746171985895, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.32
+      value: -4.34
       objectReference: {fileID: 0}
     - target: {fileID: 6011116746171985895, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.24
+      value: -9.15
       objectReference: {fileID: 0}
     - target: {fileID: 6011116746171985895, guid: 2af89d7efd08f384c8e02bc0e027fda3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4123,7 +4119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &879403362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4171,7 +4167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &879403365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12888,7 +12883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &1220994635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12936,7 +12931,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &1220994638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13224,7 +13218,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 0
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &1231757544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13474,7 +13467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331e4a8b584313c4695023dbb6395376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDirection: 0
+  initialDirection: 1
 --- !u!114 &1249761784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13522,7 +13515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!114 &1249761787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13661,7 +13653,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1258106401
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c01b0ebf57424bd4688926e394681937, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13771,7 +13763,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!61 &1254067324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14186,7 +14177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1258106401
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2503668956862761215, guid: 0affeebe51083bc4d9ba91e56cdd6b18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -14322,7 +14313,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   bullet_prefab: {fileID: 0}
-  time: 0.3
 --- !u!1001 &1536793096
 PrefabInstance:
   m_ObjectHideFlags: 0
