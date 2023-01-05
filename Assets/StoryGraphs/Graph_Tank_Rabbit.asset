@@ -35,7 +35,10 @@ MonoBehaviour:
       _node: {fileID: -6203110715381983366}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: Input
+        node: {fileID: -3871618534648486498}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -67,11 +70,62 @@ MonoBehaviour:
   m_Name: Profile
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -504, y: -136}
+  position: {x: -840, y: -152}
   ports:
     keys: []
     values: []
   dialogueProfile: {fileID: 11400000, guid: a2728e862ef41984290fa506c322846a, type: 2}
+--- !u!114 &-3871618534648486498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 424, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: -3871618534648486498}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: -6203110715381983366}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: -3871618534648486498}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: AdjustBubbleOffsetY
+  WaitCallback: 0
+  EventValue:
+  - ValueType: 0
+    intValue: -160
+    floatValue: 0
+    stringValue: 
+    boolValue: 0
+    guid: 
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +143,8 @@ MonoBehaviour:
   - {fileID: 4448103288843428654}
   - {fileID: -6203110715381983366}
   - {fileID: 6249190782646474275}
+  - {fileID: -3871618534648486498}
+  - {fileID: 1918675840688090796}
   startNode: {fileID: 0}
   dialogueNode: {fileID: 0}
   optionNode: {fileID: 0}
@@ -96,6 +152,60 @@ MonoBehaviour:
   commentNode: {fileID: 0}
   profileNode: {fileID: -6067308795578806196}
   current: {fileID: 4448103288843428654}
+--- !u!114 &1918675840688090796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: "Event: AdjustBubbleOf\u2026"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -600, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 1918675840688090796}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Ouput
+        node: {fileID: 4448103288843428654}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 1918675840688090796}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Input
+        node: {fileID: 6249190782646474275}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: AdjustBubbleOffsetY
+  WaitCallback: 0
+  EventValue:
+  - ValueType: 0
+    intValue: 160
+    floatValue: 0
+    stringValue: 
+    boolValue: 0
+    guid: 
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &4448103288843428654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +219,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -504, y: -40}
+  position: {x: -840, y: -40}
   ports:
     keys:
     - Ouput
@@ -120,7 +230,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: Input
-        node: {fileID: 6249190782646474275}
+        node: {fileID: 1918675840688090796}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -151,8 +261,8 @@ MonoBehaviour:
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
       connections:
-      - fieldName: Ouput
-        node: {fileID: 4448103288843428654}
+      - fieldName: Output
+        node: {fileID: 1918675840688090796}
         reroutePoints: []
       _direction: 0
       _connectionType: 0

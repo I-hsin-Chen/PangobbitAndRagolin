@@ -69,11 +69,13 @@ public class MyPlayTextEvents : MonoBehaviour
             // Stage_2 events here
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyEorQ", WaitingForKeyEorQ);
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyOorU", WaitingForKeyOorU);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("AdjustBubbleOffsetY", AdjustBubbleOffsetY);
         }
         else if (curStage == "Stage_3") {
             // Stage_3 events here
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyEorQ", WaitingForKeyEorQ);
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyOorU", WaitingForKeyOorU);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("AdjustBubbleOffsetY", AdjustBubbleOffsetY);
         }
         else if (curStage == "Stage_4") {
             // Stage_4 events here
@@ -462,6 +464,18 @@ public class MyPlayTextEvents : MonoBehaviour
     {
         Debug.Log("FadeOutBGM");
         GameObject.Find("AudioManager").GetComponent<AudioManager>().FadeOutBGM();
+    }
+
+    void AdjustBubbleOffsetY(List<EventValueClass> Value)
+    {
+        int offset = Value[0].intValue;
+        Debug.Log("AdjustBubbleOffsetY: " + offset);
+        GameObject talkingManager = GameObject.Find("MyPlayText_Follow/TalkingManager");
+        if (talkingManager != null)
+        {
+            talkingManager.GetComponent<PlayText>().BubblePositionOffset += new Vector2(0, offset);
+            talkingManager.GetComponent<PlayText>().PointerOffset += new Vector2(0, offset);
+        }
     }
 
     // ===== Functions that can be called directly from other scripts =====
