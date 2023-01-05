@@ -61,6 +61,9 @@ public class MyPlayTextEvents : MonoBehaviour
         }
         else if (curStage == "Stage_1") {
             // Stage_1 events here
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("StartColorBoxChallenge0", StartColorBoxChallenge0);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("StartColorBoxChallenge1", StartColorBoxChallenge1);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("ResetStickState", ResetStickState);
         }
         else if (curStage == "Stage_2") {
             // Stage_2 events here
@@ -413,6 +416,36 @@ public class MyPlayTextEvents : MonoBehaviour
         // unlock conversation after O or U is pressed
         EventCenter.GetInstance().EventTriggered("UnLockConversation");
         EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
+    // Start the color box challenge 0 for story
+    void StartColorBoxChallenge0(List<EventValueClass> Value)
+    {
+        Debug.Log("StartFirstColorBoxChallenge");
+        EventCenter.GetInstance().EventTriggered("LockConversation");
+        GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().StartChallenge(0);
+        StartCoroutine(WaitForChallenge0());
+    }
+
+    IEnumerator WaitForChallenge0()
+    {
+        yield return new WaitForSeconds(4.0f);
+        EventCenter.GetInstance().EventTriggered("UnLockConversation");
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
+    }
+
+    // Reset the color box status
+    void ResetStickState(List<EventValueClass> Value)
+    {
+        Debug.Log("ResetStickState");
+        GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().resetStickState();
+    }
+
+    // Start the color box challenge 1
+    void StartColorBoxChallenge1(List<EventValueClass> Value)
+    {
+        Debug.Log("StartColorBoxChallenge1");
+        GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().StartChallenge(1);
     }
 
     // Finish the conversation
