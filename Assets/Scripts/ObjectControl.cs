@@ -247,12 +247,11 @@ public class ObjectControl : MonoBehaviour
         if(collidedGate[4, 2]) audiomanager.PlaySE_Pitch3();
         if(collidedGate[4, 3]) audiomanager.PlaySE_Pitch4();
         if(collidedGate[4, 4]) audiomanager.PlaySE_Pitch5();
-        if(CheckStage4Pass())
-            GetComponent<PhonographControl>().Stage4Pass();
-        
         yield return new WaitForSeconds(0.46875f);
         audiomanager.StopSE_Accompaniment();
         
+        if(CheckStage4Pass())
+            GetComponent<PhonographControl>().Stage4Pass();
         yield return new WaitForSeconds(0.5f);
         playing = false;
     }
