@@ -25,6 +25,6 @@ public class Camera_Position : MonoBehaviour
         //cen_pos.y = cen_pos.y + 5f;
         cen_pos.y = 0.5f;
         center.transform.position = cen_pos;
-        // print(cen_pos);
+        //print(cen_pos);
     }
 }

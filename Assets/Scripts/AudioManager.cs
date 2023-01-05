@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip SE_Jump;
     public AudioClip SE_Possess;
     public AudioClip SE_Tower;
+    public AudioClip SE_Empty;
 
     // Stage_4 audio
     public AudioClip SE_Answer;
@@ -121,6 +122,11 @@ public class AudioManager : MonoBehaviour
     public void PlaySE_Tower()
     {
         SEPlayer.PlayOneShot(SE_Tower);
+    }
+
+    public void PlaySE_Empty()
+    {
+        SEPlayer.PlayOneShot(SE_Empty);
     }
 
     // Stage_4 function

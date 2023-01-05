@@ -49,6 +49,7 @@ MonoBehaviour:
   SE_Jump: {fileID: 8300000, guid: b0b9b263d3ad8b94a936345d0474ccc4, type: 3}
   SE_Possess: {fileID: 8300000, guid: ccfa9208933d07446978440849521a38, type: 3}
   SE_Tower: {fileID: 8300000, guid: 7442647a59ad59743bbed614e80e131c, type: 3}
+  SE_Empty: {fileID: 8300000, guid: a1f1429612b7a584f953d96e95a9140c, type: 3}
   SE_Answer: {fileID: 8300000, guid: c8c749fa4bb19b94a9122499981466e5, type: 3}
   SE_Pitch1: {fileID: 8300000, guid: cf6e60a2139d4c84ca2252e25fb3882a, type: 3}
   SE_Pitch2: {fileID: 8300000, guid: e3ea659bd5413a8488188d9efb4f81c5, type: 3}
