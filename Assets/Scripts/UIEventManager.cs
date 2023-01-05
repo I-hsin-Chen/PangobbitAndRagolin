@@ -80,6 +80,8 @@ public class UIEventManager : MonoBehaviour
 
     public void ShowPauseCanvas()
     {
+        if (GameObject.Find("FadeCanvas/ImageBlack") != null)
+            return;
         if (pauseCanvas == null)
             pauseCanvas = GameObject.Find("PauseCanvas");
         if (pauseCanvas != null) {
