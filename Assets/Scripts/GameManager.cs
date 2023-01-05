@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     // call this public function when you want to change scene
     public void ChangeSceneTo(int idx)
     {
+        if (GameObject.Find("FadeCanvas/ImageBlack") != null || GameObject.Find("PauseCanvas") != null)
+            return;
         Debug.Log("ChangeSceneTo:" + idx);
         StartCoroutine(ScheduleChangeScene(changeSceneDelay, idx));
     }
