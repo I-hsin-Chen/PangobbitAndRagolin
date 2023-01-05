@@ -5,10 +5,15 @@ using UnityEngine;
 public class ClockControl : MonoBehaviour
 {
     public GameObject door;
+    public GameObject guard;
+    public Sprite emptyImage;
+
+    private SpriteRenderer renderer;
     private bool clockCanRotate;
     // Start is called before the first frame update
     void Start()
     {
+        guard.TryGetComponent<SpriteRenderer>(out renderer);
         clockCanRotate = true;
     }
 
@@ -17,6 +22,7 @@ public class ClockControl : MonoBehaviour
     {
         if(transform.localEulerAngles.z < 1){
             door.GetComponent<Animator>().enabled = true;
+            renderer.sprite = emptyImage;;
             clockCanRotate = false;
         }
     }
