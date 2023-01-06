@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 using TMPro;
 
 public class EndStory : MonoBehaviour
@@ -12,6 +14,12 @@ public class EndStory : MonoBehaviour
     private float fadeOutTime;                          // The time it takes for the text to fade out
     private float delay;                                // The time between the end of the text and the start of the next text
 
+    public Image forest;
+    public Image sea;
+    public Image thrid;
+    public Image fourth;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +32,23 @@ public class EndStory : MonoBehaviour
         textObject.GetComponent<TextMeshProUGUI>().text = "";
         textObject.GetComponent<TextMeshProUGUI>().alpha = 0.0f;
         // Initialize the contents, just for testing now
-        contents.Add("They escape.");
-        contents.Add("Happ Ever After");
+        contents.Add("They finally escape.");
+        contents.Add("They travel around the world, get to see beautiful things they haven't seen before.");
+        contents.Add("Although the horrible memories still haunt they sometimes.");
+        contents.Add("But they know they can conquer everything with each other's company.");
         // Initialize the fade in/out time and duration
         fadeInTime = 1.0f;
         duration = 3.0f;
         fadeOutTime = 1.0f;
         delay = 0.5f;
 
+        forest.enabled = true;
+        sea.enabled = false;
+        thrid.enabled = false;
+        fourth.enabled = false;
+
+        
+        
         StartEnd();
     }
 
@@ -54,6 +71,8 @@ public class EndStory : MonoBehaviour
         }
         else
         {
+            //Change Image
+
             float startTime;
             float endTime;
             float alpha;
@@ -81,6 +100,28 @@ public class EndStory : MonoBehaviour
             yield return new WaitForSeconds(delay);
             // Start the next text
             StartCoroutine(ScheduleEnd(contents_index + 1));
+
+            //if(contents_index == 0)
+            //{
+            //    forest.enabled = true;
+            //}
+            if(contents_index == 0)
+            {
+                forest.enabled = false;
+                sea.enabled = true;
+            }
+            if(contents_index == 1)
+            {
+                forest.enabled = false;
+                thrid.enabled = true;
+            }
+            if(contents_index == 2)
+            {
+                thrid.enabled = false;
+                fourth.enabled = true;
+            }
+            
+
         }
     }
 }
