@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
-        if (idx == 1)
+        if ( (idx == 1) || (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage_4") )
             audioManager.GetComponent<AudioManager>().FadeInBGM(fadeOutTime);
         Time.timeScale = 1;
     }

@@ -78,6 +78,8 @@ public class AudioManager : MonoBehaviour
 
     public void FadeInBGM(float duration = 1.0f)
     {
+        if (!BGMmuted)
+            return;
         BGMPlayer.volume = 0;
         BGMPlayer.Play();
         StartCoroutine(ScheduleFadeInBGM(duration * 0.6f));
