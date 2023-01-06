@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SpotLightControl : MonoBehaviour
 {
+    private int state;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +36,52 @@ public class SpotLightControl : MonoBehaviour
             // turn on the light
             spotLight.intensity = 100;
             // wait for 0.5 seconds
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
             // turn off the light
-            spotLight.intensity = 0;
-            // wait for 0.5 seconds
-            yield return new WaitForSeconds(0.5f);
+            
+            state = Random.Range(0, 3);
+            print(state);
+            if(state == 0)
+            {
+                spotLight.intensity = 100;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+                spotLight.intensity = 40;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+
+                spotLight.intensity = 100;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+                spotLight.intensity = 40;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+            }
+            if(state == 1)
+            {
+                spotLight.intensity = 100;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.3f);
+                spotLight.intensity = 50;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+
+                spotLight.intensity = 100;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.3f);
+                spotLight.intensity = 50;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+            }
+            if(state == 2)
+            {
+                spotLight.intensity = 100;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.1f);
+                spotLight.intensity = 60;
+                // wait for 0.5 seconds
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 }

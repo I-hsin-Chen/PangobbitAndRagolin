@@ -40,7 +40,7 @@ public class DoorLightControl : MonoBehaviour
         {
             timer += Time.deltaTime;
             print(timer);
-            if(timer < 2)
+            if(timer < 3)
             {
                 light.intensity = light.intensity + 0.5f;
                 light.range = light.range + 0.5f;

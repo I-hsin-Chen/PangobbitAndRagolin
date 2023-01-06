@@ -18,6 +18,7 @@ public class EndStory : MonoBehaviour
     public Image sea;
     public Image thrid;
     public Image fourth;
+    private Image fade;
 
     
     // Start is called before the first frame update
@@ -35,13 +36,14 @@ public class EndStory : MonoBehaviour
         contents.Add("They finally escape.");
         contents.Add("They travel around the world, get to see beautiful things they haven't seen before.");
         contents.Add("Although the horrible memories still haunt they sometimes.");
-        contents.Add("But they know they can conquer everything with each other's company.");
+        contents.Add("But they know they can overcome everything with each other's company.");
         // Initialize the fade in/out time and duration
         fadeInTime = 1.0f;
         duration = 3.0f;
         fadeOutTime = 1.0f;
         delay = 0.5f;
 
+        fade = forest;
         forest.enabled = true;
         sea.enabled = false;
         thrid.enabled = false;
@@ -85,6 +87,7 @@ public class EndStory : MonoBehaviour
             while (Time.time < endTime) {
                 alpha = (Time.time - startTime) / fadeInTime;
                 textObject.GetComponent<TextMeshProUGUI>().alpha = alpha;
+                fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, alpha);
                 yield return null;
             }
             // Display the text
@@ -95,6 +98,8 @@ public class EndStory : MonoBehaviour
             while (Time.time < endTime) {
                 alpha = 1.0f - (Time.time - startTime) / fadeOutTime;
                 textObject.GetComponent<TextMeshProUGUI>().alpha = alpha;
+                
+                fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, alpha);
                 yield return null;
             }
             // Delay before the next text
@@ -110,16 +115,20 @@ public class EndStory : MonoBehaviour
             {
                 forest.enabled = false;
                 sea.enabled = true;
+                fade = sea;
             }
             if(contents_index == 1)
             {
                 forest.enabled = false;
                 thrid.enabled = true;
+                fade = thrid;
+
             }
             if(contents_index == 2)
             {
                 thrid.enabled = false;
                 fourth.enabled = true;
+                fade = fourth;
             }
             
 
