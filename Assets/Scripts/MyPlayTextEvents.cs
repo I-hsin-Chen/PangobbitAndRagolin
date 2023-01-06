@@ -28,6 +28,8 @@ public class MyPlayTextEvents : MonoBehaviour
     public DialogueGraph Graph_Tank_Rabbit = null;
     public DialogueGraph Graph_Tank_Pangolin = null;
     public DialogueGraph Graph_Phonograph = null;
+    public DialogueGraph Graph_IamStuck_Rabbit = null;
+    public DialogueGraph Graph_IamStuck_Pangolin = null;
     private GameObject gameManager;
     private GameObject audioManager;
 
@@ -518,6 +520,26 @@ public class MyPlayTextEvents : MonoBehaviour
         Debug.Log("Play Graph_Phonograph_Pangolin");
         phonographPossessed_Pangolin = true;
         EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Phonograph);
+    }
+
+    // Call this function when someone is stuck
+    // who: "Rabbit" or "Pangolin"
+    public void PlayGraphIamStuck(string who)
+    {
+        switch (who)
+        {
+            case "Rabbit":
+                Debug.Log("Play Graph_IamStuck_Rabbit");
+                EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_IamStuck_Rabbit);
+                break;
+            case "Pangolin":
+                Debug.Log("Play Graph_IamStuck_Pangolin");
+                EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_IamStuck_Pangolin);
+                break;
+            default:
+                Debug.LogError("PlayGraphIamStuck: who is invalid");
+                break;
+        }
     }
 
 }
