@@ -396,7 +396,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -8967984864995040794}
-  current: {fileID: -1620293686251751192}
+  current: {fileID: 0}
 --- !u!114 &3197841659819458957
 MonoBehaviour:
   m_ObjectHideFlags: 0
