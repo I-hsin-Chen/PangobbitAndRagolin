@@ -124,6 +124,7 @@ public class PlayerControl : MonoBehaviour
                     // highlight the object that is the possess target.
                     possessTarget.GetComponent<ObjectControl>().highlightObject(isRabbit);
                 }
+
             }
             // check objects at upside
             else if (hit_up.collider != null && hit_up.collider.gameObject.tag == "Object"){
