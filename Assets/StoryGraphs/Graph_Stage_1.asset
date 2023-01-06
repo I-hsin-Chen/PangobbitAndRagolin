@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: StartColorBoxC\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 424, y: -24}
@@ -178,7 +178,7 @@ MonoBehaviour:
   PlayTyping: 0
   Dialogue:
   - "I don\u2019t know. Maybe a sewerage or something.\n<color=grey>...press space
-    to continue, S to skip</color>"
+    to continue, X to skip</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &-5735220431986362226
@@ -235,7 +235,7 @@ MonoBehaviour:
   PlayPerChar: 0
   PlayTyping: 0
   Dialogue:
-  - "Oh no, I can\u2019t swim\u2026\n<color=grey>...press space to continue, S to
+  - "Oh no, I can\u2019t swim\u2026\n<color=grey>...press space to continue, X to
     skip</color>"
   IsMax: 1
   curIndex: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: Challenge_0_Fi\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1112, y: -296}
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: ResetStickStat\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1448, y: -8}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -872, y: -24}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: WaitingSkipSto\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -616, y: -24}
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: StartColorBoxC\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 2488, y: -8}
@@ -551,7 +551,7 @@ MonoBehaviour:
   PlayTyping: 0
   Dialogue:
   - "Don\u2019t worry, I can rotate this block to help you.\n<color=grey>...press
-    space to continue, S to skip</color>"
+    space to continue, X to skip</color>"
   IsMax: 1
   curIndex: 0
 --- !u!114 &3731581631237375395
@@ -610,12 +610,12 @@ MonoBehaviour:
   Dialogue:
   - 'The yellow edge disappeared?!
 
-    <color=grey>...press space to continue, S
+    <color=grey>...press space to continue, X
     to skip</color>'
   - 'Looks like when it counts to zero, only edges with corresponding color will
     remain.
 
-    <color=grey>...press space to continue, S to skip</color>'
+    <color=grey>...press space to continue, X to skip</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &5109646193899927249
@@ -674,7 +674,7 @@ MonoBehaviour:
   Dialogue:
   - 'Where are we now?
 
-    <color=grey>...press space to continue, S to skip</color>'
+    <color=grey>...press space to continue, X to skip</color>'
   IsMax: 1
   curIndex: 0
 --- !u!114 &9067348470353180678
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: FinishConversa\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 2488, y: 248}

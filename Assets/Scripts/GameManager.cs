@@ -56,9 +56,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9)) {
             ChangeSceneTo(9);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            ChangeSceneTo(0);
-        }
+        // if (Input.GetKeyDown(KeyCode.Alpha0)) {
+        //     ChangeSceneTo(0);
+        // }
     }
 
     // call this public function when win
