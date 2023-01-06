@@ -37,6 +37,7 @@ public class PlayerControl : MonoBehaviour
     private bool rabbitCanPossess = true;
     private bool pangolinCanPossess = true;
 
+    private bool isStuck = false;
     private int tankRotate = 0;
 
     public virtual bool isPlayer => !isObject && (isRabbit || isPangolin);
@@ -124,6 +125,7 @@ public class PlayerControl : MonoBehaviour
                     // highlight the object that is the possess target.
                     possessTarget.GetComponent<ObjectControl>().highlightObject(isRabbit);
                 }
+
             }
             // check objects at upside
             else if (hit_up.collider != null && hit_up.collider.gameObject.tag == "Object"){
@@ -307,6 +309,13 @@ public class PlayerControl : MonoBehaviour
     private void Possess(GameObject obj)
     {
         // determine whether player is possessed on a object
+        if(isObject && name == "Marbel" && isStuck){
+            // Debug.Log("I'm Stuck");
+            if(isRabbit) GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphIamStuck("Rabbit");
+            if(isPangolin) GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphIamStuck("Pangolin");
+            return;
+        }
+
         audiomanager.PlaySE_Possess();
         if (!isObject) StartCoroutine(PossessToObject(obj));
         else PossessBackToPlayer();
@@ -341,6 +350,10 @@ public class PlayerControl : MonoBehaviour
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Rabbit");
             else if (isPangolin)
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Pangolin");
+        }
+        else if (obj.name == "Phonograph") {
+            if (isPangolin)
+                GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphPhonograph();
         }
         // =================
         if (obj.name == "Gear") // stop gear down
@@ -399,8 +412,12 @@ public class PlayerControl : MonoBehaviour
             objectControl.GearDown(true);
     }
 
-    // when to ignore collision
     void OnCollisionEnter2D(Collision2D col){
+        // check if the Marbel is in gate
+        if (name == "Marbel" && col.gameObject.name.Length > 5 && col.gameObject.name.Substring(0, 5) == "Pitch")
+            isStuck = true;
+
+        // when to ignore collision
         if (gameObject.tag != "Player") return;
 
         // When the other collider is a player or a player in an object, ignore the collision
@@ -408,6 +425,12 @@ public class PlayerControl : MonoBehaviour
             Physics2D.IgnoreCollision(col.gameObject.GetComponent<BoxCollider2D>() , GetComponent<BoxCollider2D>());
         if (col.gameObject.name == "ColorBox")
             Physics2D.IgnoreCollision(col.gameObject.GetComponent<PolygonCollider2D>() , GetComponent<BoxCollider2D>());
+    }
+
+    void OnCollisionExit2D(Collision2D col){
+        // check if the Marbel is in gate
+        if (name == "Marbel" && col.gameObject.name.Length > 5 && col.gameObject.name.Substring(0, 5) == "Pitch")
+            isStuck = false;
     }
 
     // For object
