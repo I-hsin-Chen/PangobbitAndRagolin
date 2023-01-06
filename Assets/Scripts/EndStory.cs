@@ -92,6 +92,8 @@ public class EndStory : MonoBehaviour
             }
             // Display the text
             yield return new WaitForSeconds(duration);
+
+
             // Fade out the text
             startTime = Time.time;
             endTime = startTime + fadeOutTime;
@@ -105,12 +107,7 @@ public class EndStory : MonoBehaviour
             // Delay before the next text
             yield return new WaitForSeconds(delay);
             // Start the next text
-            StartCoroutine(ScheduleEnd(contents_index + 1));
-
-            //if(contents_index == 0)
-            //{
-            //    forest.enabled = true;
-            //}
+            
             if(contents_index == 0)
             {
                 forest.enabled = false;
@@ -130,6 +127,9 @@ public class EndStory : MonoBehaviour
                 fourth.enabled = true;
                 fade = fourth;
             }
+            
+
+            StartCoroutine(ScheduleEnd(contents_index + 1));
             
 
         }
