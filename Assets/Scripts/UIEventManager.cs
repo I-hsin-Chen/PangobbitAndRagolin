@@ -15,6 +15,7 @@ public class UIEventManager : MonoBehaviour
     private GameObject pauseCanvas;
     private GameObject exitCanvas;
     private GameObject fadeCanvas;
+    private GameObject keyboardImage;
     // ===========================
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class UIEventManager : MonoBehaviour
         pauseCanvas = GameObject.Find("PauseCanvas");
         exitCanvas = GameObject.Find("ExitCanvas");
         fadeCanvas = GameObject.Find("FadeCanvas");
+        keyboardImage = GameObject.Find("PauseCanvas/KeyboardImage");
 
         // Set up pauseCanvas
         if (pauseCanvas != null) {
@@ -48,6 +50,11 @@ public class UIEventManager : MonoBehaviour
         if (fadeCanvas != null) {
             Debug.Log("FadeCanvas found");
         }
+        // Set up keyboardImage
+        if (keyboardImage != null) {
+            Debug.Log("KeyBoardImage found");
+            keyboardImage.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -55,6 +62,11 @@ public class UIEventManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P)) {
             ShowPauseCanvas();
+        }
+
+        // when space is pressed and keyboardImage is active, close it
+        if (Input.GetKeyDown(KeyCode.Space) && keyboardImage != null && keyboardImage.activeSelf) {
+            keyboardImage.SetActive(false);
         }
     }
 
@@ -142,6 +154,14 @@ public class UIEventManager : MonoBehaviour
         if (audioManager == null)
             audioManager = GameObject.Find("AudioManager");
         audioManager.GetComponent<AudioManager>().SetSEVolume(vol);
+    }
+
+    public void ShowKeyBoardImage()
+    {
+        Debug.Log("Show KeyBoard Image");
+        if (keyboardImage != null) {
+            keyboardImage.SetActive(true);
+        }
     }
 
     // 0 for not showing, 1 for during showing, 2 for finished showing
