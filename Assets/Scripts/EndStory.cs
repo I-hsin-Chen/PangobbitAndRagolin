@@ -65,7 +65,8 @@ public class EndStory : MonoBehaviour
     {
         if (contents_index >= contents.Count) {
             Debug.Log("End of prologue");
-            // Change to the next scene
+            // Change to the next scene and swtich the BGM back
+            GameObject.Find("AudioManager").GetComponent<AudioManager>().SwitchBGM(0);
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main_Scene");
             yield return null;
         }
