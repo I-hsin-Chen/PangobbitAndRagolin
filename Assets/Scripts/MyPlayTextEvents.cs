@@ -471,23 +471,25 @@ public class MyPlayTextEvents : MonoBehaviour
     IEnumerator SchduleWaitingSkipStory(List<EventValueClass> Value)
     {
         Debug.Log("SchduleWaitingSkipStory");
-        bool S_pressed = false;
+        bool X_pressed = false;
         // wait for player to press KeyS
-        while (!S_pressed)
+        while (!X_pressed)
         {
-            if (Input.GetKeyDown(KeyCode.S) && challenge_0_state != 1)
-                S_pressed = true;
+            if (Input.GetKeyDown(KeyCode.X) && challenge_0_state != 1)
+                X_pressed = true;
             yield return null;
         }
+        Debug.Log("abcdefg");
         gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);
         gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
         gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
         EventCenter.GetInstance().EventTriggered("PlayText.Stop");
         // start coroutine for challenge 1 and timer maybe
         GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().resetStickState();
-        if (challenge_0_state == 0) // if challenge 0 is not started, no counter coroutine now
-            StartCoroutine(GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().ScheduleCountDown());
-        StartCoroutine(GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().ScheduleColorDisappear());
+        // if (challenge_0_state == 0) // if challenge 0 is not started, no counter coroutine now
+        //     StartCoroutine(GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().ScheduleCountDown());
+        // StartCoroutine(GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().ScheduleColorDisappear());
+        GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().StartChallenge(1);
     }
 
     void Challenge_0_Finish(List<EventValueClass> Value)
