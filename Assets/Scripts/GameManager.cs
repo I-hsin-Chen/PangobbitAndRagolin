@@ -29,9 +29,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // just for development, press 0-6 to change scene
-        if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            ChangeSceneTo(7);
-        }
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             ChangeSceneTo(1);
         }
@@ -50,8 +47,17 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha6)) {
             ChangeSceneTo(6);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha7)) {
+            ChangeSceneTo(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8)) {
+            ChangeSceneTo(8);
+        }
         if (Input.GetKeyDown(KeyCode.Alpha9)) {
             ChangeSceneTo(9);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            ChangeSceneTo(0);
         }
     }
 
@@ -99,7 +105,7 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
         string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         
-        if ( idx == 9 ) { // when go to End_Scene, switch BGM to 1
+        if ( idx == 7 ) { // when go to End_Scene, switch BGM to 1
             audioManager.GetComponent<AudioManager>().SwitchBGM(1);
         }
         else if (idx == 1 && currentSceneName == "EndStoryScene") { // from End_Scene to main_scene, switch BGM to 0
