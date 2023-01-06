@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource SEPlayer;   // audio source for SE, attached to AudioManager
     // ===== add audio source here =====
     public AudioClip BGM;
+    public AudioClip BGM_end;
     public AudioClip SE_Jump;
     public AudioClip SE_Possess;
     public AudioClip SE_Tower;
@@ -116,6 +117,47 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         BGMPlayer.volume = 0;
+    }
+
+    // idx: 0 for BGM, 1 for BGM_end
+    public void SwitchBGM(int idx)
+    {
+        StartCoroutine(ScheduleSwitchBGM(idx));
+    }
+
+    IEnumerator ScheduleSwitchBGM(int idx)
+    {
+        float duration = 1.0f;
+
+        // fade out the original one
+        float startTime = Time.time;
+        float endTime = startTime + duration;
+        while (Time.time < endTime) {
+            float alpha = 1 - (Time.time - startTime) / duration;
+            BGMPlayer.volume = BGMVolume * alpha;
+            yield return null;
+        }
+        BGMPlayer.volume = 0;
+
+        // switch to the new one
+        if (idx == 0)
+            BGMPlayer.clip = BGM;
+        else if (idx == 1)
+            BGMPlayer.clip = BGM_end;
+        else 
+            Debug.LogError("Invalid BGM index!");
+        BGMPlayer.Play();
+
+        // fade in the new one
+        startTime = Time.time;
+        endTime = startTime + duration;
+        while (Time.time < endTime) {
+            float alpha = (Time.time - startTime) / duration;
+            BGMPlayer.volume = BGMVolume * alpha;
+            yield return null;
+        }
+        BGMPlayer.volume = BGMVolume;
+        BGMmuted = false;
     }
 
     public void PlaySE_Jump()

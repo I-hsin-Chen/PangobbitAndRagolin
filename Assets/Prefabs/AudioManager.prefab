@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9c59e7fcec66940b1a24d591a21c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGMmuted: 0
   BGM: {fileID: 8300000, guid: 5e24c24ff3767014b903860ecf5d33e6, type: 3}
+  BGM_end: {fileID: 8300000, guid: 388a2062ee32a4e4f89087e729449462, type: 3}
   SE_Jump: {fileID: 8300000, guid: b0b9b263d3ad8b94a936345d0474ccc4, type: 3}
   SE_Possess: {fileID: 8300000, guid: ccfa9208933d07446978440849521a38, type: 3}
   SE_Tower: {fileID: 8300000, guid: 7442647a59ad59743bbed614e80e131c, type: 3}
