@@ -6,7 +6,8 @@ public class Door_End : MonoBehaviour
 {
     private Animator animator;
     private GameObject gameManager;
-    private bool touched;
+    public bool touched;
+    
 
     private void Awake()
     {
@@ -28,9 +29,12 @@ public class Door_End : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.name == "Rabbit" || col.gameObject.name == "Pangolin")
+        {
+            animator.enabled = true;
+            touched = true;
+            print(touched);
+        }
         
-        animator.enabled = true;
-        touched = true;
-        print(touched);
     }
 }
