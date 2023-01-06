@@ -50,8 +50,8 @@ public class DoorLightControl : MonoBehaviour
             {
                 if(!loadEndScene)
                 {
-                    loadEndScene = true;
-                    GameObject.Find("GameManager").GetComponent<GameManager>().ChangeSceneTo(10);
+                    loadEndScene = true;                    
+                    GameObject.Find("GameManager").GetComponent<GameManager>().ChangeSceneTo(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
                 }
                 
             }
