@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Camera_Position : MonoBehaviour
 {
-    public Rigidbody2D rabbit;
-    public Rigidbody2D pangolin;
+    private GameObject rabbitFollow;
+    private GameObject pangolinFollow;
     private GameObject center;
     
 
@@ -13,6 +13,8 @@ public class Camera_Position : MonoBehaviour
     void Start()
     {
         center = GameObject.Find("Center");
+        rabbitFollow = GameObject.Find("RabbitFollow");
+        pangolinFollow = GameObject.Find("PangolinFollow");
         //Debug.Log(center);   
     }
 
@@ -20,7 +22,7 @@ public class Camera_Position : MonoBehaviour
     void Update()
     {
 
-        Vector3 cen_pos = (rabbit.transform.position + pangolin.transform.position)*0.5f;
+        Vector3 cen_pos = (rabbitFollow.transform.position + pangolinFollow.transform.position)*0.5f;
         // print(cen_pos);
         //cen_pos.y = cen_pos.y + 5f;
         cen_pos.y = 0.5f;
