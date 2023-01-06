@@ -10,6 +10,7 @@ using PlayTextSupport;
 public class AudioManager : MonoBehaviour
 {
     // There are two audio sources to set volume independently
+    public bool BGMmuted;
     private float BGMVolume = 0.5f;
     private float SEVolume = 0.5f;
     private AudioSource BGMPlayer;  // audio source for BGM, attached to GameManager
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
     {   
         DontDestroyOnLoad(this.gameObject);
         // Set up BGMPlayer here, BGMVolume may be changed in UIEventManager.cs
+        BGMmuted = false;
         BGMPlayer = GameObject.Find("GameManager").GetComponent<AudioSource>();
         BGMPlayer.volume = BGMVolume;
         BGMPlayer.mute = false;
@@ -52,7 +54,8 @@ public class AudioManager : MonoBehaviour
     public void SetBGMVolume(float vol)
     {
         BGMVolume = vol;
-        BGMPlayer.volume = BGMVolume;
+        if (!BGMmuted)
+            BGMPlayer.volume = BGMVolume;
     }
 
     public float GetBGMVolume()
@@ -90,10 +93,14 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
         BGMPlayer.volume = BGMVolume;
+        BGMmuted = false;
     }
 
     public void FadeOutBGM(float duration = 1.0f)
     {
+        if (BGMmuted)
+            return;
+        BGMmuted = true;
         StartCoroutine(ScheduleFadeOutBGM(duration * 0.4f));
     }
 
