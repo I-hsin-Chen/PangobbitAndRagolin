@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     // call this public function when you want to change scene
     public void ChangeSceneTo(int idx)
     {
+        if (GameObject.Find("FadeCanvas/ImageBlack") != null || GameObject.Find("PauseCanvas") != null)
+            return;
         Debug.Log("ChangeSceneTo:" + idx);
         StartCoroutine(ScheduleChangeScene(changeSceneDelay, idx));
     }
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
         fadeCanvas.GetComponent<FadeHandler>().StartFadeOut(fadeOutTime);
         yield return new WaitForSeconds(fadeOutTime);
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(idx);
-        if (idx == 1)
+        if ( (idx == 1) || (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Stage_4") )
             audioManager.GetComponent<AudioManager>().FadeInBGM(fadeOutTime);
         Time.timeScale = 1;
     }

@@ -32,7 +32,8 @@ public class PulleyPlateControl : MonoBehaviour
             if (colState.grounded && EndPos.y < StartPos.y && (transform.position.y - EndPos.y) < 2.0f){
                 transform.parent.gameObject.GetComponent<PulleyControlv3>().forceToStop();
             } 
-            float timeProgressed = (Time.time - StartTime) / LerpTime;  // this will be 0 at the beginning and 1 at the end.
+            float timeProgressed = (Time.time - StartTime) / LerpTime; 
+            // this will be 0 at the beginning and 1 at the end.
             transform.position = Vector3.Lerp(StartPos, EndPos, timeProgressed);
             yield return new WaitForFixedUpdate();
         }

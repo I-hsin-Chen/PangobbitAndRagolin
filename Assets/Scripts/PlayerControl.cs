@@ -343,6 +343,8 @@ public class PlayerControl : MonoBehaviour
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Pangolin");
         }
         // =================
+        if (obj.name == "Gear") // stop gear down
+            obj.GetComponent<ObjectControl>().GearDown(false);
     }
 
     private void PossessBackToPlayer()
@@ -355,7 +357,8 @@ public class PlayerControl : MonoBehaviour
         isPangolin = false;
         
         // lock object movement before possess back
-        GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
+        if(name != "Marbel") // don't freeze marbel
+            GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);
@@ -393,7 +396,7 @@ public class PlayerControl : MonoBehaviour
         if(name.Length > 5 && name.Substring(0, 5) == "Pitch")
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
         if(name == "Gear") // move gear to buttom after possessback
-            objectControl.GearDown();
+            objectControl.GearDown(true);
     }
 
     // when to ignore collision
