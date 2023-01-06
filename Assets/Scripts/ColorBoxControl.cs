@@ -32,6 +32,8 @@ public class ColorBoxControl : MonoBehaviour
     public TMP_Text remainingTimeText;
     public TMP_Text colorHintText;
 
+    Coroutine cnt_down;
+
     void Start(){
         stickList = new List<GameObject>();
         stickList.Add(transform.Find("Red").gameObject);
@@ -184,10 +186,15 @@ public class ColorBoxControl : MonoBehaviour
     public void StartChallenge(int challenge){
         if (challenge == 0) {
             StartCoroutine(ScheduleColorDisappear_0());
-            StartCoroutine(ScheduleCountDown());
+            cnt_down = StartCoroutine(ScheduleCountDown());
         }
         else
+        {
+            if (cnt_down != null) StopCoroutine(cnt_down);
             StartCoroutine(ScheduleColorDisappear());
+            StartCoroutine(ScheduleCountDown());
+        }
+            
             // because there is already a coroutine running, don't have to start another one
             // StartCoroutine(ScheduleCountDown());
     }
