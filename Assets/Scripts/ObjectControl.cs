@@ -91,6 +91,12 @@ public class ObjectControl : MonoBehaviour
     // Stage_1 end ======================================================================
 
     // Stage_2
+    public void RadioRotate(bool clockwise) // rotate radio
+    {
+        if(!clockwise) GetComponent<Rigidbody2D>().rotation += 90f;
+        else GetComponent<Rigidbody2D>().rotation -= 90f;
+        // transform.position -= new Vector3(0, transform.position.y/3.6f);
+    }
     public void TankRotate(bool clockwise) // only rotate barrel
     {
         GameObject obj = transform.GetChild(0).gameObject;

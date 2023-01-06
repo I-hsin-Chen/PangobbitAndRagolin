@@ -68,12 +68,26 @@ public class FadeHandler : MonoBehaviour
         gameManager.GetComponent<GameManager>().SetRabbitCanPossess(false);
         float startTime = Time.time;
         float endTime = startTime + duration;
-        imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-        while (Time.time < endTime) {
-            float alpha = (Time.time - startTime) / duration;
-            imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, alpha);
-            yield return null;
+        
+        // for End_Scene, fade out to white
+        // for other scenes, fade out to black
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "End_Scene") {
+            imageBlack.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            while (Time.time < endTime) {
+                float alpha = (Time.time - startTime) / duration;
+                imageBlack.GetComponent<Image>().color = new Color(255, 255, 255, alpha);
+                yield return null;
+            }
+            imageBlack.GetComponent<Image>().color = new Color(255, 255, 255, 1);
         }
-        imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+        else {
+            imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            while (Time.time < endTime) {
+                float alpha = (Time.time - startTime) / duration;
+                imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, alpha);
+                yield return null;
+            }
+            imageBlack.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+        }
     }
 }

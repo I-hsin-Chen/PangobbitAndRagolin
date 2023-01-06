@@ -259,6 +259,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Stage_2
+        if(name == "Radio"){
+            if(Input.GetKeyDown(KeyCode.W)) objectControl.RadioRotate(false);  // turn clockwise
+            if(Input.GetKeyDown(KeyCode.S)) objectControl.RadioRotate(true); // turn counter-clockwise
+        }
         if(name == "Tank"){
             if(Input.GetKeyDown(KeyCode.E)) objectControl.TankShoot(); // shoot
             if(Input.GetKeyDown(KeyCode.W)) tankRotate = 1;  // turn clockwise
