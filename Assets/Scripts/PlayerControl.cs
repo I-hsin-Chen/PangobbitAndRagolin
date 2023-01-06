@@ -343,6 +343,10 @@ public class PlayerControl : MonoBehaviour
             else if (isPangolin)
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Pangolin");
         }
+        else if (obj.name == "Phonograph") {
+            if (isPangolin)
+                GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphPhonograph();
+        }
         // =================
         if (obj.name == "Gear") // stop gear down
             obj.GetComponent<ObjectControl>().GearDown(false);

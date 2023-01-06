@@ -27,6 +27,7 @@ public class MyPlayTextEvents : MonoBehaviour
     public DialogueGraph Graph_Stage_4 = null;
     public DialogueGraph Graph_Tank_Rabbit = null;
     public DialogueGraph Graph_Tank_Pangolin = null;
+    public DialogueGraph Graph_Phonograph = null;
     private GameObject gameManager;
     private GameObject audioManager;
 
@@ -80,6 +81,7 @@ public class MyPlayTextEvents : MonoBehaviour
         else if (curStage == "Stage_4") {
             // Stage_4 events here
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FadeOutBGM", FadeOutBGM);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyW", WaitingForKeyW);
         }
 
         // play graphs
@@ -507,4 +509,15 @@ public class MyPlayTextEvents : MonoBehaviour
                 break;
         }
     }
+
+    private bool phonographPossessed_Pangolin = false;
+    public void PlayGraphPhonograph()
+    {
+        if (phonographPossessed_Pangolin)
+            return;
+        Debug.Log("Play Graph_Phonograph_Pangolin");
+        phonographPossessed_Pangolin = true;
+        EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Phonograph);
+    }
+
 }
