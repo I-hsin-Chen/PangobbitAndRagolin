@@ -24,6 +24,7 @@ public class ObjectControl : MonoBehaviour
 
     // record stage_4 Gate and Marbel collision
     private bool[,] collidedGate = new bool[5, 5];
+    private GameObject[,] marbelList = new GameObject[5, 5];
     private bool playing = false;
     private bool falling = false;
     private Coroutine coroutineCheckMarbels;
@@ -90,6 +91,12 @@ public class ObjectControl : MonoBehaviour
     // Stage_1 end ======================================================================
 
     // Stage_2
+    public void RadioRotate(bool clockwise) // rotate radio
+    {
+        if(!clockwise) GetComponent<Rigidbody2D>().rotation += 90f;
+        else GetComponent<Rigidbody2D>().rotation -= 90f;
+        // transform.position -= new Vector3(0, transform.position.y/3.6f);
+    }
     public void TankRotate(bool clockwise) // only rotate barrel
     {
         GameObject obj = transform.GetChild(0).gameObject;
@@ -214,7 +221,10 @@ public class ObjectControl : MonoBehaviour
     {
         if(rotating && !playing) coroutineCheckMarbels = StartCoroutine(CheckMarbels());
         else if(!rotating && playing){ 
-            if(coroutineCheckMarbels != null) StopCoroutine(coroutineCheckMarbels);
+            if(coroutineCheckMarbels != null){
+                StopCoroutine(coroutineCheckMarbels);
+                ClearAllMarbels();
+            } 
             audiomanager.StopSE_Accompaniment();
             playing = false;
         }
@@ -224,34 +234,44 @@ public class ObjectControl : MonoBehaviour
     {
         playing = true;
         audiomanager.PlaySE_Accompaniment();
+
+        lightTheMarbels(0);
         if(collidedGate[0, 0]) audiomanager.PlaySE_Pitch1();
         if(collidedGate[0, 1]) audiomanager.PlaySE_Pitch2();
         if(collidedGate[0, 2]) audiomanager.PlaySE_Pitch3();
         if(collidedGate[0, 3]) audiomanager.PlaySE_Pitch4();
         if(collidedGate[0, 4]) audiomanager.PlaySE_Pitch5();
         yield return new WaitForSeconds(0.3515625f);
+        unlightTheMarbels(0);
 
+        lightTheMarbels(1);
         if(collidedGate[1, 0]) audiomanager.PlaySE_Pitch1();
         if(collidedGate[1, 1]) audiomanager.PlaySE_Pitch2();
         if(collidedGate[1, 2]) audiomanager.PlaySE_Pitch3();
         if(collidedGate[1, 3]) audiomanager.PlaySE_Pitch4();
         if(collidedGate[1, 4]) audiomanager.PlaySE_Pitch5();
         yield return new WaitForSeconds(0.3515625f);
+        unlightTheMarbels(1);
 
+        lightTheMarbels(2);
         if(collidedGate[2, 0]) audiomanager.PlaySE_Pitch1();
         if(collidedGate[2, 1]) audiomanager.PlaySE_Pitch2();
         if(collidedGate[2, 2]) audiomanager.PlaySE_Pitch3();
         if(collidedGate[2, 3]) audiomanager.PlaySE_Pitch4();
         if(collidedGate[2, 4]) audiomanager.PlaySE_Pitch5();
         yield return new WaitForSeconds(0.234375f);
-        
+        unlightTheMarbels(2);
+
+        lightTheMarbels(3);
         if(collidedGate[3, 0]) audiomanager.PlaySE_Pitch1();
         if(collidedGate[3, 1]) audiomanager.PlaySE_Pitch2();
         if(collidedGate[3, 2]) audiomanager.PlaySE_Pitch3();
         if(collidedGate[3, 3]) audiomanager.PlaySE_Pitch4();
         if(collidedGate[3, 4]) audiomanager.PlaySE_Pitch5();
         yield return new WaitForSeconds(0.46875f);
-        
+        unlightTheMarbels(3);
+
+        lightTheMarbels(4);
         if(collidedGate[4, 0]) audiomanager.PlaySE_Pitch1();
         if(collidedGate[4, 1]) audiomanager.PlaySE_Pitch2();
         if(collidedGate[4, 2]) audiomanager.PlaySE_Pitch3();
@@ -259,11 +279,27 @@ public class ObjectControl : MonoBehaviour
         if(collidedGate[4, 4]) audiomanager.PlaySE_Pitch5();
         yield return new WaitForSeconds(0.46875f);
         audiomanager.StopSE_Accompaniment();
-        
+        unlightTheMarbels(4);
+
+
         if(CheckStage4Pass())
             GetComponent<PhonographControl>().Stage4Pass();
         yield return new WaitForSeconds(0.5f);
         playing = false;
+    }
+
+    private void lightTheMarbels(int row){
+        for (int i=0; i<= 4; i++){
+            if (marbelList[row, i] != null)
+            marbelList[row, i].transform.Find("Point Light").GetComponent<Light>().intensity = 1.3f ;
+        } 
+    }
+
+    private void unlightTheMarbels(int row){
+        for (int i=0; i<= 4; i++){
+            if (marbelList[row, i] != null)
+            marbelList[row, i].transform.Find("Point Light").GetComponent<Light>().intensity = 0.0f ;
+        } 
     }
 
     public bool CheckStage4Pass()
@@ -291,6 +327,26 @@ public class ObjectControl : MonoBehaviour
     {
         collidedGate[i, j] = false;
     }
+
+    public void SetMarbel(int i, int j, GameObject ball)
+    {
+        marbelList[i, j] = ball;
+    }
+
+    public void ClearMarbel(int i, int j)
+    {
+        marbelList[i, j] = null;
+    }
+
+    public void ClearAllMarbels()
+    {
+        for (int i=0; i<=4; i++) 
+            for(int j=0; j<=4; j++){
+                if (marbelList[i, j] != null)
+                marbelList[i, j].transform.Find("Point Light").GetComponent<Light>().intensity = 0.0f ;
+            }
+    }
+
     // Stage_4 end ======================================================================
 
 

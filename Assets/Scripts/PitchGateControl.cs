@@ -24,6 +24,7 @@ public class PitchGateControl : MonoBehaviour
             int i = transform.parent.gameObject.transform.parent.gameObject.name[10] - '1'; // Gate_Gear_j
             int j = transform.parent.gameObject.name[6] - '1'; // Pitch i
             objectControl.GetComponent<ObjectControl>().SetCollision(i, j);
+            objectControl.GetComponent<ObjectControl>().SetMarbel(i, j, col.gameObject);
         }
     }
 
@@ -33,6 +34,7 @@ public class PitchGateControl : MonoBehaviour
             int i = transform.parent.gameObject.transform.parent.gameObject.name[10] - '1';
             int j = transform.parent.gameObject.name[6] - '1';
             objectControl.GetComponent<ObjectControl>().ClearCollision(i, j);
+            objectControl.GetComponent<ObjectControl>().ClearMarbel(i, j);
         }
     }
 }
