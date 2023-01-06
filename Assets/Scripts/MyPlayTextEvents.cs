@@ -83,7 +83,7 @@ public class MyPlayTextEvents : MonoBehaviour
         else if (curStage == "Stage_4") {
             // Stage_4 events here
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("FadeOutBGM", FadeOutBGM);
-            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyW", WaitingForKeyW);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingForKeyWorQ", WaitingForKeyWorQ);
         }
 
         // play graphs
@@ -480,6 +480,35 @@ public class MyPlayTextEvents : MonoBehaviour
             talkingManager.GetComponent<PlayText>().BubblePositionOffset += new Vector2(0, offset);
             talkingManager.GetComponent<PlayText>().PointerOffset += new Vector2(0, offset);
         }
+    }
+
+    // lock conversation and start waiting for player to press KeyW or keyQ
+    void WaitingForKeyWorQ(List<EventValueClass> Value)
+    {
+        Debug.Log("WaitingForKeyWorQ");
+        StartCoroutine(SchduleWaitingForKeyWorQ(Value));
+    }
+
+    // coroutine to wait for player to press KeyW or keyQ
+    IEnumerator SchduleWaitingForKeyWorQ(List<EventValueClass> Value)
+    {
+        Debug.Log("SchduleWaitingForKeyWorQ");
+        // lock conversation before waiting
+        EventCenter.GetInstance().EventTriggered("LockConversation");
+        bool W_pressed = false;
+        bool Q_pressed = false;
+        // wait for player to press KeyO or keyU
+        while ( (!W_pressed || Input.GetKey(KeyCode.W)) && (!Q_pressed || Input.GetKey(KeyCode.Q)) )
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+                W_pressed = true;
+            if (Input.GetKeyDown(KeyCode.Q))
+                Q_pressed = true;
+            yield return null;
+        }
+        // unlock conversation after O or U is pressed
+        EventCenter.GetInstance().EventTriggered("UnLockConversation");
+        EventCenter.GetInstance().EventTriggered("PlayText.ForceNext");
     }
 
     // ===== Functions that can be called directly from other scripts =====
