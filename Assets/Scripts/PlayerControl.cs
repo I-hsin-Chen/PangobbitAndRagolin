@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private GameObject gameManager;
+    private GameObject center;
     private Rigidbody2D rb;
     private CollisionState collisionState;
     private FacingDirection faceDirection;
@@ -76,6 +77,7 @@ public class PlayerControl : MonoBehaviour
         TryGetComponent<ObjectControl>(out objectControl);
         // TryGetComponent<Animator>(out animator);
         gameManager = GameObject.Find("GameManager");
+        center = GameObject.Find("Center");
         audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
@@ -162,7 +164,18 @@ public class PlayerControl : MonoBehaviour
         if (!isPlayer && !isPossessedObject) return;
         // if (!isRabbit && !isPangolin) return;
 
-        if(isRunning) rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y) ;
+        if(isRunning){
+            if(center != null){
+                int idx = center.GetComponent<Camera_Position>().CheckPlayerCanMove();
+                if(idx == 1 && ((isRabbit && runningDirection == 1) || (isPangolin && runningDirection == -1))) // rabbit at right and out of edge
+                    rb.velocity = new Vector2(0 , rb.velocity.y);
+                else if(idx == 2 && ((isRabbit && runningDirection == -1) || (isPangolin && runningDirection == 1))) // pangolin at right and out of edge
+                    rb.velocity = new Vector2(0 , rb.velocity.y);
+                else
+                    rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y);
+            }
+            else rb.velocity = new Vector2(moveSpeed * runningDirection , rb.velocity.y);
+        }
         else rb.velocity = new Vector2(0, rb.velocity.y);
         if (playerCanMove && isPangolin) {
             // Stage_1
