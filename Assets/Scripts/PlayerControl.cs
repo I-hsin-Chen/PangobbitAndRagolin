@@ -357,7 +357,8 @@ public class PlayerControl : MonoBehaviour
         isPangolin = false;
         
         // lock object movement before possess back
-        GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
+        if(name != "Marbel") // don't freeze marbel
+            GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         possessTarget.SetActive(true);
