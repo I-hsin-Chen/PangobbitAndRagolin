@@ -125,6 +125,7 @@ public class PlayerControl : MonoBehaviour
                     // highlight the object that is the possess target.
                     possessTarget.GetComponent<ObjectControl>().highlightObject(isRabbit);
                 }
+
             }
             // check objects at upside
             else if (hit_up.collider != null && hit_up.collider.gameObject.tag == "Object"){
@@ -349,6 +350,10 @@ public class PlayerControl : MonoBehaviour
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Rabbit");
             else if (isPangolin)
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Pangolin");
+        }
+        else if (obj.name == "Phonograph") {
+            if (isPangolin)
+                GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphPhonograph();
         }
         // =================
         if (obj.name == "Gear") // stop gear down
