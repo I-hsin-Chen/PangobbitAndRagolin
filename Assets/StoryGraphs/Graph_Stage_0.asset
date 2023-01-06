@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 3224, y: 760}
+  position: {x: 3256, y: 760}
   ports:
     keys:
     - Input
@@ -23,7 +23,10 @@ MonoBehaviour:
       _node: {fileID: -9076172176589050383}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: Output
+        node: {fileID: 5697331675043405716}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -325,7 +328,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: 'Event: WaitingForKeyQ'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1176, y: 1048}
@@ -753,7 +756,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -108990237935334489}
-  current: {fileID: 3047314983951603264}
+  current: {fileID: -19444966001815500}
 --- !u!114 &458704876033674518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,7 +767,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: SetRabbitCanPo\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -232, y: 760}
@@ -937,7 +940,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: WaitingForPang\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -920, y: 1048}
@@ -1039,7 +1042,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: SetRabbitCanPo\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 104, y: 1144}
@@ -1209,7 +1212,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: SetPlayerCanMo\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 120, y: -200}
@@ -1321,7 +1324,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: WaitingForRabb\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -232, y: 1016}
@@ -1452,7 +1455,10 @@ MonoBehaviour:
       _node: {fileID: 5697331675043405716}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: Input
+        node: {fileID: -9076172176589050383}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -1544,7 +1550,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: WaitingForKeyA\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -920, y: 280}
@@ -1694,7 +1700,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: 'Event: WaitingForKeyU'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1528, y: 1016}
