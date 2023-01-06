@@ -33,6 +33,8 @@ public class MyPlayTextEvents : MonoBehaviour
     private GameObject gameManager;
     private GameObject audioManager;
 
+    private int challenge_0_state;  // 0 for not started, 1 for started, 2 for finished
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,8 @@ public class MyPlayTextEvents : MonoBehaviour
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("StartColorBoxChallenge0", StartColorBoxChallenge0);
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("StartColorBoxChallenge1", StartColorBoxChallenge1);
             EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("ResetStickState", ResetStickState);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("WaitingSkipStory", WaitingSkipStory);
+            EventCenter.GetInstance().AddEventListener<List<EventValueClass>>("Challenge_0_Finish", Challenge_0_Finish);
         }
         else if (curStage == "Stage_2") {
             // Stage_2 events here
@@ -98,6 +102,7 @@ public class MyPlayTextEvents : MonoBehaviour
             if (Graph_Stage_1 == null)
                 Debug.LogError("Graph_Stage_1 is not assigned!");
             EventCenter.GetInstance().EventTriggered("PlayText.Play", Graph_Stage_1);
+            challenge_0_state = 0;
         }
         else if (curStage == "Stage_2") {
             // play Graph_Stage_2
@@ -430,6 +435,7 @@ public class MyPlayTextEvents : MonoBehaviour
         Debug.Log("StartFirstColorBoxChallenge");
         EventCenter.GetInstance().EventTriggered("LockConversation");
         GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().StartChallenge(0);
+        challenge_0_state = 1;
         StartCoroutine(WaitForChallenge0());
     }
 
@@ -452,6 +458,42 @@ public class MyPlayTextEvents : MonoBehaviour
     {
         Debug.Log("StartColorBoxChallenge1");
         GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().StartChallenge(1);
+    }
+
+    // Wait for pressing S to skip stage_1 story
+    void WaitingSkipStory(List<EventValueClass> Value)
+    {
+        Debug.Log("WaitingSkipStory");
+        StartCoroutine(SchduleWaitingSkipStory(Value));
+    }
+
+    // coroutine to wait for pressing S to skip stage_1 story
+    IEnumerator SchduleWaitingSkipStory(List<EventValueClass> Value)
+    {
+        Debug.Log("SchduleWaitingSkipStory");
+        bool S_pressed = false;
+        // wait for player to press KeyS
+        while (!S_pressed)
+        {
+            if (Input.GetKeyDown(KeyCode.S) && challenge_0_state != 1)
+                S_pressed = true;
+            yield return null;
+        }
+        gameManager.GetComponent<GameManager>().SetPlayerCanMove(true);
+        gameManager.GetComponent<GameManager>().SetPangolinCanPossess(true);
+        gameManager.GetComponent<GameManager>().SetRabbitCanPossess(true);
+        EventCenter.GetInstance().EventTriggered("PlayText.Stop");
+        // start coroutine for challenge 1 and timer maybe
+        GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().resetStickState();
+        if (challenge_0_state == 0) // if challenge 0 is not started, no counter coroutine now
+            StartCoroutine(GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().ScheduleCountDown());
+        StartCoroutine(GameObject.Find("ColorBox").GetComponent<ColorBoxControl>().ScheduleColorDisappear());
+    }
+
+    void Challenge_0_Finish(List<EventValueClass> Value)
+    {
+        Debug.Log("Challenge_0_Finish");
+        challenge_0_state = 2;
     }
 
     // Finish the conversation
