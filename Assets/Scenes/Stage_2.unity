@@ -3393,7 +3393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403298423066000344, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
       propertyPath: m_Name
-      value: Table
+      value: Radio
       objectReference: {fileID: 0}
     - target: {fileID: 403298423066000349, guid: 6eb90521fac83434eacbc35e1d335f5a, type: 3}
       propertyPath: m_Size.x
