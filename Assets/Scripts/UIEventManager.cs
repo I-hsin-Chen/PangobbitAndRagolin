@@ -80,6 +80,8 @@ public class UIEventManager : MonoBehaviour
 
     public void ShowPauseCanvas()
     {
+        if (GameObject.Find("FadeCanvas/ImageBlack") != null)
+            return;
         if (pauseCanvas == null)
             pauseCanvas = GameObject.Find("PauseCanvas");
         if (pauseCanvas != null) {
@@ -142,28 +144,26 @@ public class UIEventManager : MonoBehaviour
         audioManager.GetComponent<AudioManager>().SetSEVolume(vol);
     }
 
-    // Dynamically show this message in the canvas
-    public string instruction = "This is a test instruction.";
     // 0 for not showing, 1 for during showing, 2 for finished showing
     private int instructionState = 0;
 
-    public void QuestionButtonClicked()
+    public void QuestionButtonClicked(string instruction)
     {
         Debug.Log("Question Button Clicked");
         if (instructionState == 0)
-            ShowInstruction();
+            ShowInstruction(instruction);
         else if (instructionState == 2)
             CloseInstruction();
     }
 
-    public void ShowInstruction()
+    public void ShowInstruction(string instruction)
     {
         instructionState = 1;
         Debug.Log("Show Instruction");
-        StartCoroutine(ScheduleShowInstruction());
+        StartCoroutine(ScheduleShowInstruction(instruction));
     }
 
-    IEnumerator ScheduleShowInstruction(){
+    IEnumerator ScheduleShowInstruction(string instruction){
         GameObject Instruction = GameObject.Find("InstructionCanvas/Instruction");
         if (Instruction == null) {
             Debug.Log("Instruction Object not found");

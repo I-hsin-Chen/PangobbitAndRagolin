@@ -343,6 +343,8 @@ public class PlayerControl : MonoBehaviour
                 GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphTank("Pangolin");
         }
         // =================
+        if (obj.name == "Gear") // stop gear down
+            obj.GetComponent<ObjectControl>().GearDown(false);
     }
 
     private void PossessBackToPlayer()
@@ -393,7 +395,7 @@ public class PlayerControl : MonoBehaviour
         if(name.Length > 5 && name.Substring(0, 5) == "Pitch")
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
         if(name == "Gear") // move gear to buttom after possessback
-            objectControl.GearDown();
+            objectControl.GearDown(true);
     }
 
     // when to ignore collision

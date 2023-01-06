@@ -41,14 +41,14 @@ public class ColorBoxControl : MonoBehaviour
         stickState = new bool[]{true, true, true, true};
         waterCtrl = GameObject.Find("Water").GetComponent<WaterLevelControl>();
 
-        remainingTime = 6;
+        remainingTime = 5;
         isCountingDown = true;
         startTime = Time.fixedTime;
         yPos = transform.position.y;
         waterOffset = transform.position.y - waterCtrl.getWaterLevel();
 
-        StartCoroutine(ScheduleColorDisappear());
-        StartCoroutine(ScheduleCountDown());
+        // StartCoroutine(ScheduleColorDisappear());
+        // StartCoroutine(ScheduleCountDown());
     }
 
     void Update(){
@@ -80,9 +80,23 @@ public class ColorBoxControl : MonoBehaviour
         }
     }
 
+    public IEnumerator ScheduleColorDisappear_0(){
+
+        // Challenge 0 : Yellow disappear //
+        remainingTime = 5;
+        stickState[(int)Colors.YELLOW] = false;
+        yield return new WaitForSeconds(4.0f);
+        setStickState();
+
+        // don't have to reset here
+        // yield return new WaitForSeconds(challengeGapTime);
+        // resetStickState();
+    }
+
     public IEnumerator ScheduleColorDisappear(){
 
         // Challenge 1 : Green disappear //
+        remainingTime = 6;
         stickState[(int)Colors.GREEN] = false;
         yield return new WaitForSeconds(5.0f);
         setStickState();
@@ -155,7 +169,7 @@ public class ColorBoxControl : MonoBehaviour
         isCountingDown = false;
     }
 
-    private void resetStickState(){
+    public void resetStickState(){
         for(int i=0; i<=3; i++){
             stickState[i] = true;
             stickList[i].SetActive(true);
@@ -165,6 +179,17 @@ public class ColorBoxControl : MonoBehaviour
 
     public bool[] getStickState(){
         return stickState;
+    }
+
+    public void StartChallenge(int challenge){
+        if (challenge == 0) {
+            StartCoroutine(ScheduleColorDisappear_0());
+            StartCoroutine(ScheduleCountDown());
+        }
+        else
+            StartCoroutine(ScheduleColorDisappear());
+            // because there is already a coroutine running, don't have to start another one
+            // StartCoroutine(ScheduleCountDown());
     }
 
 }

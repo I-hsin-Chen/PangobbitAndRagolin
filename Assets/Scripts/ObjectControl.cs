@@ -25,7 +25,9 @@ public class ObjectControl : MonoBehaviour
     // record stage_4 Gate and Marbel collision
     private bool[,] collidedGate = new bool[5, 5];
     private bool playing = false;
-    private Coroutine coroutine;
+    private bool falling = false;
+    private Coroutine coroutineCheckMarbels;
+    private Coroutine coroutineCheckGearDown;
 
     private void Awake(){
         rabbitHint = Resources.Load("RabbitHint"); 
@@ -101,7 +103,10 @@ public class ObjectControl : MonoBehaviour
         while(bullets.Count > 0 && bullets[0] == null)
             bullets.RemoveAt(0);
 
-        if(bullets.Count > 3) return;
+        if(bullets.Count > 3){
+            audiomanager.PlaySE_Empty();
+            return;
+        }
 
         GameObject obj = transform.GetChild(0).gameObject;
         GameObject cannon = obj.transform.GetChild(0).gameObject;
@@ -167,19 +172,27 @@ public class ObjectControl : MonoBehaviour
         }
     }
 
-    public void GearDown() // move gear to buttom
+    public void GearDown(bool start) // move gear to buttom
     {
-        StartCoroutine(CheckGearDown());
+        if(start && !falling) coroutineCheckGearDown = StartCoroutine(CheckGearDown());
+        else{
+            if(falling && coroutineCheckGearDown != null){
+                StopCoroutine(coroutineCheckGearDown);
+                falling = false;
+            }
+        }
     }
     
     IEnumerator CheckGearDown()
     {
         yield return new WaitForSeconds(2f);
+        falling = true;
         while(transform.position.y > -9f){
             GetComponent<Rigidbody2D>().rotation -= 4.5f;
             transform.position -= new Vector3(0, 0.0426f, 0);
             yield return new WaitForSeconds(0.05f);
         }
+        falling = false;
     }
 
     public void GateClose(bool clockwise) // open/close the gate and rotate the gear
@@ -199,9 +212,9 @@ public class ObjectControl : MonoBehaviour
     
     public void PhonographPlay(bool rotating)
     {
-        if(rotating && !playing) coroutine = StartCoroutine(CheckMarbels());
+        if(rotating && !playing) coroutineCheckMarbels = StartCoroutine(CheckMarbels());
         else if(!rotating && playing){ 
-            if(coroutine != null) StopCoroutine(coroutine);
+            if(coroutineCheckMarbels != null) StopCoroutine(coroutineCheckMarbels);
             audiomanager.StopSE_Accompaniment();
             playing = false;
         }
@@ -244,12 +257,11 @@ public class ObjectControl : MonoBehaviour
         if(collidedGate[4, 2]) audiomanager.PlaySE_Pitch3();
         if(collidedGate[4, 3]) audiomanager.PlaySE_Pitch4();
         if(collidedGate[4, 4]) audiomanager.PlaySE_Pitch5();
-        if(CheckStage4Pass())
-            GetComponent<PhonographControl>().Stage4Pass();
-        
         yield return new WaitForSeconds(0.46875f);
         audiomanager.StopSE_Accompaniment();
         
+        if(CheckStage4Pass())
+            GetComponent<PhonographControl>().Stage4Pass();
         yield return new WaitForSeconds(0.5f);
         playing = false;
     }

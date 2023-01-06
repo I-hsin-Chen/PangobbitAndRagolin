@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha6)) {
             ChangeSceneTo(6);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            ChangeSceneTo(9);
+        }
     }
 
     // call this public function when win
@@ -64,6 +67,8 @@ public class GameManager : MonoBehaviour
     // call this public function when you want to change scene
     public void ChangeSceneTo(int idx)
     {
+        if (GameObject.Find("FadeCanvas/ImageBlack") != null || GameObject.Find("PauseCanvas") != null)
+            return;
         Debug.Log("ChangeSceneTo:" + idx);
         StartCoroutine(ScheduleChangeScene(changeSceneDelay, idx));
     }
