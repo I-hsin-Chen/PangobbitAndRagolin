@@ -35,6 +35,7 @@ MonoBehaviour:
   - {fileID: 7787654778825317200}
   - {fileID: 2124481838094376277}
   - {fileID: 8139683230529191586}
+  - {fileID: 2571693972133970902}
   startNode: {fileID: 0}
   dialogueNode: {fileID: 0}
   optionNode: {fileID: 0}
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: Event
+  m_Name: "Event: WaitingForKeyW\u2026"
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -264, y: -40}
@@ -90,6 +91,51 @@ MonoBehaviour:
   EventValue: []
   IsMax: 1
   IsWaiting: 0
+--- !u!114 &2571693972133970902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
+  m_Name: Event
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 424, y: -40}
+  ports:
+    keys:
+    - Input
+    - Output
+    values:
+    - _fieldName: Input
+      _node: {fileID: 2571693972133970902}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: Output
+        node: {fileID: 8139683230529191586}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: Output
+      _node: {fileID: 2571693972133970902}
+      _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  EventName: FinishConversation
+  WaitCallback: 0
+  EventValue: []
+  IsMax: 1
+  IsWaiting: 0
 --- !u!114 &7787654778825317200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +146,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: Start
+  m_Name: 'Start: English'
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -504, y: -40}
@@ -156,7 +202,10 @@ MonoBehaviour:
       _node: {fileID: 8139683230529191586}
       _typeQualifiedName: GraphSpace.Empty, PlayTextAssembly, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: Input
+        node: {fileID: 2571693972133970902}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
