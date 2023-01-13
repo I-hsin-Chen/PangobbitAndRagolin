@@ -29,6 +29,6 @@ public class MarbelControl : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.name == "hole") inhole = true;
+        if (col.gameObject.name == "hole") inhole = false;
     }
 }
