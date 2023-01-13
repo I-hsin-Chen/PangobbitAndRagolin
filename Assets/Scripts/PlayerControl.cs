@@ -349,6 +349,9 @@ public class PlayerControl : MonoBehaviour
         // For Dialog box follow 
         dialogFollowRefresh(obj);
         obj.GetComponent<ObjectControl>().unhighlightObject();
+
+        yield return null;
+
         obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
         obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
 
