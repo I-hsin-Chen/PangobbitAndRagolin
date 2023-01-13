@@ -162,22 +162,22 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySE_Jump()
     {
-        SEPlayer.PlayOneShot(SE_Jump);
+        SEPlayer.PlayOneShot(SE_Jump, SEVolume*0.8f);
     }
 
     public void PlaySE_Possess()
     {
-        SEPlayer.PlayOneShot(SE_Possess);
+        SEPlayer.PlayOneShot(SE_Possess, SEVolume*0.8f);
     }
 
     public void PlaySE_Tower()
     {
-        SEPlayer.PlayOneShot(SE_Tower);
+        SEPlayer.PlayOneShot(SE_Tower, SEVolume*0.8f);
     }
 
     public void PlaySE_Empty()
     {
-        SEPlayer.PlayOneShot(SE_Empty);
+        SEPlayer.PlayOneShot(SE_Empty, SEVolume*0.8f);
     }
 
     // Stage_4 function
@@ -188,27 +188,27 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySE_Pitch1()
     {
-        SEPlayer.PlayOneShot(SE_Pitch1);
+        SEPlayer.PlayOneShot(SE_Pitch1, SEVolume*0.3f);
     }
 
     public void PlaySE_Pitch2()
     {
-        SEPlayer.PlayOneShot(SE_Pitch2);
+        SEPlayer.PlayOneShot(SE_Pitch2, SEVolume*0.3f);
     }
 
     public void PlaySE_Pitch3()
     {
-        SEPlayer.PlayOneShot(SE_Pitch3);
+        SEPlayer.PlayOneShot(SE_Pitch3, SEVolume*0.3f);
     }
 
     public void PlaySE_Pitch4()
     {
-        SEPlayer.PlayOneShot(SE_Pitch4);
+        SEPlayer.PlayOneShot(SE_Pitch4, SEVolume*0.3f);
     }
 
     public void PlaySE_Pitch5()
     {
-        SEPlayer.PlayOneShot(SE_Pitch5);
+        SEPlayer.PlayOneShot(SE_Pitch5, SEVolume*0.3f);
     }
 
     public void PlaySE_Accompaniment()
