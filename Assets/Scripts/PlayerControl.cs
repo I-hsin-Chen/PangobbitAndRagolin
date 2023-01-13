@@ -326,7 +326,7 @@ public class PlayerControl : MonoBehaviour
     private void Possess(GameObject obj)
     {
         // determine whether player is possessed on a object
-        if(isObject && name == "Marbel" && isStuck){
+        if(isObject && name.Length >= 6 && name.Substring(0, 6) == "Marbel" && isStuck){
             // Debug.Log("I'm Stuck");
             if(isRabbit) GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphIamStuck("Rabbit");
             if(isPangolin) GameObject.Find("MyPlayTextEventHelper").GetComponent<MyPlayTextEvents>().PlayGraphIamStuck("Pangolin");
@@ -390,7 +390,7 @@ public class PlayerControl : MonoBehaviour
         isPangolin = false;
         
         // lock object movement before possess back
-        if(name != "Marbel") // don't freeze marbel
+        if(!(name.Length >= 6 && name.Substring(0, 6) == "Marbel")) // don't freeze marbel
             GetComponent<Rigidbody2D>().constraints |= RigidbodyConstraints2D.FreezePositionX;
         transform.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
@@ -416,7 +416,7 @@ public class PlayerControl : MonoBehaviour
             possessTarget.transform.position = transform.position + new Vector3( (renderer.bounds.size.x / 2 + 0.5f) * faceDirection.GetDirection(), 0.3f, 0);
 
         // stage_4 
-        if((name.Length > 5 && name.Substring(0, 5) == "Pitch") || (name == "Marbel" && GetComponent<MarbelControl>().GetInHole()))
+        if((name.Length > 5 && name.Substring(0, 5) == "Pitch") || (name.Length >= 6 && name.Substring(0, 6) == "Marbel" && GetComponent<MarbelControl>().GetInHole()))
             possessTarget.transform.position = transform.position - new Vector3( 0, renderer.bounds.size.y / 2 + 0.3f, 0);
         if(name == "Gear"){ // move gear to buttom after possessback
             objectControl.GearDown(true);
@@ -426,7 +426,7 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
         // check if the Marbel is in gate
-        if (name == "Marbel" && col.gameObject.name.Length > 5 && col.gameObject.name.Substring(0, 5) == "Pitch")
+        if (name.Length >= 6 && name.Substring(0, 6) == "Marbel" && col.gameObject.name.Length > 5 && col.gameObject.name.Substring(0, 5) == "Pitch")
             isStuck = true;
 
         // when to ignore collision
@@ -441,7 +441,7 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D col){
         // check if the Marbel is in gate
-        if (name == "Marbel" && col.gameObject.name.Length > 5 && col.gameObject.name.Substring(0, 5) == "Pitch")
+        if (name.Length >= 6 && name.Substring(0, 6) == "Marbel" && col.gameObject.name.Length > 5 && col.gameObject.name.Substring(0, 5) == "Pitch")
             isStuck = false;
     }
 

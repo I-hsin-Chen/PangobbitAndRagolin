@@ -18,7 +18,7 @@ public class LayerDummyColliderControl : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.name == "Rabbit" || col.gameObject.name == "Pangolin" || col.gameObject.name == "Marbel"){
+        if (col.gameObject.name == "Rabbit" || col.gameObject.name == "Pangolin" || (col.gameObject.name.Length >= 6 && col.gameObject.name.Substring(0, 6) == "Marbel")){
             col.gameObject.transform.position -= new Vector3(0, 0.3f, 0);
         }
     }

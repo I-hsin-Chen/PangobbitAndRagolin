@@ -20,9 +20,9 @@ public class PitchGateControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.name == "Marbel"){
+        if(col.gameObject.name.Length >= 6 && col.gameObject.name.Substring(0, 6) == "Marbel"){
             int i = transform.parent.gameObject.transform.parent.gameObject.name[10] - '1'; // Gate_Gear_j
-            int j = transform.parent.gameObject.name[6] - '1'; // Pitch i
+            int j = transform.parent.gameObject.name[8] - '1'; // Pitch i
             objectControl.GetComponent<ObjectControl>().SetCollision(i, j);
             objectControl.GetComponent<ObjectControl>().SetMarbel(i, j, col.gameObject);
         }
@@ -30,9 +30,9 @@ public class PitchGateControl : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D col)
     {
-        if(col.gameObject.name == "Marbel"){
+        if(col.gameObject.name.Length >= 6 && col.gameObject.name.Substring(0, 6) == "Marbel"){
             int i = transform.parent.gameObject.transform.parent.gameObject.name[10] - '1';
-            int j = transform.parent.gameObject.name[6] - '1';
+            int j = transform.parent.gameObject.name[8] - '1';
             objectControl.GetComponent<ObjectControl>().ClearCollision(i, j);
             objectControl.GetComponent<ObjectControl>().ClearMarbel(i, j);
         }
