@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: StartColorBoxC\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 424, y: -24}
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: ResetStickStat\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1448, y: -8}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 857b2783297fa724aa9cb35db8c314c7, type: 3}
-  m_Name: 'Start: English'
+  m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -872, y: -24}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a391752700ffb442a5ce5508f41175f, type: 3}
-  m_Name: "Event: WaitingSkipSto\u2026"
+  m_Name: Event
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -616, y: -24}
@@ -495,7 +495,7 @@ MonoBehaviour:
   eventNode: {fileID: 0}
   commentNode: {fileID: 0}
   profileNode: {fileID: -8967984864995040794}
-  current: {fileID: -1620293686251751192}
+  current: {fileID: 5109646193899927249}
 --- !u!114 &3197841659819458957
 MonoBehaviour:
   m_ObjectHideFlags: 0

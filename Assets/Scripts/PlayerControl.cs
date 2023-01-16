@@ -350,13 +350,13 @@ public class PlayerControl : MonoBehaviour
         dialogFollowRefresh(obj);
         obj.GetComponent<ObjectControl>().unhighlightObject();
 
-        yield return null;
-
-        obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
-        obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
+        // yield return null;
 
         // run the possess animation ?
         yield return new WaitForSeconds(0.5f);
+
+        obj.GetComponent<PlayerControl>().isRabbit = isRabbit;
+        obj.GetComponent<PlayerControl>().isPangolin = isPangolin;
 
         // let object can move after possess
         obj.gameObject.transform.GetComponent<Rigidbody2D>().constraints &= ~RigidbodyConstraints2D.FreezePositionX;
